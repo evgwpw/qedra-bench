@@ -10,6 +10,7 @@ import { Worker } from 'node:worker_threads';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const CORPUS = process.env.CORPUS_DIR || path.join(HERE, '..', 'corpus', 'data');
+const TASKS = path.join(HERE, 'tasks');
 const RESULTS = path.join(HERE, '..', 'results');
 const EXE = process.env.QUOD_EXE || 'qedra';
 const ORDER = ['independent', 'mit_bee_official', 'mit_bee', 'blake', 'hebisch', 'rubi'];
@@ -31,7 +32,27 @@ function corpusFiles(suite) {
   return out.sort();
 }
 
+function* localTasks(suite) {
+  const lines = fs.readFileSync(path.join(TASKS, `${suite}.jsonl`), 'utf8').split(/\r?\n/);
+  for (let i = 0; i < lines.length; i += 1) {
+    if (!lines[i].trim()) continue;
+    const rec = JSON.parse(lines[i]);
+    yield {
+      id: `${suite}/${i}`, suite, file: suite, index: i,
+      integrand: rec.integrand || '', input: rec.input || null,
+      variable: rec.variable || 'x',
+      integral: null, lower: null, upper: null, value: null,
+      timeoutSec: TIMEOUT[suite] || 10,
+    };
+  }
+}
+
 function* tasks(suite) {
+  // набор из tasks/<имя>.jsonl (задачи уже переведены во входной язык)
+  if (fs.existsSync(path.join(TASKS, `${suite}.jsonl`))) {
+    yield* localTasks(suite);
+    return;
+  }
   for (const file of corpusFiles(suite)) {
     const rel = path.relative(CORPUS, file).replace(/\\/g, '/').slice(0, -'.jsonl'.length);
     const lines = fs.readFileSync(file, 'utf8').split(/\r?\n/);

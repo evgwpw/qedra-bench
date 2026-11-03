@@ -36,6 +36,11 @@ the input language does not have), plus the engine statuses `unknown`, `noneleme
 | `rubi_sample` | `10` | percent of rubi tasks (stratified by file) |
 | `shards` | `20` | matrix size |
 
+Besides the corpus suites, a suite can be a file `bench/tasks/<name>.jsonl`: one JSON object per
+line with `input` (the integrand already in Qedra's input language), `variable` and, optionally,
+`integrand` (the original notation, kept for traceability). Such a suite is passed by name, e.g.
+`suites=hard`, and needs no corpus clone.
+
 The first job publishes a self-contained `linux-x64` build of Qedra as an artifact; the matrix
 runs `bench/run_suite.mjs` with `--shards/--shard`; the last job merges `results-<k>.jsonl.gz`
 into `results/<date>-<qedra-sha>/` (`results.jsonl.gz`, `SUMMARY.md`) and commits it here.

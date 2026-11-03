@@ -8,7 +8,10 @@ const lisp = new Lisp(workerData.exe);
 
 async function run(task, timeoutSec) {
   const timeoutMs = timeoutSec * 1000;
-  const { text, why, renames } = translate(task.integrand);
+  // набор из tasks/ приходит уже переведённым во входной язык
+  const { text, why, renames } = task.input
+    ? { text: task.input, why: null, renames: {} }
+    : translate(task.integrand);
   const base = {
     id: task.id, suite: task.suite, file: task.file, index: task.index,
     integrand: task.integrand, variable: task.variable,
