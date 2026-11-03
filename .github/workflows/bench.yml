@@ -1,0 +1,134 @@
+name: bench
+
+"on":
+  workflow_dispatch:
+    inputs:
+      qedra_ref:
+        description: Qedra git ref to build
+        default: master
+        required: true
+      corpus_ref:
+        description: integration-test-suites commit
+        default: 871364f2923d6684d45470a91d7584ca162d0723
+        required: true
+      suites:
+        description: Comma-separated suite names
+        default: independent,mit_bee_official,mit_bee,blake,hebisch,rubi
+        required: true
+      timeout_s:
+        description: Per-task budget, seconds
+        default: "5"
+        required: true
+      rubi_sample:
+        description: Percent of rubi tasks
+        default: "10"
+        required: true
+      shards:
+        description: Matrix size
+        default: "20"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      shards: ${{ steps.gen.outputs.shards }}
+    steps:
+      - id: gen
+        env:
+          N: ${{ inputs.shards }}
+        run: echo "shards=$(node -e 'console.log(JSON.stringify(Array.from({length:+process.env.N},(_,i)=>String(i))))')" >> "$GITHUB_OUTPUT"
+
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.sha.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: evgwpw/Qedra
+          ref: ${{ inputs.qedra_ref }}
+          path: qedra
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Publish Qedra (linux-x64, self-contained)
+        working-directory: qedra
+        run: dotnet publish src/Lisp.Host/Lisp.Host.fsproj -c Release -r linux-x64 --self-contained true -o out -nologo -p:DebugType=None -p:DebugSymbols=false
+
+      - id: sha
+        run: echo "sha=$(git -C qedra rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qedra
+          path: qedra/out
+
+  bench:
+    needs: [plan, build]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: qedra
+          path: qedra
+
+      - run: chmod +x qedra/Lisp
+
+      - name: Clone the corpus at the pinned commit
+        run: |
+          git clone --quiet https://github.com/sympy/integration-test-suites.git corpus
+          git -C corpus checkout --quiet "${{ inputs.corpus_ref }}"
+
+      - name: Run the shard
+        env:
+          QUOD_EXE: ${{ github.workspace }}/qedra/Lisp
+          CORPUS_DIR: ${{ github.workspace }}/corpus/data
+        run: |
+          node bench/run_suite.mjs \
+            --suites "${{ inputs.suites }}" \
+            --shards "${{ inputs.shards }}" \
+            --shard "${{ matrix.shard }}" \
+            --timeout "${{ inputs.timeout_s }}" \
+            --rubi-sample "${{ inputs.rubi_sample }}" \
+            --out "results-${{ matrix.shard }}" \
+            --workers "$(nproc)"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.shard }}
+          path: results-${{ matrix.shard }}.jsonl.gz
+
+  merge:
+    needs: [build, bench]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Merge shards
+        run: node bench/merge.mjs artifacts "results/$(date -u +%Y-%m-%d)-${{ needs.build.outputs.sha }}"
+
+      - name: Commit results
+        run: |
+          git config user.name "Evgeniy Veprikov"
+          git config user.email "10131262+evgwpw@users.noreply.github.com"
+          git add results
+          git commit -m "Bench results for ${{ needs.build.outputs.sha }} (rubi ${{
+            inputs.rubi_sample }}%, timeout ${{ inputs.timeout_s }} s)" || echo "no changes"
+          git push
