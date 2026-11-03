@@ -72,7 +72,7 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
     const ruleLits = [`(list '${variable} p)`]
       .concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ');
     const code = `(let ((D (diff '${variable} '${F}))) `
-      + `(map (lambda (p) (list (eval-num (subst (list ${ruleLits}) '${f})) `
+      + `(map (lambda (p) (list p (eval-num (subst (list ${ruleLits}) '${f})) `
       + `(eval-num (subst (list ${ruleLits}) D)))) '(${pointLits})))`;
     const res = await lisp.ask(code, Math.max(timeoutMs, 15000));
     if (!res.ans || typeof res.ans.result !== 'string') continue;
@@ -80,9 +80,9 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
     try { rows = parseLisp(res.ans.result); } catch { continue; }
     if (!Array.isArray(rows)) continue;
     for (const row of rows) {
-      if (!Array.isArray(row) || row.length !== 2) continue;
-      const fv = toComplex(row[0]);
-      const dv = toComplex(row[1]);
+      if (!Array.isArray(row) || row.length !== 3) continue;
+      const fv = toComplex(row[1]);
+      const dv = toComplex(row[2]);
       if (!fv || !dv) continue;
       const av = Math.hypot(fv[0], fv[1]);
       const ad = Math.hypot(dv[0], dv[1]);
@@ -93,7 +93,7 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
       if (err > TOL) {
         return {
           verdict: 'WRONG',
-          detail: { x: Array.isArray(row[0]) ? row[0] : row[0], f: row[0], dF: row[1], err, points: checked, params: values },
+          detail: { x: row[0], f: row[1], dF: row[2], err, points: checked, params: values },
         };
       }
     }
