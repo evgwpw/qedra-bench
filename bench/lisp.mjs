@@ -13,26 +13,33 @@ export class Lisp {
   start() {
     this.stop();
     this.lastErr = '';
-    this.proc = spawn(this.exe, ['--json'], { stdio: ['pipe', 'pipe', 'pipe'], windowsHide: true });
-    this.proc.stderr.on('data', (d) => {
+    const proc = spawn(this.exe, ['--json'], { stdio: ['pipe', 'pipe', 'pipe'], windowsHide: true });
+    this.proc = proc;
+    proc.stderr.on('data', (d) => {
+      if (this.proc !== proc) return;
       this.lastErr = (this.lastErr + d.toString()).slice(-2000);
     });
-    const rl = readline.createInterface({ input: this.proc.stdout });
+    const rl = readline.createInterface({ input: proc.stdout });
     rl.on('line', (line) => {
+      if (this.proc !== proc) return;
       if (this.pending) { const p = this.pending; this.pending = null; p.resolve(line); }
     });
-    this.proc.on('exit', (code) => {
+    proc.on('exit', (code) => {
+      // exit убитого по таймауту процесса приходит уже после запуска нового —
+      // без проверки он отклонял бы чужой (следующий) запрос и давал ложный ERROR
+      if (this.proc !== proc) return;
       if (!this.lastErr) this.lastErr = `процесс завершился, код ${code}`;
       if (this.pending) { const p = this.pending; this.pending = null; p.reject(new Error(this.lastErr)); }
     });
   }
 
   stop() {
-    if (this.proc) {
-      try { this.proc.kill('SIGKILL'); } catch { /* уже мёртв */ }
-      this.proc = null;
-    }
+    const proc = this.proc;
+    this.proc = null;
     this.pending = null;
+    if (proc) {
+      try { proc.kill('SIGKILL'); } catch { /* уже мёртв */ }
+    }
   }
 
   // → { ans, ms } | { timeout: true } | { failed: true }
@@ -43,20 +50,22 @@ export class Lisp {
     try {
       this.proc.stdin.write(payload + '\n');
     } catch {
+      const why = this.lastErr;
       this.start();
-      return { failed: true, why: this.lastErr, ms: Date.now() - t0 };
+      return { failed: true, why, ms: Date.now() - t0 };
     }
     let timer;
     const timeoutP = new Promise((resolve) => { timer = setTimeout(() => resolve({ timeout: true }), timeoutMs); });
     const res = await Promise.race([lineP.then((l) => ({ line: l })).catch(() => ({ failed: true, why: this.lastErr })), timeoutP]);
     clearTimeout(timer);
     if (res.timeout) { this.start(); return { timeout: true, ms: Date.now() - t0 }; }
-    if (res.failed) { this.start(); return { failed: true, why: this.lastErr, ms: Date.now() - t0 }; }
+    if (res.failed) { const why = this.lastErr; this.start(); return { failed: true, why, ms: Date.now() - t0 }; }
     try {
       return { ans: JSON.parse(res.line), ms: Date.now() - t0 };
     } catch {
+      const why = this.lastErr;
       this.start();
-      return { failed: true, why: this.lastErr, ms: Date.now() - t0 };
+      return { failed: true, why, ms: Date.now() - t0 };
     }
   }
 
@@ -72,20 +81,22 @@ export class Lisp {
     try {
       this.proc.stdin.write(payload + '\n');
     } catch {
+      const why = this.lastErr;
       this.start();
-      return { failed: true, why: this.lastErr, ms: Date.now() - t0 };
+      return { failed: true, why, ms: Date.now() - t0 };
     }
     let timer;
     const timeoutP = new Promise((resolve) => { timer = setTimeout(() => resolve({ timeout: true }), timeoutMs); });
     const res = await Promise.race([lineP.then((l) => ({ line: l })).catch(() => ({ failed: true, why: this.lastErr })), timeoutP]);
     clearTimeout(timer);
     if (res.timeout) { this.start(); return { timeout: true, ms: Date.now() - t0 }; }
-    if (res.failed) { this.start(); return { failed: true, why: this.lastErr, ms: Date.now() - t0 }; }
+    if (res.failed) { const why = this.lastErr; this.start(); return { failed: true, why, ms: Date.now() - t0 }; }
     try {
       return { ans: JSON.parse(res.line), ms: Date.now() - t0 };
     } catch {
+      const why = this.lastErr;
       this.start();
-      return { failed: true, why: this.lastErr, ms: Date.now() - t0 };
+      return { failed: true, why, ms: Date.now() - t0 };
     }
   }
 }
