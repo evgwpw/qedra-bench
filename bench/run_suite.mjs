@@ -76,11 +76,12 @@ function hash(s) {
   return h;
 }
 
-function collect(suites, limit, { shard = 0, shards = 1, rubiSample = 100, timeoutOverride = 0 } = {}) {
+function collect(suites, limit, { shard = 0, shards = 1, rubiSample = 100, timeoutOverride = 0, ids = null } = {}) {
   const out = [];
   let n = 0;
   for (const suite of suites) {
     for (const t of tasks(suite)) {
+      if (ids && !ids.has(t.id)) continue;
       if (shards > 1 && hash(t.id) % shards !== shard) continue;
       if (suite === 'rubi' && rubiSample < 100 && hash(t.id) % 100 >= rubiSample) continue;
       if (timeoutOverride) t.timeoutSec = timeoutOverride;
@@ -90,6 +91,14 @@ function collect(suites, limit, { shard = 0, shards = 1, rubiSample = 100, timeo
     }
   }
   return out;
+}
+
+function readIds(file) {
+  const set = new Set();
+  for (const line of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+    if (line.trim()) set.add(line.trim());
+  }
+  return set;
 }
 
 function basePath(suites, out) {
@@ -199,5 +208,6 @@ const shard = Number(get('shard', 0));
 const rubiSample = Number(get('rubi-sample', 100));
 const timeoutOverride = get('timeout') ? Number(get('timeout')) : 0;
 const limit = get('limit') ? Number(get('limit')) : 0;
-const todo = collect(suites, limit, { shard, shards, rubiSample, timeoutOverride });
+const ids = get('ids-file') ? readIds(get('ids-file')) : null;
+const todo = collect(suites, limit, { shard, shards, rubiSample, timeoutOverride, ids });
 await execute(basePath(suites, get('out')), todo, Number(get('workers', Math.max(1, os.cpus().length))));
