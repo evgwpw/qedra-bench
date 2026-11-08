@@ -13,6 +13,11 @@ const CORPUS = process.env.CORPUS_DIR || path.join(HERE, '..', 'corpus', 'data')
 const TASKS = path.join(HERE, 'tasks');
 const RESULTS = path.join(HERE, '..', 'results');
 const EXE = process.env.QUOD_EXE || 'qedra';
+// интегратор для неопределённых интегралов: integrate | integrate_rubi
+const FN = (() => {
+  const i = process.argv.indexOf('--fn');
+  return i >= 0 && process.argv[i + 1] ? process.argv[i + 1] : 'integrate';
+})();
 const ORDER = ['independent', 'mit_bee_official', 'mit_bee', 'blake', 'hebisch', 'rubi'];
 const TIMEOUT = { rubi: 5 };
 
@@ -165,7 +170,7 @@ async function execute(base, todo, workers) {
       w.worker.postMessage({ task, timeoutSec: task.timeoutSec });
     };
     for (let k = 0; k < workers; k += 1) {
-      const w = { idle: true, worker: new Worker(new URL('./worker.mjs', import.meta.url), { workerData: { exe: EXE } }) };
+      const w = { idle: true, worker: new Worker(new URL('./worker.mjs', import.meta.url), { workerData: { exe: EXE, fn: FN } }) };
       w.worker.on('message', (rec) => {
         fs.appendFileSync(outPath, JSON.stringify(rec) + '\n');
         done += 1;

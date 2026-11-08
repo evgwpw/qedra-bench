@@ -27,6 +27,10 @@ name: bench
         description: "Подглавы rubi через запятую (например t_1_1_1,t_4_1); пусто — обычная выборка"
         default: ""
         required: false
+      fn:
+        description: "Интегратор для неопределённых интегралов: integrate | integrate_rubi"
+        default: integrate
+        required: false
       shards:
         description: Matrix size
         default: "20"
@@ -107,6 +111,7 @@ jobs:
             --timeout "${{ inputs.timeout_s }}" \
             --rubi-sample "${{ inputs.rubi_sample }}" \
             --rubi-file-prefix "${{ inputs.rubi_ids_prefix }}" \
+            --fn "${{ inputs.fn }}" \
             --out "results-${{ matrix.shard }}" \
             --workers "$(nproc)"
 
