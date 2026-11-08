@@ -44,6 +44,10 @@ async function run(task, timeoutSec) {
   }
   if (ans.status === 'unknown') return { ...rec, verdict: 'UNKNOWN' };
   const res = typeof ans.result === 'string' ? ans.result : '';
+  // отказ движка приходит обычным ответом — символом unknown; это не ложный ответ
+  if (/^unknown$/i.test(res.trim()) || pretty.trim() === 'unknown') {
+    return { ...rec, status: 'unknown', verdict: 'UNKNOWN' };
+  }
   if (!res || /^\(integrate\b/.test(res) || pretty.includes('integrate(')) {
     return { ...rec, verdict: 'partial' };
   }
