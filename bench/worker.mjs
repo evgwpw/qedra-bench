@@ -5,6 +5,9 @@ import { translate } from './translate.mjs';
 import { checkIndefinite, checkDefinite } from './oracle.mjs';
 
 const lisp = new Lisp(workerData.exe);
+// интегратор неопределённых интегралов задаётся входом workflow `fn`;
+// определённые интегралы всегда идут через integrate (у rubi-integrate границ нет)
+const FN = workerData.fn || 'integrate';
 
 async function run(task, timeoutSec) {
   const timeoutMs = timeoutSec * 1000;
@@ -24,7 +27,7 @@ async function run(task, timeoutSec) {
   }
   const code = task.lower !== null && task.lower !== undefined
     ? `integrate(${text}, ${task.variable}, ${task.lower}, ${task.upper})`
-    : `integrate(${text}, ${task.variable})`;
+    : `${FN}(${text}, ${task.variable})`;
   const r = await lisp.math(code, timeoutMs);
   if (r.timeout) return { ...base, status: 'timeout', verdict: 'TIMEOUT', ms: timeoutMs, pretty: null };
   if (r.failed || !r.ans) return { ...base, status: 'error', verdict: 'ERROR', detail: r.why || 'нет ответа', ms: r.ms || 0, pretty: null };
