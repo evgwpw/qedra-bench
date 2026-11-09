@@ -91,9 +91,21 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
       checked += 1;
       maxErr = Math.max(maxErr, err);
       if (err > TOL) {
+        // Расхождение в double — ещё не ложный ответ: многочлены высокой степени дают погрешность
+        // 1e-5…1e-8 из-за вычитания больших слагаемых. Точка пересчитывается точно: рациональные
+        // параметры и x, simplify разности D − f. 0 — точка верна; ненулевое число — ответ ложный;
+        // иначе (корни, логарифмы остались символьно) проверить нечем — UNVERIFIED, а не WRONG.
+        const ex = await exactDiff(lisp, F, f, variable, row[0], values, params, timeoutMs);
+        if (ex === 'zero') { checked += 1; continue; }
+        if (ex === 'nonzero') {
+          return {
+            verdict: 'WRONG',
+            detail: { x: row[0], f: row[1], dF: row[2], err, points: checked, params: values, exact: true },
+          };
+        }
         return {
-          verdict: 'WRONG',
-          detail: { x: row[0], f: row[1], dF: row[2], err, points: checked, params: values },
+          verdict: 'UNVERIFIED',
+          detail: { reason: 'расхождение в double, точная проверка неубедительна', x: row[0], f: row[1], dF: row[2], err, params: values },
         };
       }
     }
@@ -101,6 +113,38 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
   }
   if (checked < 7) return { verdict: 'UNVERIFIED', detail: { reason: 'меньше 7 вычислимых точек', points: checked } };
   return { verdict: 'OK', detail: { points: checked, max_err: maxErr } };
+}
+
+// десятичное число (-2.3, 0.7) → точная дробь «-23/10»; экспонента или нечисло — null
+function decimalToFraction(v) {
+  if (Array.isArray(v)) return null;
+  const s = String(v);
+  const m = /^(-?)(\d+)(?:\.(\d+))?$/.exec(s);
+  if (!m) return null;
+  const frac = m[3] || '';
+  const num = BigInt(m[2] + frac);
+  const den = 10n ** BigInt(frac.length);
+  return `${m[1]}${num}/${den}`;
+}
+
+// 'zero' — D − f тождественно 0 в точной арифметике; 'nonzero' — отличное от 0 число; 'unknown' — не решилось
+async function exactDiff(lisp, F, f, variable, xVal, values, params, timeoutMs) {
+  const xr = decimalToFraction(xVal);
+  if (!xr) return 'unknown';
+  const rules = [`(list '${variable} ${xr})`];
+  for (const p of params) {
+    const pr = decimalToFraction(values[p]);
+    if (!pr) return 'unknown';
+    rules.push(`(list '${p} ${pr})`);
+  }
+  const code = `(let* ((D (diff '${variable} '${F})) (r (list ${rules.join(' ')}))) `
+    + `(simplify (- (subst r D) (subst r '${f}))))`;
+  const res = await lisp.ask(code, Math.max(timeoutMs, 30000));
+  if (!res.ans || typeof res.ans.result !== 'string') return 'unknown';
+  const t = res.ans.result.trim();
+  if (t === '0') return 'zero';
+  if (/^-?\d+(\/\d+)?$/.test(t)) return 'nonzero';
+  return 'unknown';
 }
 
 function toComplex(v) {
