@@ -18,6 +18,11 @@ const FN = (() => {
   const i = process.argv.indexOf('--fn');
   return i >= 0 && process.argv[i + 1] ? process.argv[i + 1] : 'integrate';
 })();
+// файл журнала Rubi (вторая попытка отказных задач с журналом, см. worker.mjs): --trace trace-N.tsv; в конце сжимается в .gz
+const TRACE_FILE = (() => {
+  const i = process.argv.indexOf('--trace');
+  return i >= 0 && process.argv[i + 1] && !process.argv[i + 1].startsWith('--') ? path.resolve(process.argv[i + 1]) : null;
+})();
 const ORDER = ['independent', 'mit_bee_official', 'mit_bee', 'blake', 'hebisch', 'rubi'];
 const TIMEOUT = { rubi: 5 };
 
@@ -170,8 +175,13 @@ async function execute(base, todo, workers) {
       w.worker.postMessage({ task, timeoutSec: task.timeoutSec });
     };
     for (let k = 0; k < workers; k += 1) {
-      const w = { idle: true, worker: new Worker(new URL('./worker.mjs', import.meta.url), { workerData: { exe: EXE, fn: FN } }) };
+      const w = { idle: true, worker: new Worker(new URL('./worker.mjs', import.meta.url), { workerData: { exe: EXE, fn: FN, trace: !!TRACE_FILE } }) };
       w.worker.on('message', (rec) => {
+        if (rec.__trace !== undefined) {
+          // журнал Rubi (вход rubi_trace) — в отдельный файл, запись результата остаётся прежней
+          if (TRACE_FILE) fs.appendFileSync(TRACE_FILE, rec.__trace);
+          delete rec.__trace;
+        }
         fs.appendFileSync(outPath, JSON.stringify(rec) + '\n');
         done += 1;
         counts[rec.verdict] = (counts[rec.verdict] || 0) + 1;
@@ -199,6 +209,11 @@ async function execute(base, todo, workers) {
   for (const w of pool) w.worker.terminate();
   await new Promise((res) => setTimeout(res, 0));
   finish(base);
+  if (TRACE_FILE && fs.existsSync(TRACE_FILE)) {
+    fs.writeFileSync(TRACE_FILE + '.gz', zlib.gzipSync(fs.readFileSync(TRACE_FILE), { level: 6 }));
+    fs.unlinkSync(TRACE_FILE);
+    console.log(`trace -> ${path.relative(process.cwd(), TRACE_FILE)}.gz`);
+  }
   console.log(`done in ${((Date.now() - t0) / 60000).toFixed(1)} min`);
 }
 

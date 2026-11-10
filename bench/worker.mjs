@@ -81,10 +81,37 @@ function isElementary(text) {
   return true;
 }
 
+// Вторая попытка с журналом Rubi (вход workflow rubi_trace): только для неопределённых интегралов, отказанных
+// интегратором integrate_rubi (UNKNOWN/TIMEOUT). Вердикт задачи не меняется — попытка нужна только ради журнала.
+// Бюджет задачи 25 с, движка 20 с. Формат — как у tools/rubi/diagnose-run.lisp, с полным id задачи в первой колонке:
+//   id<TAB>T<TAB>unknown|ok|parse-error|timeout|error<TAB>мс<TAB>попыток<TAB>причина
+//   id<TAB>R<TAB>запись журнала (~s)
+const TRACE_TASK_S = 25;
+const TRACE_ENGINE_S = 20;
+async function traceAttempt(task, rec) {
+  if (!workerData.trace || FN !== 'integrate_rubi' || !rec.input) return null;
+  if (task.lower !== null && task.lower !== undefined) return null;
+  if (rec.verdict !== 'UNKNOWN' && rec.verdict !== 'TIMEOUT') return null;
+  const q = (s) => String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  // display в режиме --json писал бы в протокольный stdout, поэтому строка берётся из result (печать строки в кавычках)
+  const code = `(rubi-trace-run "${q(rec.input)}" "${q(task.variable)}" ${TRACE_ENGINE_S}.0)`;
+  const r = await lisp.askJson({ op: 'eval', code }, TRACE_TASK_S * 1000);
+  if (r.timeout) return `${task.id}\tT\ttimeout\t${TRACE_TASK_S * 1000}\t0\t-\n`;
+  let out = r.ans && typeof r.ans.result === 'string' ? r.ans.result : '';
+  if (out.length >= 2 && out.startsWith('"') && out.endsWith('"')) out = out.slice(1, -1);
+  else out = '';
+  if (!out) return `${task.id}\tT\terror\t${r.ms || 0}\t0\t-\n`;
+  return out.split(/\r?\n/).filter(Boolean).map((l) => `${task.id}\t${l}`).join('\n') + '\n';
+}
+
 parentPort.on('message', async ({ task, timeoutSec }) => {
   let rec;
   try {
     rec = await run(task, timeoutSec);
+    try {
+      const tr = await traceAttempt(task, rec);
+      if (tr) rec = { ...rec, __trace: tr };
+    } catch { /* журнал не обязателен */ }
   } catch (err) {
     rec = {
       id: task.id, suite: task.suite, file: task.file, index: task.index,

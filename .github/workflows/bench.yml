@@ -31,6 +31,10 @@ name: bench
         description: "Интегратор для неопределённых интегралов: integrate | integrate_rubi"
         default: integrate
         required: false
+      rubi_trace:
+        description: "1 — для отказных (UNKNOWN/TIMEOUT) задач fn=integrate_rubi вторая попытка с журналом Rubi (задача 25 с, движок 20 с), артефакт trace-<осколок>.tsv.gz; вердикт не меняется"
+        default: "0"
+        required: false
       shards:
         description: Matrix size
         default: "20"
@@ -113,12 +117,16 @@ jobs:
             --rubi-file-prefix "${{ inputs.rubi_ids_prefix }}" \
             --fn "${{ inputs.fn }}" \
             --out "results-${{ matrix.shard }}" \
+            ${{ (inputs.rubi_trace == '1' || inputs.rubi_trace == 'true') && format('--trace "trace-{0}.tsv"', matrix.shard) || '' }} \
             --workers "$(nproc)"
 
       - uses: actions/upload-artifact@v4
         with:
           name: results-${{ matrix.shard }}
-          path: results-${{ matrix.shard }}.jsonl.gz
+          path: |
+            results-${{ matrix.shard }}.jsonl.gz
+            trace-${{ matrix.shard }}.tsv.gz
+          if-no-files-found: warn
 
   merge:
     needs: [build, bench]

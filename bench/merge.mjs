@@ -26,6 +26,17 @@ for (const f of fs.readdirSync(src).sort()) {
   console.log(`${f}: ${n}`);
 }
 
+// журналы Rubi осколков (вход rubi_trace): trace-<осколок>.tsv.gz -> один trace.tsv.gz
+const traces = fs.readdirSync(src).sort().filter((f) => /^trace-.*\.tsv(\.gz)?$/.test(f));
+if (traces.length) {
+  const parts = traces.map((f) => {
+    const buf = fs.readFileSync(path.join(src, f));
+    return f.endsWith('.gz') ? zlib.gunzipSync(buf) : buf;
+  });
+  fs.writeFileSync(path.join(out, 'trace.tsv.gz'), zlib.gzipSync(Buffer.concat(parts), { level: 6 }));
+  console.log(`trace.tsv.gz: ${traces.length} осколков`);
+}
+
 const recs = [...byId.values()];
 fs.writeFileSync(path.join(out, 'results.jsonl.gz'), zlib.gzipSync(recs.map((r) => JSON.stringify(r)).join('\n') + '\n', { level: 6 }));
 
