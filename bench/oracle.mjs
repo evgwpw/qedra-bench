@@ -96,6 +96,10 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
       const av = Math.hypot(fv[0], fv[1]);
       const ad = Math.hypot(dv[0], dv[1]);
       if (!Number.isFinite(av) || !Number.isFinite(ad) || av > 1e7 || ad > 1e7) continue;
+      // Подынтегральное вещественно, а производная ответа комплексна: ответ в этой точке лежит на другой
+      // ветви (вне рабочего интервала, напр. √(x²−1) при |x| < 1). Точка пропускается: не совпавшая и не
+      // расхождение; вердикт OK требует ≥ 7 совпавших точек. Если и f, и dF вещественны — прежняя логика.
+      if (Math.abs(fv[1]) <= 1e-12 * Math.max(1, av) && Math.abs(dv[1]) > 1e-9 * Math.max(1, ad)) continue;
       const err = Math.hypot(dv[0] - fv[0], dv[1] - fv[1]) / Math.max(1, av);
       checked += 1;
       maxErr = Math.max(maxErr, err);
