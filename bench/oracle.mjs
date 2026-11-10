@@ -6,6 +6,9 @@ export const TOL = 1e-8;
 
 const REAL_POINTS = [-3.7, -2.3, -1.23, -0.77, -0.41, -0.13, 0.07, 0.41, 0.77, 1.23, 1.91, 2.67, 3.7];
 const COMPLEX_POINTS = [[0.6, 0.8], [-1.2, 0.4]];
+// Узкая область определения (√(1−2x)·√(5x+3) — интервал (−0,6; 0,5)): если основных точек вычислилось меньше 7,
+// второй проход — сетка на [−4; 4] шагом 0,1 со сдвигом 0,0137 (не попадает в целые и половины).
+const EXTRA_POINTS = Array.from({ length: 81 }, (_, i) => Math.round((-4 + 0.1 * i + 0.0137) * 1e4) / 1e4);
 
 const FUNCS = new Set(['sin', 'cos', 'tan', 'cot', 'sec', 'csc', 'asin', 'acos', 'atan', 'acot', 'asec', 'acsc',
   'sinh', 'cosh', 'tanh', 'coth', 'sech', 'csch', 'asinh', 'acosh', 'atanh', 'acoth', 'asech', 'acsch',
@@ -63,11 +66,17 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
   const sets = paramSets(params);
   let checked = 0;
   let maxErr = 0;
+  for (const pass of [0, 1]) {
+  if (pass === 1 && checked >= 7) break;
   for (const values of sets) {
     const rules = [[variable, null]];
     const pts = [];
-    for (const p of REAL_POINTS) pts.push(p);
-    for (const [re, im] of COMPLEX_POINTS) pts.push([re, im]);
+    if (pass === 0) {
+      for (const p of REAL_POINTS) pts.push(p);
+      for (const [re, im] of COMPLEX_POINTS) pts.push([re, im]);
+    } else {
+      for (const p of EXTRA_POINTS) pts.push(p);
+    }
     const pointLits = pts.map(valueText).join(' ');
     const ruleLits = [`(list '${variable} p)`]
       .concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ');
@@ -110,6 +119,7 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
       }
     }
     if (checked >= 21) break;
+  }
   }
   if (checked < 7) return { verdict: 'UNVERIFIED', detail: { reason: 'меньше 7 вычислимых точек', points: checked } };
   return { verdict: 'OK', detail: { points: checked, max_err: maxErr } };
