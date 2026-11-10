@@ -82,14 +82,14 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
       .concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ');
     const code = `(let ((D (diff '${variable} '${F}))) `
       + `(map (lambda (p) (list p (eval-num (subst (list ${ruleLits}) '${f})) `
-      + `(eval-num (subst (list ${ruleLits}) D)))) '(${pointLits})))`;
+      + `(eval-num (subst (list ${ruleLits}) D)) (eval-num (subst (list ${ruleLits}) '${F})))) '(${pointLits})))`;
     const res = await lisp.ask(code, Math.max(timeoutMs, 15000));
     if (!res.ans || typeof res.ans.result !== 'string') continue;
     let rows;
     try { rows = parseLisp(res.ans.result); } catch { continue; }
     if (!Array.isArray(rows)) continue;
     for (const row of rows) {
-      if (!Array.isArray(row) || row.length !== 3) continue;
+      if (!Array.isArray(row) || row.length < 3) continue;
       const fv = toComplex(row[1]);
       const dv = toComplex(row[2]);
       if (!fv || !dv) continue;
@@ -100,6 +100,11 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
       // ветви (вне рабочего интервала, напр. √(x²−1) при |x| < 1). Точка пропускается: не совпавшая и не
       // расхождение; вердикт OK требует ≥ 7 совпавших точек. Если и f, и dF вещественны — прежняя логика.
       if (Math.abs(fv[1]) <= 1e-12 * Math.max(1, av) && Math.abs(dv[1]) > 1e-9 * Math.max(1, ad)) continue;
+      // То же, если комплексно само значение ответа F (эллиптические с амплитудой asin(>1) и т. п.: производная
+      // там бывает вещественной, но другой ветви).
+      const Fv = row.length > 3 ? toComplex(row[3]) : null;
+      if (Fv && Math.abs(fv[1]) <= 1e-12 * Math.max(1, av)
+          && Math.abs(Fv[1]) > 1e-9 * Math.max(1, Math.hypot(Fv[0], Fv[1]))) continue;
       const err = Math.hypot(dv[0] - fv[0], dv[1] - fv[1]) / Math.max(1, av);
       checked += 1;
       maxErr = Math.max(maxErr, err);
