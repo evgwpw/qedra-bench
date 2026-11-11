@@ -31,25 +31,151 @@ export function paramsOf(text, variable) {
   return [...out].filter((n) => !FUNCS.has(n) && n !== variable);
 }
 
+// Значения параметров в одном наборе все различны: иначе совпадение (c = a, d = b) обнуляет слагаемые вроде
+// (b·c − a·d) и ошибка в них не видна ни в одной точке набора.
+function baseValue(k) { return 0.7 + 0.4 * ((k * 7) % 5) + 0.13 * Math.floor(k / 5); }
+const IRRATIONAL = [1.4142135623730951, 0.7853981633974483, 0.9060939428196813, 0.8660254037844386,
+  1.2599210498948732, 0.6931471805599453, 1.1447298858494002, 0.5772156649015329, 1.6180339887498949, 0.3010299956639812];
+function irrationalValue(k) { return IRRATIONAL[k % IRRATIONAL.length] + 0.0173 * Math.floor(k / IRRATIONAL.length); }
+
 function paramSets(params) {
   const sets = [];
   for (const sgn of [1, -1]) {
     const obj = {};
     params.forEach((p, k) => {
-      const base = 0.7 + 0.4 * ((k * 7) % 5);
+      const base = baseValue(k);
       obj[p] = sgn > 0 ? base : -base;
     });
     sets.push(obj);
   }
   const irr = {};
-  params.forEach((p, k) => { irr[p] = [1.4142135623730951, 0.7853981633974483, 0.9060939428196813, 0.8660254037844386][k % 4]; });
+  params.forEach((p, k) => { irr[p] = irrationalValue(k); });
   sets.push(irr);
   return sets;
+}
+
+// Четвёртый набор — параметры чередующихся знаков (a > 0, b < 0, …): аргумент гипергеометрических функций
+// 1 + (b/a)·x² попадает в область z < 1, где eval-num их считает. Берётся только во втором проходе.
+function altSet(params) {
+  const obj = {};
+  params.forEach((p, k) => { obj[p] = (k % 2 ? -1 : 1) * baseValue(k); });
+  return obj;
 }
 
 function valueText(v) {
   if (Array.isArray(v)) return `(+ ${v[0]} (* ${v[1]} %i))`;
   return String(v);
+}
+
+// Разбор точек проверки: ряды [x, f, dF, F] → вердикт. Чистая функция (кроме точной проверки exactFn).
+//
+// Почему дополнительные случаи НЕ могут подтвердить неверный ответ. Ответ F — аналитическая функция, поэтому
+// равенство dF = f в ≥ 7 вещественных точках, где подынтегральное вещественно («сильные» совпадения),
+// доказывает тождество dF = f на связной области; неверный ответ (любое возмущение: коэффициент, знак,
+// слагаемое, функция) расходится с f во всех таких точках, а не в одной. Поэтому:
+//  - расхождение в комплексной точке, при комплексном f (подынтегральное нереально) или при комплексных
+//    F/dF и вещественном f — это выбор ветви корня/логарифма, а не ошибка; такие точки не засчитываются
+//    и не отвергают, но тогда вердикт OK требует ≥ 7 сильных совпадений (иначе — как раньше: ≥ 7 совпадений
+//    и ни одного пропуска);
+//  - «жёсткое» расхождение (вещественные f, dF, F) — отказ: точная проверка рационалями (WRONG / UNVERIFIED);
+//  - расхождение 1e-8…1e-5 в double — шум вычитания; принимается только после трёх точных подтверждений
+//    рационалями (zero) в той же задаче, до этого каждая такая точка проверяется точно;
+//  - набор параметров, в котором ни одна вещественная точка не совпала (ответ верен только в другой области
+//    знаков параметров — корни кубические/квадратные от отрицательных), не учитывается, если остальные наборы
+//    дали ≥ 7 сильных совпадений и ни одного жёсткого расхождения. Подделка не может так «спрятаться»:
+//    она расходится и в чистых наборах.
+// «сильное» совпадение должно быть различающим: при |f| ≤ 1e4 допуск TOL·max(1,|f|) ≤ 1e-4, и возмущение
+// порядка 1e-3 (в ответе или в его производной) уже видно.
+const STRONG_MAX = 1e4;
+// и снизу: при |f| < 1e-2 возмущение ×1,001 (невязка < 1e-5) почти не отличается от допуска TOL·1 — такое
+// совпадение ничего не доказывает.
+const STRONG_MIN = 1e-2;
+const NOISE_MAX = 1e-5;
+const NOISE_EXACT = 3;
+const EXACT_BUDGET = 8;
+
+function isImagSmall(c, av) { return Math.abs(c[1]) <= 1e-12 * Math.max(1, av); }
+
+async function judge(sets, exactFn) {
+  let noiseConfirmed = 0;
+  let exactCalls = 0;
+  let wrong = null;
+  let unresolved = null;
+  const tally = [];
+  for (const set of sets) {
+    const t = { values: set.values, match: 0, strong: 0, tolerated: 0, tc: 0, ti: 0, tb: 0, hard: 0, realMatch: 0 };
+    tally.push(t);
+    for (const row of set.rows) {
+      const fv = toComplex(row[1]);
+      const dv = toComplex(row[2]);
+      if (!fv || !dv) continue;
+      const av = Math.hypot(fv[0], fv[1]);
+      const ad = Math.hypot(dv[0], dv[1]);
+      if (!Number.isFinite(av) || !Number.isFinite(ad) || av > 1e7 || ad > 1e7) continue;
+      const Fv = row.length > 3 ? toComplex(row[3]) : null;
+      const isC = Array.isArray(row[0]);
+      const fReal = isImagSmall(fv, av);
+      const err = Math.hypot(dv[0] - fv[0], dv[1] - fv[1]) / Math.max(1, av);
+      if (err <= TOL) {
+        t.match += 1;
+        if (!isC) { t.realMatch += 1; if (fReal && av >= STRONG_MIN && av <= STRONG_MAX) t.strong += 1; }
+        continue;
+      }
+      if (isC) { t.tolerated += 1; t.tc += 1; continue; }
+      if (!fReal) { t.tolerated += 1; t.ti += 1; continue; }
+      if (isImagSmall(dv, ad) && Fv && !isImagSmall(Fv, Math.hypot(Fv[0], Fv[1]))) { t.tolerated += 1; t.tb += 1; continue; }
+      // жёсткое расхождение: вещественные f, dF, F
+      if (err <= NOISE_MAX && noiseConfirmed >= NOISE_EXACT) { t.match += 1; t.realMatch += 1; if (av >= STRONG_MIN && av <= STRONG_MAX) t.strong += 1; continue; }
+      let ex = 'unknown';
+      if (exactCalls < EXACT_BUDGET) {
+        exactCalls += 1;
+        ex = await exactFn(row[0], set.values);
+      }
+      if (ex === 'zero') { if (err <= NOISE_MAX) noiseConfirmed += 1; t.match += 1; t.realMatch += 1; if (av >= STRONG_MIN && av <= STRONG_MAX) t.strong += 1; continue; }
+      if (ex === 'nonzero') {
+        wrong = { x: row[0], f: row[1], dF: row[2], err, params: set.values };
+        return { wrong, tally };
+      }
+      t.hard += 1;
+      if (!unresolved) unresolved = { x: row[0], f: row[1], dF: row[2], err, params: set.values };
+    }
+  }
+  return { wrong, unresolved, tally };
+}
+
+function decide(j) {
+  // → { ok, reason, points, ... }
+  const clean = [];
+  const failedSets = [];
+  for (const t of j.tally) {
+    if (t.hard === 0) clean.push(t);
+    else if (t.realMatch === 0) failedSets.push(t);
+    else return { ok: false, reason: 'расхождение в double, точная проверка неубедительна', ...j.unresolved };
+  }
+  const match = clean.reduce((s, t) => s + t.match, 0);
+  const strong = clean.reduce((s, t) => s + t.strong, 0);
+  const tolerated = clean.reduce((s, t) => s + t.tolerated, 0);
+  const kinds = { tc: clean.reduce((s, t) => s + t.tc, 0), ti: clean.reduce((s, t) => s + t.ti, 0), tb: clean.reduce((s, t) => s + t.tb, 0) };
+  if (clean.length === 0) return { ok: false, reason: 'расхождение в double, точная проверка неубедительна', ...j.unresolved };
+  if (tolerated === 0 && failedSets.length === 0 && match >= 7) return { ok: true, points: match };
+  // Точки «другой ветви» (F комплексно, dF вещественно) не должны преобладать: ветвь — часть вещественной оси,
+  // а подделка в области, где F комплексно везде, расходилась бы почти во всех точках.
+  if (strong >= 7 && kinds.tb <= strong) return { ok: true, points: match, strong, tolerated, kinds, failed_sets: failedSets.length };
+  return { ok: false, reason: 'меньше 7 вычислимых точек', points: match, strong, tolerated };
+}
+
+async function sampleSet(lisp, f, F, variable, params, values, pts, timeoutMs) {
+  const pointLits = pts.map(valueText).join(' ');
+  const ruleLits = [`(list '${variable} p)`]
+    .concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ');
+  const code = `(let ((D (diff '${variable} '${F}))) `
+    + `(map (lambda (p) (list p (eval-num (subst (list ${ruleLits}) '${f})) `
+    + `(eval-num (subst (list ${ruleLits}) D)) (eval-num (subst (list ${ruleLits}) '${F})))) '(${pointLits})))`;
+  const res = await lisp.ask(code, Math.max(timeoutMs, 15000));
+  if (!res.ans || typeof res.ans.result !== 'string') return [];
+  let rows;
+  try { rows = parseLisp(res.ans.result); } catch { return []; }
+  return Array.isArray(rows) ? rows.filter((r) => Array.isArray(r) && r.length >= 3) : [];
 }
 
 // → { verdict, detail }
@@ -63,75 +189,30 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
   }
   const f = fRes.ans.result;
   const params = paramsOf(fText, variable);
-  const sets = paramSets(params);
-  let checked = 0;
-  let maxErr = 0;
+  const sets = paramSets(params).map((values) => ({ values, rows: [] }));
+  const exactFn = (x, values) => exactDiff(lisp, F, f, variable, x, values, params, timeoutMs);
+  let verdict = null;
   for (const pass of [0, 1]) {
-  if (pass === 1 && checked >= 7) break;
-  for (const values of sets) {
-    const rules = [[variable, null]];
-    const pts = [];
-    if (pass === 0) {
-      for (const p of REAL_POINTS) pts.push(p);
-      for (const [re, im] of COMPLEX_POINTS) pts.push([re, im]);
-    } else {
-      for (const p of EXTRA_POINTS) pts.push(p);
+    const base = [...REAL_POINTS, ...COMPLEX_POINTS];
+    if (pass === 1 && params.length > 0) sets.push({ values: altSet(params), rows: [], fresh: true });
+    for (const set of sets) {
+      const pts = pass === 0 ? base : (set.fresh ? base.concat(EXTRA_POINTS) : EXTRA_POINTS);
+      set.fresh = false;
+      const rows = await sampleSet(lisp, f, F, variable, params, set.values, pts, timeoutMs);
+      set.rows = set.rows.concat(rows);
     }
-    const pointLits = pts.map(valueText).join(' ');
-    const ruleLits = [`(list '${variable} p)`]
-      .concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ');
-    const code = `(let ((D (diff '${variable} '${F}))) `
-      + `(map (lambda (p) (list p (eval-num (subst (list ${ruleLits}) '${f})) `
-      + `(eval-num (subst (list ${ruleLits}) D)) (eval-num (subst (list ${ruleLits}) '${F})))) '(${pointLits})))`;
-    const res = await lisp.ask(code, Math.max(timeoutMs, 15000));
-    if (!res.ans || typeof res.ans.result !== 'string') continue;
-    let rows;
-    try { rows = parseLisp(res.ans.result); } catch { continue; }
-    if (!Array.isArray(rows)) continue;
-    for (const row of rows) {
-      if (!Array.isArray(row) || row.length < 3) continue;
-      const fv = toComplex(row[1]);
-      const dv = toComplex(row[2]);
-      if (!fv || !dv) continue;
-      const av = Math.hypot(fv[0], fv[1]);
-      const ad = Math.hypot(dv[0], dv[1]);
-      if (!Number.isFinite(av) || !Number.isFinite(ad) || av > 1e7 || ad > 1e7) continue;
-      // Подынтегральное вещественно, а производная ответа комплексна: ответ в этой точке лежит на другой
-      // ветви (вне рабочего интервала, напр. √(x²−1) при |x| < 1). Точка пропускается: не совпавшая и не
-      // расхождение; вердикт OK требует ≥ 7 совпавших точек. Если и f, и dF вещественны — прежняя логика.
-      if (Math.abs(fv[1]) <= 1e-12 * Math.max(1, av) && Math.abs(dv[1]) > 1e-9 * Math.max(1, ad)) continue;
-      // То же, если комплексно само значение ответа F (эллиптические с амплитудой asin(>1) и т. п.: производная
-      // там бывает вещественной, но другой ветви).
-      const Fv = row.length > 3 ? toComplex(row[3]) : null;
-      if (Fv && Math.abs(fv[1]) <= 1e-12 * Math.max(1, av)
-          && Math.abs(Fv[1]) > 1e-9 * Math.max(1, Math.hypot(Fv[0], Fv[1]))) continue;
-      const err = Math.hypot(dv[0] - fv[0], dv[1] - fv[1]) / Math.max(1, av);
-      checked += 1;
-      maxErr = Math.max(maxErr, err);
-      if (err > TOL) {
-        // Расхождение в double — ещё не ложный ответ: многочлены высокой степени дают погрешность
-        // 1e-5…1e-8 из-за вычитания больших слагаемых. Точка пересчитывается точно: рациональные
-        // параметры и x, simplify разности D − f. 0 — точка верна; ненулевое число — ответ ложный;
-        // иначе (корни, логарифмы остались символьно) проверить нечем — UNVERIFIED, а не WRONG.
-        const ex = await exactDiff(lisp, F, f, variable, row[0], values, params, timeoutMs);
-        if (ex === 'zero') { checked += 1; continue; }
-        if (ex === 'nonzero') {
-          return {
-            verdict: 'WRONG',
-            detail: { x: row[0], f: row[1], dF: row[2], err, points: checked, params: values, exact: true },
-          };
-        }
-        return {
-          verdict: 'UNVERIFIED',
-          detail: { reason: 'расхождение в double, точная проверка неубедительна', x: row[0], f: row[1], dF: row[2], err, params: values },
-        };
-      }
+    const j = await judge(sets, exactFn);
+    if (j.wrong) {
+      return { verdict: 'WRONG', detail: { ...j.wrong, f: j.wrong.f, points: 0, exact: true } };
     }
-    if (checked >= 21) break;
+    const d = decide(j);
+    if (d.ok) {
+      verdict = { verdict: 'OK', detail: { points: d.points, strong: d.strong, tolerated: d.tolerated, kinds: d.kinds, failed_sets: d.failed_sets } };
+      break;
+    }
+    verdict = { verdict: 'UNVERIFIED', detail: d };
   }
-  }
-  if (checked < 7) return { verdict: 'UNVERIFIED', detail: { reason: 'меньше 7 вычислимых точек', points: checked } };
-  return { verdict: 'OK', detail: { points: checked, max_err: maxErr } };
+  return verdict;
 }
 
 // десятичное число (-2.3, 0.7) → точная дробь «-23/10»; экспонента или нечисло — null
