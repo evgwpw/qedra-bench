@@ -14,7 +14,14 @@ then checks the answer numerically and independently of the answer's form:
 
 * indefinite: `|F′(x) − f(x)| ≤ 1e-8 · max(1, |f|)` at 13 real points (around 0, ±1, ±2) and
   2 complex points, for three sets of parameter values; `F′` comes from Qedra's own `diff`,
-  values from `eval-num`;
+  values from `eval-num`. If the points do not suffice, a second pass adds an 81-point grid and
+  a fourth parameter set with alternating signs. A point where the integrand is non-real, a
+  point in the complex plane, or a point where the answer lies on another branch (complex `F`,
+  real `F′`) is neither counted nor rejected, but then `OK` needs at least 7 matching real
+  points with 0.01 <= |f| <= 1e4, where the tolerance is small against a 1e-3 perturbation, so
+  a perturbed answer cannot hide behind branch points. A real point that disagrees is re-checked
+  in exact rational arithmetic (`WRONG` on a non-zero difference, `UNVERIFIED` otherwise); a
+  disagreement below 1e-5 is accepted as rounding noise only after three exact confirmations;
 * definite: the value is compared with the corpus `value`; on mismatch a Simpson quadrature
   of the integrand is used as a tie-breaker.
 
