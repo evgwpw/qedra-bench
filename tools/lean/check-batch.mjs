@@ -40,6 +40,25 @@ for (const f of files) {
     const m = /^theorem qedra_int_(\S+)/.exec(l);
     if (m) starts.push({ id: m[1], line: i + 1 });
   });
+  // Блоки стража пустых теорем: «-- vacuous-check: <id>» и следующий за ним example.
+  const vacMarkers = [];
+  let axiomsStart = Infinity;
+  lines.forEach((l, i) => {
+    const m = /^-- vacuous-check: (\S+)/.exec(l);
+    if (m) vacMarkers.push({ id: m[1], line: i + 1 });
+    if (l.startsWith('#print axioms')) axiomsStart = Math.min(axiomsStart, i + 1);
+  });
+  // Ошибка внутри блока стража относится к его теореме и означает vacuous?, а не провал доказательства.
+  function vacuousOwner(line) {
+    if (line >= axiomsStart) return null;
+    let owner = null;
+    for (const m of vacMarkers) {
+      if (m.line > line) break;
+      const crossed = starts.some((s) => s.line > m.line && s.line <= line);
+      owner = crossed ? null : m.id;
+    }
+    return owner;
+  }
   if (!starts.length) {
     console.log(`${basename(f)}: теорем не найдено`);
     continue;
@@ -60,11 +79,17 @@ for (const f of files) {
   const ms = Date.now() - t0;
   const out = `${r.stdout || ''}\n${r.stderr || ''}`;
 
-  const errors = new Map(); // id -> первая ошибка
+  const errors = new Map(); // id -> первая ошибка теоремы
+  const vacuous = new Map(); // id -> первая ошибка стража (гипотезы несовместны либо точка не найдена)
   for (const l of out.split(/\r?\n/)) {
     const m = /:(\d+):\d+: error: (.*)$/.exec(l);
     if (!m) continue;
     const line = Number(m[1]);
+    const vOwner = vacuousOwner(line);
+    if (vOwner) {
+      if (!vacuous.has(vOwner)) vacuous.set(vOwner, m[2].slice(0, 300));
+      continue;
+    }
     let owner = null;
     for (const s of starts) if (s.line <= line) owner = s.id;
     if (owner && !errors.has(owner)) errors.set(owner, m[2].slice(0, 300));
@@ -80,7 +105,7 @@ for (const f of files) {
     if (none) axioms.set(none[1], []);
   }
 
-  const summary = { passed: 0, failed: 0, 'failed-axioms': 0, unknown: 0 };
+  const summary = { passed: 0, failed: 0, 'failed-axioms': 0, 'vacuous?': 0, unknown: 0 };
   const records = [];
   for (const s of starts) {
     let status;
@@ -88,6 +113,10 @@ for (const f of files) {
     if (errors.has(s.id)) {
       status = 'failed';
       log = errors.get(s.id);
+    } else if (vacuous.has(s.id)) {
+      // гипотезы теоремы несовместны либо генератор не подобрал точку — в passed не считаем
+      status = 'vacuous?';
+      log = `страж пустых теорем: ${vacuous.get(s.id)}`;
     } else if (!axioms.has(s.id)) {
       status = 'unknown';
       log = 'нет вывода #print axioms (таймаут или теорема не объявлена)';
