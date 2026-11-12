@@ -19,7 +19,8 @@ then checks the answer numerically and independently of the answer's form:
   point in the complex plane, or a point where the answer lies on another branch (complex `F`,
   real `F′`) is neither counted nor rejected, but then `OK` needs at least 7 matching real
   points with 0.01 <= |f| <= 1e4, where the tolerance is small against a 1e-3 perturbation, so
-  a perturbed answer cannot hide behind branch points. A real point that disagrees is re-checked
+  a perturbed answer cannot hide behind branch points; when other-branch points outnumber the
+  matching ones (typical for elliptic answers), 20 matching real points are required. A real point that disagrees is re-checked
   in exact rational arithmetic (`WRONG` on a non-zero difference, `UNVERIFIED` otherwise); a
   disagreement below 1e-5 is accepted as rounding noise only after three exact confirmations;
 * definite: the value is compared with the corpus `value`; on mismatch a Simpson quadrature
