@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const project = join(root, 'qedra-lean');
 const verify = join(project, '.lean-verify');
-const resultsPath = join(root, 'research', 'lean', 'batch-results.jsonl');
+const resultsPath = process.env.BATCH_RESULTS || join(root, 'research', 'lean', 'batch-results.jsonl');
 const LEAN_BIN = process.env.LEAN_BIN_DIR || (process.platform === 'win32' ? 'E:\\GD\\lean-4.34.0-rc2-windows\\bin' : '');
 const timeoutMs = Number(process.env.LEAN_TIMEOUT_MS || 900000);
 const ALLOWED = new Set(['propext', 'Classical.choice', 'Quot.sound']);
