@@ -4,16 +4,19 @@
 // Статусы: passed | failed | failed-axioms | unknown; аксиомы — только propext, Classical.choice, Quot.sound.
 import { spawnSync } from 'node:child_process';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync, appendFileSync } from 'node:fs';
-import { basename, join, resolve, dirname } from 'node:path';
+import { basename, join, resolve, dirname, delimiter } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const project = join(root, 'qedra-lean');
 const verify = join(project, '.lean-verify');
 const resultsPath = join(root, 'research', 'lean', 'batch-results.jsonl');
-const LEAN_BIN = process.env.LEAN_BIN_DIR || 'E:\\GD\\lean-4.34.0-rc2-windows\\bin';
+const LEAN_BIN = process.env.LEAN_BIN_DIR || (process.platform === 'win32' ? 'E:\\GD\\lean-4.34.0-rc2-windows\\bin' : '');
 const timeoutMs = Number(process.env.LEAN_TIMEOUT_MS || 900000);
 const ALLOWED = new Set(['propext', 'Classical.choice', 'Quot.sound']);
+// Разделитель PATH разный в Windows и Linux: с «;» на раннере PATH ломается и lake не находится.
+const childEnv = { ...process.env };
+if (LEAN_BIN) childEnv.PATH = `${LEAN_BIN}${delimiter}${process.env.PATH || ''}`;
 
 const files = process.argv.slice(2);
 if (!files.length) {
@@ -46,10 +49,14 @@ for (const f of files) {
   const t0 = Date.now();
   const r = spawnSync('lake', ['env', 'lean', join('.lean-verify', name)], {
     cwd: project,
-    env: { ...process.env, PATH: `${LEAN_BIN};${process.env.PATH}` },
+    env: childEnv,
     encoding: 'utf8',
     timeout: timeoutMs,
   });
+  if (r.error) {
+    console.log(`${basename(f)}: не удалось запустить lake — ${r.error.message}`);
+    process.exit(1);
+  }
   const ms = Date.now() - t0;
   const out = `${r.stdout || ''}\n${r.stderr || ''}`;
 
@@ -98,5 +105,6 @@ for (const f of files) {
   }
   for (const rec of records) appendFileSync(resultsPath, `${JSON.stringify(rec)}\n`);
   console.log(`${basename(f)}: ${(ms / 1000).toFixed(1)} с — passed ${summary.passed}, failed ${summary.failed}, failed-axioms ${summary['failed-axioms']}, unknown ${summary.unknown}; код ${r.status}`);
+  if (summary.passed !== records.length) process.exitCode = 1;
 }
 console.log(`результаты: ${resultsPath}`);
