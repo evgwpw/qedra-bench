@@ -25,7 +25,7 @@ for (const d of readdirSync(artDir).sort()) {
   }
   const rows = readFileSync(resPath, 'utf8').split(/\r?\n/).filter((l) => l.trim()).map((l) => JSON.parse(l));
   const count = (s) => rows.filter((r) => r.status === s).length;
-  shardStats.push({ shard: d, total: rows.length, passed: count('passed'), failed: count('failed'), 'failed-axioms': count('failed-axioms'), unknown: count('unknown') });
+  shardStats.push({ shard: d, total: rows.length, passed: count('passed'), failed: count('failed'), 'failed-axioms': count('failed-axioms'), 'vacuous?': count('vacuous?'), unknown: count('unknown') });
   for (const r of rows) records.push(r);
 }
 records.sort((a, b) => a.id.localeCompare(b.id));
@@ -52,11 +52,12 @@ const lines = [
   `| passed | ${count('passed')} |`,
   `| failed | ${count('failed')} |`,
   `| failed-axioms | ${count('failed-axioms')} |`,
+  `| vacuous? | ${count('vacuous?')} |`,
   `| unknown | ${count('unknown')} |`,
   '',
-  '| осколок | всего | passed | failed | failed-axioms | unknown |',
-  '|---|---|---|---|---|---|',
-  ...shardStats.map((s) => `| ${s.shard} | ${s.total} | ${s.passed} | ${s.failed} | ${s['failed-axioms']} | ${s.unknown} |`),
+  '| осколок | всего | passed | failed | failed-axioms | vacuous? | unknown |',
+  '|---|---|---|---|---|---|---|',
+  ...shardStats.map((s) => `| ${s.shard} | ${s.total} | ${s.passed} | ${s.failed} | ${s['failed-axioms']} | ${s['vacuous?']} | ${s.unknown} |`),
   '',
   bad.length ? '## Не passed\n' : '**Все теоремы passed.**',
 ];
