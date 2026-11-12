@@ -1,83 +1,40 @@
-# qedra-bench
+# lean/ci — workflow `lean` для `evgwpw/qedra-bench` (карточка L4)
 
-Reproducible run of **Qedra** over the public
-[integration-test-suites](https://github.com/sympy/integration-test-suites) corpus
-(80 873 indefinite and definite integrals in JSON Lines).
+Готовый комплект для отдельного репозитория `qedra-bench`. В `lisp` он лежит для версионирования:
+пуш в `qedra-bench` делает координатор (в репозиторий `lisp` ничего из этого не публикуется, кроме копий).
 
-Only results produced by Qedra are published here. The corpus is cloned at run time and is
-not copied into this repository; it keeps its own license and copyright.
-
-## What is measured
-
-For every corpus record the runner asks Qedra to integrate it (`qedra --json`, math language),
-then checks the answer numerically and independently of the answer's form:
-
-* indefinite: `|F′(x) − f(x)| ≤ 1e-8 · max(1, |f|)` at 13 real points (around 0, ±1, ±2) and
-  2 complex points, for three sets of parameter values; `F′` comes from Qedra's own `diff`,
-  values from `eval-num`. If the points do not suffice, a second pass adds an 81-point grid and
-  a fourth parameter set with alternating signs. A point where the integrand is non-real, a
-  point in the complex plane, or a point where the answer lies on another branch (complex `F`,
-  real `F′`) is neither counted nor rejected, but then `OK` needs at least 7 matching real
-  points with 0.01 <= |f| <= 1e4, where the tolerance is small against a 1e-3 perturbation, so
-  a perturbed answer cannot hide behind branch points; when other-branch points outnumber the
-  matching ones (typical for elliptic answers), 20 matching real points are required. A real point that disagrees is re-checked
-  in exact rational arithmetic (`WRONG` on a non-zero difference, `UNVERIFIED` otherwise); a
-  disagreement below 1e-5 is accepted as rounding noise only after three exact confirmations;
-* definite: the value is compared with the corpus `value`; on mismatch a Simpson quadrature
-  of the integrand is used as a tie-breaker.
-
-Verdicts: `OK`, `WRONG`, `UNVERIFIED` (the check could not be computed), `partial`
-(`integrate` remains in the answer), `untranslated` (the record uses a function or construct
-the input language does not have), plus the engine statuses `unknown`, `nonelementary`,
-`FALSE-NE`, `TIMEOUT`, `ERROR`.
-
-## Run
-
-`bench.yml` (workflow dispatch):
-
-| input | default | meaning |
-|---|---|---|
-| `qedra_ref` | `master` | Qedra git ref to build |
-| `corpus_ref` | pinned commit | integration-test-suites commit |
-| `suites` | all six | comma-separated suite names |
-| `timeout_s` | `5` | per-task budget |
-| `rubi_sample` | `10` | percent of rubi tasks (stratified by file) |
-| `shards` | `20` | matrix size |
-
-Besides the corpus suites, a suite can be a file `bench/tasks/<name>.jsonl`: one JSON object per
-line with `input` (the integrand already in Qedra's input language), `variable` and, optionally,
-`integrand` (the original notation, kept for traceability). Such a suite is passed by name, e.g.
-`suites=hard`, and needs no corpus clone.
-
-The first job publishes a self-contained `linux-x64` build of Qedra as an artifact; the matrix
-runs `bench/run_suite.mjs` with `--shards/--shard`; the last job merges `results-<k>.jsonl.gz`
-into `results/<date>-<qedra-sha>/` (`results.jsonl.gz`, `SUMMARY.md`) and commits it here.
-
-Locally:
+## Состав
 
 ```
-dotnet publish src/Lisp.Host/Lisp.Host.fsproj -c Release -r linux-x64 --self-contained -o out
-git clone --depth 1 https://github.com/sympy/integration-test-suites corpus
-QUOD_EXE=$PWD/out/Lisp CORPUS_DIR=$PWD/corpus/data \
-  node bench/run_suite.mjs --suites independent --workers 4 --out results-local
+.github/workflows/lean.yml      workflow (workflow_dispatch: qedra_ref, source, shards, timeout_s)
+tools/lean/gen-batch.mjs        упаковка N теорем в один .lean (копия research/lean/gen-batch.mjs,
+                                отличается тем, что id берутся из lean/catalog)
+tools/lean/check-batch.mjs      проверка пакета: статус по каждой теореме + аксиомы
+tools/lean/summarize.mjs        сводка: results/lean-<дата>-<sha>/lean-results.jsonl + SUMMARY.md
+tools/lean/setup/*              lean-toolchain, lakefile.lean, lake-manifest.json (пины версий)
 ```
 
-Timeout: Qedra's `--json` has no per-request deadline. The pool keeps long-lived processes and
-an external watchdog kills and restarts a process that does not answer within twice the budget;
-that task is recorded as `TIMEOUT`.
+## Установка
 
-## Layout
+Скопировать содержимое `lean/ci/` в корень `qedra-bench` (сохранив пути), закоммитить, запустить
+Actions → `lean` → Run workflow:
 
-```
-bench/run_suite.mjs   CLI, worker pool, shards, resume
-bench/worker.mjs      one task: translation, integrate, classification
-bench/lisp.mjs        qedra --json client (line protocol)
-bench/translate.mjs   corpus syntax -> input language
-bench/oracle.mjs      numeric check via diff + eval-num
-bench/sexpr.mjs       S-expression parser for answers
-bench/merge.mjs       merge shards, write results.jsonl.gz and SUMMARY.md
-```
+- `qedra_ref=rubi-pilot` (в снимке должен быть `lean/catalog/*.lean`; на 2026-11-12 он совпадает с
+  каталогом ветки `ds/LEAN-L4`);
+- `source=catalog`, `shards=4`, `timeout_s=900`.
 
-## License
+Ожидаемый итог: `results/lean-<дата>-<sha>/SUMMARY.md` с `passed 50` и таблицей по осколкам.
 
-0BSD, see `LICENSE`. Copyright (C) 2026 by Evgeniy Veprikov.
+## Что внутри важно помнить
+
+- **Пакетирование**: шапка (`import`, `open Real`, вспомогательные леммы `qedra_rpow_half_*`) пишется один раз
+  на пакет; шапки всех файлов каталога сверяются между собой — не совпали, упаковка запрещена.
+- **Узкие импорты** (`--narrow`): таблица «голова ответа → модуль mathlib» вместо `import Mathlib`;
+  локальный замер — 10,5–14,5 с на пакет против 15,7–19,8 с (−30 %), 50/50 passed.
+- **Аксиомы**: `#print axioms` на каждую теорему; `passed` только при подмножестве
+  `{propext, Classical.choice, Quot.sound}`, иначе `failed-axioms` со списком.
+- **Кэш**: `qedra-lean/.lake` кэшируется по хешу `tools/lean/setup/lake-manifest.json` (олеаны mathlib
+  ≈ 5 ГБ; лимит кэша репозитория 10 ГБ). Первый прогон — с `lake update mathlib` и `lake exe cache get`.
+- **Подделки для приёмки П2**: (а) испортить первообразную в копии каталога — ждём `failed`;
+  (б) заменить доказательство на `sorry` — `failed-axioms` (`sorryAx`); (в) вспомогательная лемма
+  через `axiom` — `failed-axioms` с именем аксиомы.
