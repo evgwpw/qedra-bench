@@ -1,0 +1,142 @@
+name: lean
+
+# L4: проверка сертификатов HasDerivAt на раннере qedra-bench (карточка L4 в docs/tasks/lean1.md репозитория lisp).
+# Вход — снимок evgwpw/Qedra с каталогом lean/catalog/*.lean; шапка одного пакета несёт import,
+# поэтому N теорем проверяются одним процессом Lean. Статус ставится по каждой теореме,
+# passed — только если она скомпилировалась и её аксиомы ⊆ {propext, Classical.choice, Quot.sound}.
+
+"on":
+  workflow_dispatch:
+    inputs:
+      qedra_ref:
+        description: Ветка/тег снимка evgwpw/Qedra (каталог теорем в lean/catalog)
+        default: rubi-pilot
+        required: true
+      source:
+        description: "catalog — lean/catalog/*.lean из снимка; pilot — будущий LEAN.PILOT"
+        default: catalog
+        required: true
+      shards:
+        description: Число осколков (по одному job на осколок)
+        default: "4"
+        required: true
+      timeout_s:
+        description: Таймаут на пакет, секунды
+        default: "900"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      shards: ${{ steps.gen.outputs.shards }}
+    steps:
+      - id: gen
+        env:
+          N: ${{ inputs.shards }}
+        run: echo "shards=$(node -e 'console.log(JSON.stringify(Array.from({length:+process.env.N},(_,i)=>String(i+1))))')" >> "$GITHUB_OUTPUT"
+
+  check:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Снимок Qedra (каталог теорем)
+        run: |
+          git clone --quiet --depth 1 --branch "${{ inputs.qedra_ref }}" https://github.com/evgwpw/Qedra.git snapshot
+          mkdir -p lean/catalog research/lean
+          if [ "${{ inputs.source }}" = "catalog" ]; then
+            cp snapshot/lean/catalog/*.lean lean/catalog/
+          else
+            echo "source=${{ inputs.source }} ещё не реализован (см. карточку LEAN.PILOT)"; exit 1
+          fi
+          echo "snapshot $(git -C snapshot rev-parse HEAD)" > snapshot.sha
+
+      - name: Проект с mathlib (пины версий из tools/lean/setup)
+        run: |
+          mkdir -p qedra-lean
+          cp tools/lean/setup/lean-toolchain tools/lean/setup/lakefile.lean tools/lean/setup/lake-manifest.json qedra-lean/
+
+      - name: elan и toolchain из lean-toolchain
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan.sh
+          sh /tmp/elan.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Кэш олеанов mathlib
+        uses: actions/cache@v4
+        with:
+          path: qedra-lean/.lake
+          key: lean-oleans-${{ hashFiles('tools/lean/setup/lake-manifest.json') }}
+
+      - name: Зависимости и олеаны mathlib
+        working-directory: qedra-lean
+        run: |
+          if [ ! -d .lake/packages/mathlib ]; then lake update mathlib; fi
+          lake exe cache get
+          df -h . || true
+          du -sh .lake || true
+          cat lean-toolchain
+
+      - name: Пакет и проверка осколка
+        env:
+          LEAN_TIMEOUT_MS: ${{ format('{0}000', inputs.timeout_s) }}
+        run: |
+          mapfile -t all < <(ls lean/catalog/*.lean | sed 's#.*/##; s#\.lean$##' | sort)
+          n=${#all[@]}
+          per=$(( (n + ${{ inputs.shards }} - 1) / ${{ inputs.shards }} ))
+          start=$(( (${{ matrix.shard }} - 1) * per ))
+          mine=( "${all[@]:start:per}" )
+          echo "осколок ${{ matrix.shard }}: ${#mine[@]} теорем из $n"
+          node tools/lean/gen-batch.mjs --narrow --out-dir lean/batch "${mine[@]}"
+          node tools/lean/check-batch.mjs lean/batch/shard-1.lean
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lean-${{ matrix.shard }}
+          path: |
+            research/lean/batch-results.jsonl
+            snapshot.sha
+          if-no-files-found: warn
+
+  merge:
+    needs: [plan, check]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      # main мог уйти вперёд за время прогона — берём свежий main и делаем rebase перед push
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Сводка
+        env:
+          QEDRA_REF: ${{ inputs.qedra_ref }}
+          SHARDS: ${{ inputs.shards }}
+          TIMEOUT_S: ${{ inputs.timeout_s }}
+        run: node tools/lean/summarize.mjs artifacts
+
+      - name: Коммит результатов
+        run: |
+          git config user.name "Evgeniy Veprikov"
+          git config user.email "10131262+evgwpw@users.noreply.github.com"
+          git add results
+          git commit -m "Lean results for ${{ inputs.qedra_ref }} (${{
+            inputs.shards }} shards, timeout ${{ inputs.timeout_s }} s)" || echo "no changes"
+          git pull --rebase origin main
+          git push
