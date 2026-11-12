@@ -33,7 +33,8 @@ export function paramsOf(text, variable) {
 
 // Значения параметров в одном наборе все различны: иначе совпадение (c = a, d = b) обнуляет слагаемые вроде
 // (b·c − a·d) и ошибка в них не видна ни в одной точке набора.
-function baseValue(k) { return 0.7 + 0.4 * ((k * 7) % 5) + 0.13 * Math.floor(k / 5); }
+// округление до сотых: двоичный шум (1.9000000000000001) делает точную проверку рационалями неподъёмной
+function baseValue(k) { return Math.round((0.7 + 0.4 * ((k * 7) % 5) + 0.13 * Math.floor(k / 5)) * 100) / 100; }
 const IRRATIONAL = [1.4142135623730951, 0.7853981633974483, 0.9060939428196813, 0.8660254037844386,
   1.2599210498948732, 0.6931471805599453, 1.1447298858494002, 0.5772156649015329, 1.6180339887498949, 0.3010299956639812];
 function irrationalValue(k) { return IRRATIONAL[k % IRRATIONAL.length] + 0.0173 * Math.floor(k / IRRATIONAL.length); }
@@ -90,9 +91,11 @@ const STRONG_MAX = 1e4;
 // и снизу: при |f| < 1e-2 возмущение ×1,001 (невязка < 1e-5) почти не отличается от допуска TOL·1 — такое
 // совпадение ничего не доказывает.
 const STRONG_MIN = 1e-2;
+// порог «достаточно точных совпадений»: по данным пилота верные ответы с ветвями имеют ≥ 21, подделки — 0
+const STRONG_SURE = 20;
 const NOISE_MAX = 1e-5;
 const NOISE_EXACT = 3;
-const EXACT_BUDGET = 8;
+const EXACT_BUDGET = 40;
 
 function isImagSmall(c, av) { return Math.abs(c[1]) <= 1e-12 * Math.max(1, av); }
 
@@ -158,10 +161,17 @@ function decide(j) {
   const kinds = { tc: clean.reduce((s, t) => s + t.tc, 0), ti: clean.reduce((s, t) => s + t.ti, 0), tb: clean.reduce((s, t) => s + t.tb, 0) };
   if (clean.length === 0) return { ok: false, reason: 'расхождение в double, точная проверка неубедительна', ...j.unresolved };
   if (tolerated === 0 && failedSets.length === 0 && match >= 7) return { ok: true, points: match };
+  if (tolerated === 0 && match < 7) return { ok: false, reason: 'меньше 7 вычислимых точек', points: match, strong, tolerated };
   // Точки «другой ветви» (F комплексно, dF вещественно) не должны преобладать: ветвь — часть вещественной оси,
   // а подделка в области, где F комплексно везде, расходилась бы почти во всех точках.
   if (strong >= 7 && kinds.tb <= strong) return { ok: true, points: match, strong, tolerated, kinds, failed_sets: failedSets.length };
-  return { ok: false, reason: 'меньше 7 вычислимых точек', points: match, strong, tolerated };
+  // Достаточно много точных совпадений (≥ STRONG_SURE различных точек и наборов параметров, где f, dF, F вещественны
+  // и dF = f до 1e-8) доказывают тождество dF = f на интервале, а значит и на всей связной области аналитичности;
+  // перевес точек другой ветви (область, где F комплексно, — типично эллиптические интегралы) тогда не мешает.
+  // Подделка с возмущением ≥ 1e-3 расходится во всех таких точках, а не в части.
+  if (strong >= STRONG_SURE) return { ok: true, points: match, strong, tolerated, kinds, failed_sets: failedSets.length };
+  if (strong < 7) return { ok: false, reason: 'правило числа точных совпадений: strong < 7 (точных совпадений мало: ' + strong + ')', points: match, strong, tolerated, kinds };
+  return { ok: false, reason: 'правило ветвей: точек другой ветви (' + kinds.tb + ') больше точных совпадений (' + strong + '), а их меньше ' + STRONG_SURE, points: match, strong, tolerated, kinds };
 }
 
 async function sampleSet(lisp, f, F, variable, params, values, pts, timeoutMs) {
