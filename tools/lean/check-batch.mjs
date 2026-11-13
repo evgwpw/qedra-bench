@@ -153,7 +153,11 @@ for (const f of files) {
   }
   for (const rec of records) appendFileSync(resultsPath, `${JSON.stringify(rec)}\n`);
   console.log(`${basename(f)}: ${(ms / 1000).toFixed(1)} с — passed ${summary.passed}, failed ${summary.failed}, failed-axioms ${summary['failed-axioms']}, timeout ${summary.timeout}, unknown ${summary.unknown}; код ${r.status}`);
-  if (summary.passed !== records.length) process.exitCode = 1;
+  if (summary.passed !== records.length) {
+    // Пилот: не-passed — это данные (метрика «сколько доказано»), а не сбой. Каталог приёмки L4 —
+    // наоборот, красный при любой не-passed теореме. Инфраструктурные сбои красные всегда.
+    if (String(process.env.LEAN_ALLOW_PARTIAL || '') !== '1') process.exitCode = 1;
+  }
 }
 console.log(`результаты: ${resultsPath}`);
 if (checked === 0) {

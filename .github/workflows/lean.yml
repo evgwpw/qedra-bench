@@ -100,7 +100,7 @@ jobs:
         env:
           LEAN_TIMEOUT_MS: ${{ format('{0}000', inputs.timeout_s) }}
         run: |
-          if [ "${{ inputs.source }}" = "catalog" ]; then dir=lean/catalog; else dir=lean/pilot; fi
+          if [ "${{ inputs.source }}" = "catalog" ]; then dir=lean/catalog; else dir=lean/pilot; export LEAN_ALLOW_PARTIAL=1; fi
           mapfile -t all < <(ls "$dir"/*.lean | sed 's#.*/##; s#\.lean$##' | sort)
           n=${#all[@]}
           per=$(( (n + ${{ inputs.shards }} - 1) / ${{ inputs.shards }} ))
