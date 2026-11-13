@@ -1,6 +1,6 @@
 name: lean
 
-# L4: проверка сертификатов HasDerivAt на раннере qedra-bench (карточка L4 в docs/tasks/lean1.md репозитория lisp).
+# L4: проверка сертификатов HasDerivAt на раннере qedra-bench.
 # Вход — снимок evgwpw/Qedra с каталогом lean/catalog/*.lean; шапка одного пакета несёт import,
 # поэтому N теорем проверяются одним процессом Lean. Статус ставится по каждой теореме,
 # passed — только если она скомпилировалась и её аксиомы ⊆ {propext, Classical.choice, Quot.sound}.
