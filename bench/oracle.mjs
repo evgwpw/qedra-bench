@@ -178,9 +178,12 @@ async function sampleSet(lisp, f, F, variable, params, values, pts, timeoutMs) {
   const pointLits = pts.map(valueText).join(' ');
   const ruleLits = [`(list '${variable} p)`]
     .concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ');
-  const code = `(let ((D (diff '${variable} '${F}))) `
-    + `(map (lambda (p) (list p (eval-num (subst (list ${ruleLits}) '${f})) `
-    + `(eval-num (subst (list ${ruleLits}) D)) (eval-num (subst (list ${ruleLits}) '${F})))) '(${pointLits})))`;
+  // eval-num не считает polylog и lambert_w (их значения — в модуле polylog, polylog-evalf: вещественные аргументы);
+  // для остальных выражений вычисление прежнее
+  const ev = /polylog|lambert_w/.test(f + F) ? 'num*' : 'eval-num';
+  const code = `(let ((D (diff '${variable} '${F})) (num* (lambda (e) (or (polylog-evalf e) (eval-num e))))) `
+    + `(map (lambda (p) (list p (${ev} (subst (list ${ruleLits}) '${f})) `
+    + `(${ev} (subst (list ${ruleLits}) D)) (${ev} (subst (list ${ruleLits}) '${F})))) '(${pointLits})))`;
   const res = await lisp.ask(code, Math.max(timeoutMs, 15000));
   if (!res.ans || typeof res.ans.result !== 'string') return [];
   let rows;
