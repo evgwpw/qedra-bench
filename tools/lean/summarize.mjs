@@ -87,51 +87,54 @@ lines.push(
 // ---------- пилот: таблицы по наборам и подглавам ----------
 if (index.length) {
   const byTheorem = new Map(index.map((x) => [x.theorem, x]));
-  const tally = (keyOf) => {
-    const m = new Map();
-    const add = (k, st) => {
-      if (!m.has(k)) m.set(k, { total: 0, passed: 0, failed: 0, 'failed-axioms': 0, timeout: 0, 'vacuous?': 0, unknown: 0, notGenerated: 0 });
-      const e = m.get(k);
-      if (st === 'not-generated') e.notGenerated += 1;
-      else { e.total += 1; e[st] = (e[st] || 0) + 1; }
-    };
-    for (const r of records) {
-      const meta = byTheorem.get(`qedra_int_${r.id}`);
-      add(keyOf(meta || {}), r.status);
+  const blank = () => ({ total: 0, passed: 0, failed: 0, 'failed-axioms': 0, timeout: 0, 'vacuous?': 0, unknown: 0, notGenerated: 0 });
+  const bump = (m, k, st) => {
+    if (!m.has(k)) m.set(k, blank());
+    const e = m.get(k);
+    if (st === 'not-generated') e.notGenerated += 1;
+    else {
+      e.total += 1;
+      e[st] = (e[st] || 0) + 1;
     }
-    for (const n of notGenerated) {
-      // у не переведённых теоремы нет: набор берём по префиксу id
-      const suite = String(n.id).startsWith('rubi') ? 'rubi' : 'uchebnye';
-      add(keyOf({ suite, sub: '' }), 'not-generated');
-      add(suite, 'not-generated');
-    }
-    return m;
   };
-  const table = (title, m) => {
+  const suiteOf = (n) => (String(n).startsWith('rubi') ? 'rubi' : 'uchebnye');
+  // по наборам: проверенные теоремы (по индексу) + не переведённые (по префиксу id)
+  const bySuite = new Map();
+  for (const r of records) bump(bySuite, byTheorem.get(`qedra_int_${r.id}`)?.suite || '?', r.status);
+  for (const n of notGenerated) bump(bySuite, suiteOf(n.id), 'not-generated');
+  // Rubi по подглавам: проверенные — по каталогу ответа; не переведённые — отдельной строкой
+  const bySub = new Map();
+  for (const r of records) {
+    const meta = byTheorem.get(`qedra_int_${r.id}`) || {};
+    if (meta.suite !== 'rubi') continue;
+    bump(bySub, String(meta.sub).split('/').pop() || '?', r.status);
+  }
+  for (const n of notGenerated) if (suiteOf(n.id) === 'rubi') bump(bySub, '(не переведено)', 'not-generated');
+
+  const table = (title, m, firstCol) => {
     const rows = [...m.entries()].sort((a, b) => b[1].total + b[1].notGenerated - (a[1].total + a[1].notGenerated));
     const all = rows.reduce((a, [, v]) => {
       for (const k of Object.keys(v)) a[k] = (a[k] || 0) + v[k];
       return a;
-    }, {});
+    }, blank());
     const share = all.total ? Math.round((100 * all.passed) / all.total) : 0;
     return [
       `## ${title}`,
       '',
       `Всего ответов OK: ${all.total + all.notGenerated} (из них не переведено генератором: ${all.notGenerated}); проценты — от проверенных.`,
       '',
-      '| набор | проверено | passed | failed | failed-axioms | timeout | vacuous? | unknown | не переведено | passed, % |',
+      `| ${firstCol} | проверено | passed | failed | failed-axioms | timeout | vacuous? | unknown | не переведено | passed, % |`,
       '|---|---|---|---|---|---|---|---|---|---|',
       ...rows.map(([k, v]) => {
-        const t = v.total || 0;
-        const p = t ? Math.round((100 * v.passed) / t) : 0;
-        return `| ${k} | ${t} | ${v.passed} | ${v.failed} | ${v['failed-axioms']} | ${v.timeout} | ${v['vacuous?']} | ${v.unknown} | ${v.notGenerated} | ${p} |`;
+        const p = v.total ? Math.round((100 * v.passed) / v.total) : 0;
+        return `| ${k} | ${v.total} | ${v.passed} | ${v.failed} | ${v['failed-axioms']} | ${v.timeout} | ${v['vacuous?']} | ${v.unknown} | ${v.notGenerated} | ${p} |`;
       }),
       `| **всего** | **${all.total}** | **${all.passed}** | **${all.failed}** | **${all['failed-axioms']}** | **${all.timeout}** | **${all['vacuous?']}** | **${all.unknown}** | **${all.notGenerated}** | **${share}** |`,
       '',
     ];
   };
-  lines.push(...table('Пилот: по наборам', tally((x) => x.suite || '?')));
-  lines.push(...table('Пилот: Rubi по подглавам', tally((x) => (x.suite === 'rubi' ? (String(x.sub).split('/').pop() || '?') : x.suite || '?'))));
+  lines.push(...table('Пилот: по наборам', bySuite, 'набор'));
+  lines.push(...table('Пилот: Rubi по подглавам', bySub, 'подглава'));
   const reasons = new Map();
   for (const n of notGenerated) reasons.set(n.reason, (reasons.get(n.reason) || 0) + 1);
   lines.push('## Пилот: почему не переведено', '', '| причина | ответов |', '|---|---|');
