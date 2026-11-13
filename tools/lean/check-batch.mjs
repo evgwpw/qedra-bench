@@ -152,7 +152,7 @@ for (const f of files) {
     records.push({ id: s.id, status, ms: null, file: `lean/batch/${basename(f)}`, log });
   }
   for (const rec of records) appendFileSync(resultsPath, `${JSON.stringify(rec)}\n`);
-  console.log(`${basename(f)}: ${(ms / 1000).toFixed(1)} с — passed ${summary.passed}, failed ${summary.failed}, failed-axioms ${summary['failed-axioms']}, timeout ${summary.timeout}, unknown ${summary.unknown}; код ${r.status}`);
+  console.log(`${basename(f)}: ${(ms / 1000).toFixed(1)} с — passed ${summary.passed}, failed ${summary.failed}, failed-axioms ${summary['failed-axioms']}, timeout ${summary.timeout}, vacuous? ${summary['vacuous?']}, unknown ${summary.unknown}; код ${r.status}`);
   if (summary.passed !== records.length) {
     // Пилот: не-passed — это данные (метрика «сколько доказано»), а не сбой. Каталог приёмки L4 —
     // наоборот, красный при любой не-passed теореме. Инфраструктурные сбои красные всегда.
