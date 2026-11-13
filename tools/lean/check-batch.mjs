@@ -73,6 +73,13 @@ for (const f of files) {
     timeout: timeoutMs,
   });
   if (r.error) {
+    // Процессный таймаут: теоремы пакета не проверились вовсе — это timeout, а не «не запустилось».
+    if (r.error.code === 'ETIMEDOUT') {
+      for (const s of starts) appendFileSync(resultsPath, `${JSON.stringify({ id: s.id, status: 'timeout', ms: null, file: `lean/batch/${basename(f)}`, log: 'таймаут процесса' })}\n`);
+      console.log(`${basename(f)}: таймаут процесса (${(timeoutMs / 1000).toFixed(0)} с) — ${starts.length} timeout; код 1`);
+      process.exitCode = 1;
+      continue;
+    }
     console.log(`${basename(f)}: не удалось запустить lake — ${r.error.message}`);
     process.exit(1);
   }
@@ -105,14 +112,21 @@ for (const f of files) {
     if (none) axioms.set(none[1], []);
   }
 
-  const summary = { passed: 0, failed: 0, 'failed-axioms': 0, 'vacuous?': 0, unknown: 0 };
+  const summary = { passed: 0, failed: 0, 'failed-axioms': 0, 'vacuous?': 0, timeout: 0, unknown: 0 };
   const records = [];
   for (const s of starts) {
     let status;
     let log = '';
     if (errors.has(s.id)) {
-      status = 'failed';
-      log = errors.get(s.id);
+      const e = errors.get(s.id);
+      // Предел тактов (set_option maxHeartbeats) — доказательство не уложилось: это timeout.
+      if (/maximum heartbeats|heartbeats exceeded|timeout/i.test(e)) {
+        status = 'timeout';
+        log = e;
+      } else {
+        status = 'failed';
+        log = e;
+      }
     } else if (vacuous.has(s.id)) {
       // гипотезы теоремы несовместны либо генератор не подобрал точку — в passed не считаем
       status = 'vacuous?';
@@ -133,7 +147,7 @@ for (const f of files) {
     records.push({ id: s.id, status, ms: null, file: `lean/batch/${basename(f)}`, log });
   }
   for (const rec of records) appendFileSync(resultsPath, `${JSON.stringify(rec)}\n`);
-  console.log(`${basename(f)}: ${(ms / 1000).toFixed(1)} с — passed ${summary.passed}, failed ${summary.failed}, failed-axioms ${summary['failed-axioms']}, unknown ${summary.unknown}; код ${r.status}`);
+  console.log(`${basename(f)}: ${(ms / 1000).toFixed(1)} с — passed ${summary.passed}, failed ${summary.failed}, failed-axioms ${summary['failed-axioms']}, timeout ${summary.timeout}, unknown ${summary.unknown}; код ${r.status}`);
   if (summary.passed !== records.length) process.exitCode = 1;
 }
 console.log(`результаты: ${resultsPath}`);

@@ -1,6 +1,6 @@
 name: lean
 
-# L4: проверка сертификатов HasDerivAt на раннере qedra-bench.
+# L4: проверка сертификатов HasDerivAt на раннере qedra-bench (карточка L4 в docs/tasks/lean1.md репозитория lisp).
 # Вход — снимок evgwpw/Qedra с каталогом lean/catalog/*.lean; шапка одного пакета несёт import,
 # поэтому N теорем проверяются одним процессом Lean. Статус ставится по каждой теореме,
 # passed — только если она скомпилировалась и её аксиомы ⊆ {propext, Classical.choice, Quot.sound}.
@@ -13,9 +13,17 @@ name: lean
         default: rubi-pilot
         required: true
       source:
-        description: "catalog — lean/catalog/*.lean из снимка; pilot — будущий LEAN.PILOT"
+        description: "catalog — lean/catalog/*.lean из снимка; pilot — корпус LEAN.PILOT (pilot_pack)"
         default: catalog
         required: true
+      pilot_pack:
+        description: "gz корпуса пилота в этом репозитории (source=pilot), см. research/lean/pilot.mjs --pack"
+        default: lean/pilot/sample-500x2.gz
+        required: false
+      run_label:
+        description: "суффикс каталога results (иначе прогоны того же снимка затирают друг друга)"
+        default: ""
+        required: false
       shards:
         description: Число осколков (по одному job на осколок)
         default: "4"
@@ -57,7 +65,8 @@ jobs:
           if [ "${{ inputs.source }}" = "catalog" ]; then
             cp snapshot/lean/catalog/*.lean lean/catalog/
           else
-            echo "source=${{ inputs.source }} ещё не реализован (см. карточку LEAN.PILOT)"; exit 1
+            # корпус пилота уже собран снимком генератора: в репозитории лежит один gz
+            node tools/lean/unpack.mjs "${{ inputs.pilot_pack }}" lean/pilot
           fi
           echo "snapshot $(git -C snapshot rev-parse HEAD)" > snapshot.sha
 
@@ -91,14 +100,21 @@ jobs:
         env:
           LEAN_TIMEOUT_MS: ${{ format('{0}000', inputs.timeout_s) }}
         run: |
-          mapfile -t all < <(ls lean/catalog/*.lean | sed 's#.*/##; s#\.lean$##' | sort)
+          if [ "${{ inputs.source }}" = "catalog" ]; then dir=lean/catalog; else dir=lean/pilot; fi
+          mapfile -t all < <(ls "$dir"/*.lean | sed 's#.*/##; s#\.lean$##' | sort)
           n=${#all[@]}
           per=$(( (n + ${{ inputs.shards }} - 1) / ${{ inputs.shards }} ))
           start=$(( (${{ matrix.shard }} - 1) * per ))
           mine=( "${all[@]:start:per}" )
-          echo "осколок ${{ matrix.shard }}: ${#mine[@]} теорем из $n"
-          node tools/lean/gen-batch.mjs --narrow --out-dir lean/batch "${mine[@]}"
-          node tools/lean/check-batch.mjs lean/batch/shard-1.lean
+          echo "осколок ${{ matrix.shard }}: ${#mine[@]} пакетов из $n"
+          if [ "${{ inputs.source }}" = "catalog" ]; then
+            # каталог: по теореме на файл, пакет собирается здесь
+            node tools/lean/gen-batch.mjs --narrow --out-dir lean/batch "${mine[@]}"
+            node tools/lean/check-batch.mjs lean/batch/shard-1.lean
+          else
+            # пилот: пакеты уже собраны генератором (шапка + #print axioms внутри)
+            node tools/lean/check-batch.mjs "${mine[@]/#/$dir/}"
+          fi
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -106,6 +122,9 @@ jobs:
           name: lean-${{ matrix.shard }}
           path: |
             research/lean/batch-results.jsonl
+            lean/pilot/index.jsonl
+            lean/pilot/not-generated.jsonl
+            lean/pilot/meta.json
             snapshot.sha
           if-no-files-found: warn
 
@@ -129,7 +148,11 @@ jobs:
           QEDRA_REF: ${{ inputs.qedra_ref }}
           SHARDS: ${{ inputs.shards }}
           TIMEOUT_S: ${{ inputs.timeout_s }}
-        run: node tools/lean/summarize.mjs artifacts
+        run: |
+          if [ -n "${{ inputs.run_label }}" ]; then
+            export RUN_LABEL="lean-$(date -u +%Y-%m-%d)-${{ inputs.run_label }}"
+          fi
+          node tools/lean/summarize.mjs artifacts
 
       - name: Коммит результатов
         run: |
