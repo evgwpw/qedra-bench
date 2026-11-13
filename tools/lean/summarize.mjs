@@ -82,7 +82,7 @@ lines.push(
   '| осколок | всего | passed | failed | failed-axioms | timeout | vacuous? | unknown |',
   '|---|---|---|---|---|---|---|---|',
   ...shardStats.map((s) => `| ${s.shard} | ${s.total} | ${s.passed} | ${s.failed} | ${s['failed-axioms']} | ${s.timeout} | ${s['vacuous?']} | ${s.unknown} |`),
-];
+);
 
 // ---------- пилот: таблицы по наборам и подглавам ----------
 if (index.length) {
