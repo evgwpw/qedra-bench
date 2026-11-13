@@ -26,10 +26,13 @@ if (!files.length) {
 if (!existsSync(verify)) mkdirSync(verify, { recursive: true });
 writeFileSync(resultsPath, '');
 
+let checked = 0;
 for (const f of files) {
   const abs = resolve(f);
   if (!existsSync(abs)) {
+    // отсутствие файла — ошибка запуска, а не «нечего проверять»: иначе осколок зелёный с нулём
     console.log(`${basename(f)}: нет файла`);
+    process.exitCode = 1;
     continue;
   }
   const src = readFileSync(abs, 'utf8').replace(/\r\n/g, '\n');
@@ -61,8 +64,10 @@ for (const f of files) {
   }
   if (!starts.length) {
     console.log(`${basename(f)}: теорем не найдено`);
+    process.exitCode = 1;
     continue;
   }
+  checked += 1;
   const name = `_batch_${basename(f)}`;
   copyFileSync(abs, join(verify, name));
   const t0 = Date.now();
@@ -151,3 +156,7 @@ for (const f of files) {
   if (summary.passed !== records.length) process.exitCode = 1;
 }
 console.log(`результаты: ${resultsPath}`);
+if (checked === 0) {
+  console.log('ни один пакет не проверен');
+  process.exitCode = 1;
+}
