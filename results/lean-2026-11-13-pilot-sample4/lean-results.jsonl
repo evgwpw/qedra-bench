@@ -1,0 +1,802 @@
+{"id":"blake_blake_blake_1032","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_106","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_113","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_1160","status":"timeout","ms":null,"file":"lean/batch/shard-0022.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"blake_blake_blake_117","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"Application type mismatch: The argument"}
+{"id":"blake_blake_blake_1450","status":"timeout","ms":null,"file":"lean/batch/shard-0027.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"blake_blake_blake_1614","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"Application type mismatch: The argument"}
+{"id":"blake_blake_blake_1654","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"Application type mismatch: The argument"}
+{"id":"blake_blake_blake_180","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_219","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_239","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"unsolved goals"}
+{"id":"blake_blake_blake_2400","status":"timeout","ms":null,"file":"lean/batch/shard-0039.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"blake_blake_blake_2448","status":"timeout","ms":null,"file":"lean/batch/shard-0024.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"blake_blake_blake_256","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"`simp` made no progress"}
+{"id":"blake_blake_blake_3","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"`simp` made no progress"}
+{"id":"blake_blake_blake_325","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_355","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"`simp` made no progress"}
+{"id":"blake_blake_blake_36","status":"passed","ms":null,"file":"lean/batch/shard-0025.lean","log":""}
+{"id":"blake_blake_blake_38","status":"passed","ms":null,"file":"lean/batch/shard-0023.lean","log":""}
+{"id":"blake_blake_blake_39","status":"passed","ms":null,"file":"lean/batch/shard-0022.lean","log":""}
+{"id":"blake_blake_blake_396","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_413","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_414","status":"timeout","ms":null,"file":"lean/batch/shard-0018.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"blake_blake_blake_418","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"Application type mismatch: The argument"}
+{"id":"blake_blake_blake_428","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"`simp` made no progress"}
+{"id":"blake_blake_blake_481","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"blake_blake_blake_6","status":"passed","ms":null,"file":"lean/batch/shard-0027.lean","log":""}
+{"id":"blake_blake_blake_67","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"Application type mismatch: The argument"}
+{"id":"blake_blake_blake_812","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"Application type mismatch: The argument"}
+{"id":"blake_blake_blake_841","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"Application type mismatch: The argument"}
+{"id":"blake_blake_blake_892","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"Application type mismatch: The argument"}
+{"id":"blake_blake_blake_90","status":"timeout","ms":null,"file":"lean/batch/shard-0032.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"blake_blake_blake_924","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"unsolved goals"}
+{"id":"blake_blake_blake_95","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_1001","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_10039","status":"timeout","ms":null,"file":"lean/batch/shard-0032.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_10044","status":"passed","ms":null,"file":"lean/batch/shard-0032.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_10051","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_10052","status":"passed","ms":null,"file":"lean/batch/shard-0039.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_10062","status":"passed","ms":null,"file":"lean/batch/shard-0032.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_10104","status":"passed","ms":null,"file":"lean/batch/shard-0019.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_10128","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_10133","status":"passed","ms":null,"file":"lean/batch/shard-0026.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_10223","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_10271","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_10279","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_10288","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_10306","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_10311","status":"passed","ms":null,"file":"lean/batch/shard-0029.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_10334","status":"failed","ms":null,"file":"lean/batch/shard-0041.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_1058","status":"passed","ms":null,"file":"lean/batch/shard-0018.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_1064","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_1079","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_1105","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_112","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_1136","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_117","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_123","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_1233","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_125","status":"passed","ms":null,"file":"lean/batch/shard-0030.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_1259","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_126","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_1293","status":"passed","ms":null,"file":"lean/batch/shard-0022.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_1450","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_1459","status":"timeout","ms":null,"file":"lean/batch/shard-0027.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_1520","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_1527","status":"timeout","ms":null,"file":"lean/batch/shard-0024.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_1541","status":"timeout","ms":null,"file":"lean/batch/shard-0024.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_1580","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_1669","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_1670","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_1746","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_1747","status":"passed","ms":null,"file":"lean/batch/shard-0040.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_1776","status":"timeout","ms":null,"file":"lean/batch/shard-0020.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_1824","status":"timeout","ms":null,"file":"lean/batch/shard-0031.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_1830","status":"timeout","ms":null,"file":"lean/batch/shard-0030.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_1846","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_1862","status":"passed","ms":null,"file":"lean/batch/shard-0020.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_1864","status":"passed","ms":null,"file":"lean/batch/shard-0038.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_1868","status":"vacuous?","ms":null,"file":"lean/batch/shard-0027.lean","log":"страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype"}
+{"id":"hebisch_hebisch_hebisch_1892","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_1893","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_1897","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_1909","status":"timeout","ms":null,"file":"lean/batch/shard-0040.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_1931","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_1949","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_1985","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_2009","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_2015","status":"passed","ms":null,"file":"lean/batch/shard-0018.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_2049","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_2069","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_2081","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_2087","status":"passed","ms":null,"file":"lean/batch/shard-0022.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_2095","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_2168","status":"passed","ms":null,"file":"lean/batch/shard-0033.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_2198","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_2203","status":"vacuous?","ms":null,"file":"lean/batch/shard-0036.lean","log":"страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype"}
+{"id":"hebisch_hebisch_hebisch_2249","status":"passed","ms":null,"file":"lean/batch/shard-0027.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_2286","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_2292","status":"passed","ms":null,"file":"lean/batch/shard-0027.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_230","status":"passed","ms":null,"file":"lean/batch/shard-0020.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_2323","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_2331","status":"timeout","ms":null,"file":"lean/batch/shard-0022.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_2334","status":"passed","ms":null,"file":"lean/batch/shard-0028.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_2345","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_2399","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_2497","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_25","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_2592","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_2605","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_2635","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_2637","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_2656","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_2690","status":"timeout","ms":null,"file":"lean/batch/shard-0020.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_2705","status":"passed","ms":null,"file":"lean/batch/shard-0035.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_2724","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_2754","status":"passed","ms":null,"file":"lean/batch/shard-0026.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_2779","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_2888","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_2942","status":"timeout","ms":null,"file":"lean/batch/shard-0027.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_2980","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_2997","status":"passed","ms":null,"file":"lean/batch/shard-0040.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_3021","status":"passed","ms":null,"file":"lean/batch/shard-0030.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_3027","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_3056","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_310","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_3127","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_3167","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_3179","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_3251","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_3271","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_3280","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_3305","status":"passed","ms":null,"file":"lean/batch/shard-0029.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_333","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_3386","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_3401","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_3407","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_345","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_3488","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_3563","status":"passed","ms":null,"file":"lean/batch/shard-0027.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_3621","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_3622","status":"timeout","ms":null,"file":"lean/batch/shard-0029.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_3626","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_3652","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_3674","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_3689","status":"timeout","ms":null,"file":"lean/batch/shard-0026.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_37","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_3706","status":"passed","ms":null,"file":"lean/batch/shard-0023.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_3717","status":"timeout","ms":null,"file":"lean/batch/shard-0032.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_3725","status":"passed","ms":null,"file":"lean/batch/shard-0022.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_3749","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_3814","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_3816","status":"passed","ms":null,"file":"lean/batch/shard-0028.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_3835","status":"timeout","ms":null,"file":"lean/batch/shard-0027.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_3836","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_3848","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_3849","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_3950","status":"timeout","ms":null,"file":"lean/batch/shard-0040.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_3975","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4030","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4048","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4065","status":"passed","ms":null,"file":"lean/batch/shard-0040.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4079","status":"timeout","ms":null,"file":"lean/batch/shard-0028.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_4142","status":"passed","ms":null,"file":"lean/batch/shard-0024.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4170","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4179","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_4184","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_4226","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_4235","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_4239","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_4272","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_4291","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_4317","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_4337","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_4339","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_4345","status":"passed","ms":null,"file":"lean/batch/shard-0033.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4379","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4383","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_4391","status":"timeout","ms":null,"file":"lean/batch/shard-0027.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_4433","status":"passed","ms":null,"file":"lean/batch/shard-0026.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4468","status":"timeout","ms":null,"file":"lean/batch/shard-0033.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_4472","status":"passed","ms":null,"file":"lean/batch/shard-0020.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4478","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4582","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_4587","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_4599","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4609","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4687","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4692","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_4709","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_4719","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_474","status":"passed","ms":null,"file":"lean/batch/shard-0022.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4766","status":"passed","ms":null,"file":"lean/batch/shard-0024.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_477","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_4777","status":"passed","ms":null,"file":"lean/batch/shard-0033.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4783","status":"passed","ms":null,"file":"lean/batch/shard-0023.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4842","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_4879","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_491","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_4926","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_4930","status":"passed","ms":null,"file":"lean/batch/shard-0035.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_4949","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_4951","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_4979","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5005","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_5019","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_5022","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_5037","status":"passed","ms":null,"file":"lean/batch/shard-0031.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_5096","status":"timeout","ms":null,"file":"lean/batch/shard-0037.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_5133","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5169","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_5186","status":"passed","ms":null,"file":"lean/batch/shard-0019.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_5198","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_5203","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5212","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5235","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_524","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5264","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_5286","status":"passed","ms":null,"file":"lean/batch/shard-0036.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_5354","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_5437","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_5453","status":"timeout","ms":null,"file":"lean/batch/shard-0036.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_5454","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5479","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5498","status":"passed","ms":null,"file":"lean/batch/shard-0019.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_5508","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5595","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_564","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_5640","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_5659","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_5708","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_5744","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_5769","status":"passed","ms":null,"file":"lean/batch/shard-0025.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_581","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5816","status":"passed","ms":null,"file":"lean/batch/shard-0026.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_584","status":"timeout","ms":null,"file":"lean/batch/shard-0033.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_5880","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_5898","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_593","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_5996","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_60","status":"passed","ms":null,"file":"lean/batch/shard-0030.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_6017","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_6033","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_6071","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_6133","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_6151","status":"timeout","ms":null,"file":"lean/batch/shard-0038.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6193","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_6221","status":"passed","ms":null,"file":"lean/batch/shard-0029.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_6249","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_6255","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_626","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_6270","status":"passed","ms":null,"file":"lean/batch/shard-0038.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_6304","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_6308","status":"passed","ms":null,"file":"lean/batch/shard-0034.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_6329","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_6338","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_6339","status":"timeout","ms":null,"file":"lean/batch/shard-0034.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6357","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_6384","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_6401","status":"timeout","ms":null,"file":"lean/batch/shard-0025.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6451","status":"timeout","ms":null,"file":"lean/batch/shard-0019.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6452","status":"timeout","ms":null,"file":"lean/batch/shard-0030.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6454","status":"timeout","ms":null,"file":"lean/batch/shard-0034.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6472","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_6503","status":"timeout","ms":null,"file":"lean/batch/shard-0035.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6515","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_6528","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_6531","status":"timeout","ms":null,"file":"lean/batch/shard-0025.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6543","status":"passed","ms":null,"file":"lean/batch/shard-0023.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_6576","status":"timeout","ms":null,"file":"lean/batch/shard-0019.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_6592","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_6611","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_662","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_6644","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_6755","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_6794","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_6823","status":"passed","ms":null,"file":"lean/batch/shard-0020.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_6883","status":"timeout","ms":null,"file":"lean/batch/shard-0038.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_69","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_6904","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_6958","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_6969","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_7016","status":"timeout","ms":null,"file":"lean/batch/shard-0039.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_7066","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_7084","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_7116","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_7145","status":"passed","ms":null,"file":"lean/batch/shard-0034.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_7199","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_7236","status":"passed","ms":null,"file":"lean/batch/shard-0023.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_7252","status":"passed","ms":null,"file":"lean/batch/shard-0030.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_7297","status":"vacuous?","ms":null,"file":"lean/batch/shard-0040.lean","log":"страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype"}
+{"id":"hebisch_hebisch_hebisch_7333","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_7345","status":"timeout","ms":null,"file":"lean/batch/shard-0020.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_7347","status":"timeout","ms":null,"file":"lean/batch/shard-0034.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_7393","status":"passed","ms":null,"file":"lean/batch/shard-0031.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_7463","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_7486","status":"passed","ms":null,"file":"lean/batch/shard-0036.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_750","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_7528","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_7566","status":"passed","ms":null,"file":"lean/batch/shard-0028.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_7578","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_7644","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_7692","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_7711","status":"passed","ms":null,"file":"lean/batch/shard-0023.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_7737","status":"timeout","ms":null,"file":"lean/batch/shard-0023.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_7761","status":"timeout","ms":null,"file":"lean/batch/shard-0038.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_7772","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_7859","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_7900","status":"timeout","ms":null,"file":"lean/batch/shard-0023.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_7909","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_7972","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_7990","status":"timeout","ms":null,"file":"lean/batch/shard-0030.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_8000","status":"passed","ms":null,"file":"lean/batch/shard-0039.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_803","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_8061","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_8062","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_810","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_8106","status":"timeout","ms":null,"file":"lean/batch/shard-0020.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_8170","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_8189","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_8190","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_8191","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_8200","status":"passed","ms":null,"file":"lean/batch/shard-0026.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_8202","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_8284","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_8413","status":"timeout","ms":null,"file":"lean/batch/shard-0035.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_8414","status":"timeout","ms":null,"file":"lean/batch/shard-0036.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_8432","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_8474","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_8489","status":"passed","ms":null,"file":"lean/batch/shard-0032.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_851","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_856","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_8566","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_8588","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_8658","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_868","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_8712","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_8740","status":"timeout","ms":null,"file":"lean/batch/shard-0025.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_8747","status":"timeout","ms":null,"file":"lean/batch/shard-0024.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_879","status":"passed","ms":null,"file":"lean/batch/shard-0023.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_8851","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_8853","status":"timeout","ms":null,"file":"lean/batch/shard-0019.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_8883","status":"timeout","ms":null,"file":"lean/batch/shard-0040.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_889","status":"timeout","ms":null,"file":"lean/batch/shard-0038.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_8893","status":"timeout","ms":null,"file":"lean/batch/shard-0035.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_893","status":"passed","ms":null,"file":"lean/batch/shard-0018.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_8933","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_8941","status":"passed","ms":null,"file":"lean/batch/shard-0035.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_8953","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_8955","status":"failed","ms":null,"file":"lean/batch/shard-0040.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9061","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_9084","status":"passed","ms":null,"file":"lean/batch/shard-0036.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9120","status":"passed","ms":null,"file":"lean/batch/shard-0028.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9150","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_9198","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9205","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_9254","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_9288","status":"timeout","ms":null,"file":"lean/batch/shard-0023.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_929","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_9296","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_9352","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9359","status":"passed","ms":null,"file":"lean/batch/shard-0033.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9388","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9403","status":"passed","ms":null,"file":"lean/batch/shard-0039.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9448","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_949","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9512","status":"failed","ms":null,"file":"lean/batch/shard-0036.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9528","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_9566","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9583","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_9591","status":"passed","ms":null,"file":"lean/batch/shard-0035.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9599","status":"passed","ms":null,"file":"lean/batch/shard-0024.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9605","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_9629","status":"failed","ms":null,"file":"lean/batch/shard-0021.lean","log":"'change' tactic failed, pattern"}
+{"id":"hebisch_hebisch_hebisch_9633","status":"passed","ms":null,"file":"lean/batch/shard-0041.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9636","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_9641","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_972","status":"passed","ms":null,"file":"lean/batch/shard-0021.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9735","status":"timeout","ms":null,"file":"lean/batch/shard-0039.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"hebisch_hebisch_hebisch_9738","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_976","status":"failed","ms":null,"file":"lean/batch/shard-0026.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_9789","status":"failed","ms":null,"file":"lean/batch/shard-0032.lean","log":"unsolved goals"}
+{"id":"hebisch_hebisch_hebisch_9808","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9815","status":"passed","ms":null,"file":"lean/batch/shard-0028.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9854","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_9868","status":"failed","ms":null,"file":"lean/batch/shard-0023.lean","log":"`simp` made no progress"}
+{"id":"hebisch_hebisch_hebisch_9890","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_991","status":"passed","ms":null,"file":"lean/batch/shard-0024.lean","log":""}
+{"id":"hebisch_hebisch_hebisch_9923","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"Application type mismatch: The argument"}
+{"id":"hebisch_hebisch_hebisch_9937","status":"failed","ms":null,"file":"lean/batch/shard-0035.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"hebisch_hebisch_hebisch_9971","status":"timeout","ms":null,"file":"lean/batch/shard-0021.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"independent_independent_apostol_problems_120","status":"passed","ms":null,"file":"lean/batch/shard-0038.lean","log":""}
+{"id":"independent_independent_apostol_problems_132","status":"passed","ms":null,"file":"lean/batch/shard-0031.lean","log":""}
+{"id":"independent_independent_apostol_problems_41","status":"passed","ms":null,"file":"lean/batch/shard-0034.lean","log":""}
+{"id":"independent_independent_apostol_problems_79","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"unsolved goals"}
+{"id":"independent_independent_apostol_problems_8","status":"passed","ms":null,"file":"lean/batch/shard-0035.lean","log":""}
+{"id":"independent_independent_charlwood_problems_22","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"'change' tactic failed, pattern"}
+{"id":"independent_independent_charlwood_problems_40","status":"passed","ms":null,"file":"lean/batch/shard-0018.lean","log":""}
+{"id":"independent_independent_hearn_problems_178","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"`simp` made no progress"}
+{"id":"independent_independent_hearn_problems_206","status":"timeout","ms":null,"file":"lean/batch/shard-0029.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached"}
+{"id":"independent_independent_hearn_problems_257","status":"passed","ms":null,"file":"lean/batch/shard-0022.lean","log":""}
+{"id":"independent_independent_hearn_problems_78","status":"vacuous?","ms":null,"file":"lean/batch/shard-0023.lean","log":"страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype"}
+{"id":"independent_independent_hearn_problems_96","status":"passed","ms":null,"file":"lean/batch/shard-0034.lean","log":""}
+{"id":"independent_independent_hebisch_problems_6","status":"passed","ms":null,"file":"lean/batch/shard-0039.lean","log":""}
+{"id":"independent_independent_moses_problems_106","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"`simp` made no progress"}
+{"id":"independent_independent_moses_problems_2","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"`simp` made no progress"}
+{"id":"independent_independent_moses_problems_49","status":"passed","ms":null,"file":"lean/batch/shard-0022.lean","log":""}
+{"id":"independent_independent_moses_problems_96","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"unsolved goals"}
+{"id":"independent_independent_stewart_problems_114","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"independent_independent_stewart_problems_154","status":"passed","ms":null,"file":"lean/batch/shard-0039.lean","log":""}
+{"id":"independent_independent_stewart_problems_189","status":"passed","ms":null,"file":"lean/batch/shard-0037.lean","log":""}
+{"id":"independent_independent_stewart_problems_195","status":"passed","ms":null,"file":"lean/batch/shard-0037.lean","log":""}
+{"id":"independent_independent_stewart_problems_196","status":"passed","ms":null,"file":"lean/batch/shard-0037.lean","log":""}
+{"id":"independent_independent_stewart_problems_31","status":"failed","ms":null,"file":"lean/batch/shard-0019.lean","log":"Application type mismatch: The argument"}
+{"id":"independent_independent_stewart_problems_334","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"unsolved goals"}
+{"id":"independent_independent_stewart_problems_357","status":"failed","ms":null,"file":"lean/batch/shard-0020.lean","log":"unsolved goals"}
+{"id":"independent_independent_stewart_problems_63","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"`simp` made no progress"}
+{"id":"independent_independent_stewart_problems_89","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"independent_independent_timofeev_problems_149","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"independent_independent_timofeev_problems_155","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"independent_independent_timofeev_problems_22","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"unsolved goals"}
+{"id":"independent_independent_timofeev_problems_222","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"Application type mismatch: The argument"}
+{"id":"independent_independent_timofeev_problems_242","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"Application type mismatch: The argument"}
+{"id":"independent_independent_timofeev_problems_410","status":"failed","ms":null,"file":"lean/batch/shard-0022.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"independent_independent_timofeev_problems_470","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"unsolved goals"}
+{"id":"independent_independent_timofeev_problems_471","status":"failed","ms":null,"file":"lean/batch/shard-0030.lean","log":"unsolved goals"}
+{"id":"independent_independent_timofeev_problems_479","status":"timeout","ms":null,"file":"lean/batch/shard-0021.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"independent_independent_timofeev_problems_485","status":"failed","ms":null,"file":"lean/batch/shard-0039.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"independent_independent_timofeev_problems_491","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"independent_independent_timofeev_problems_534","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"Function expected at"}
+{"id":"independent_independent_timofeev_problems_571","status":"passed","ms":null,"file":"lean/batch/shard-0019.lean","log":""}
+{"id":"independent_independent_timofeev_problems_578","status":"timeout","ms":null,"file":"lean/batch/shard-0021.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"independent_independent_timofeev_problems_583","status":"passed","ms":null,"file":"lean/batch/shard-0018.lean","log":""}
+{"id":"independent_independent_timofeev_problems_616","status":"failed","ms":null,"file":"lean/batch/shard-0038.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"independent_independent_timofeev_problems_85","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"unsolved goals"}
+{"id":"independent_independent_timofeev_problems_9","status":"failed","ms":null,"file":"lean/batch/shard-0024.lean","log":"`simp` made no progress"}
+{"id":"independent_independent_welz_problems_71","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"Application type mismatch: The argument"}
+{"id":"mit_bee_mit_bee_mit_bee_129","status":"passed","ms":null,"file":"lean/batch/shard-0027.lean","log":""}
+{"id":"mit_bee_mit_bee_mit_bee_132","status":"failed","ms":null,"file":"lean/batch/shard-0027.lean","log":"unsolved goals"}
+{"id":"mit_bee_mit_bee_mit_bee_2","status":"passed","ms":null,"file":"lean/batch/shard-0026.lean","log":""}
+{"id":"mit_bee_mit_bee_mit_bee_286","status":"passed","ms":null,"file":"lean/batch/shard-0036.lean","log":""}
+{"id":"mit_bee_mit_bee_mit_bee_287","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"`simp` made no progress"}
+{"id":"mit_bee_mit_bee_mit_bee_303","status":"failed","ms":null,"file":"lean/batch/shard-0029.lean","log":"unsolved goals"}
+{"id":"mit_bee_mit_bee_mit_bee_52","status":"failed","ms":null,"file":"lean/batch/shard-0034.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"mit_bee_mit_bee_mit_bee_81","status":"passed","ms":null,"file":"lean/batch/shard-0018.lean","log":""}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_18","status":"failed","ms":null,"file":"lean/batch/shard-0037.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_186","status":"failed","ms":null,"file":"lean/batch/shard-0028.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_214","status":"unknown","ms":null,"file":"lean/batch/shard-0021.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_296","status":"unknown","ms":null,"file":"lean/batch/shard-0018.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_339","status":"unknown","ms":null,"file":"lean/batch/shard-0034.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_419","status":"failed","ms":null,"file":"lean/batch/shard-0031.lean","log":"unsolved goals"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_426","status":"timeout","ms":null,"file":"lean/batch/shard-0020.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_452","status":"failed","ms":null,"file":"lean/batch/shard-0025.lean","log":"'change' tactic failed, pattern"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_463","status":"unknown","ms":null,"file":"lean/batch/shard-0025.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_468","status":"failed","ms":null,"file":"lean/batch/shard-0033.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_61","status":"unknown","ms":null,"file":"lean/batch/shard-0037.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1157","status":"timeout","ms":null,"file":"lean/batch/shard-0007.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1161","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1246","status":"unknown","ms":null,"file":"lean/batch/shard-0010.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1315","status":"timeout","ms":null,"file":"lean/batch/shard-0016.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_133","status":"unknown","ms":null,"file":"lean/batch/shard-0012.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1350","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1378","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1405","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1431","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1434","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1455","status":"timeout","ms":null,"file":"lean/batch/shard-0014.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_148","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1498","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_150","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1502","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1503","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1519","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_168","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1825","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_195","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_206","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_213","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_218","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_222","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_234","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_252","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_267","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_303","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_378","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_394","status":"timeout","ms":null,"file":"lean/batch/shard-0002.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_458","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_478","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_525","status":"unknown","ms":null,"file":"lean/batch/shard-0012.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_543","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_551","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_561","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_567","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_588","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_592","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_597","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_62","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_632","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_755","status":"unknown","ms":null,"file":"lean/batch/shard-0017.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_798","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_80","status":"unknown","ms":null,"file":"lean/batch/shard-0002.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_801","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_847","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_879","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_889","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_892","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1059","status":"timeout","ms":null,"file":"lean/batch/shard-0016.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1171","status":"unknown","ms":null,"file":"lean/batch/shard-0005.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1187","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_121","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1211","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1216","status":"unknown","ms":null,"file":"lean/batch/shard-0010.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1262","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1291","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1296","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1329","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1371","status":"unknown","ms":null,"file":"lean/batch/shard-0006.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1508","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1514","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"'change' tactic failed, pattern"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1531","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1541","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1542","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1545","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1579","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"maximum number of errors (100; from option `maxErrors`) reached, exiting"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1585","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1599","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_16","status":"unknown","ms":null,"file":"lean/batch/shard-0004.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1624","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1635","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1650","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1693","status":"timeout","ms":null,"file":"lean/batch/shard-0016.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1768","status":"unknown","ms":null,"file":"lean/batch/shard-0017.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1776","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1853","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1865","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1912","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1913","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1922","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1981","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2062","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2125","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2143","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2228","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2240","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2286","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2323","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_234","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2342","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2381","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2484","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2513","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2525","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2529","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2537","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2572","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2580","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2594","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2596","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2598","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_263","status":"timeout","ms":null,"file":"lean/batch/shard-0001.lean","log":"(deterministic) timeout at `elaborator`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_272","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2977","status":"timeout","ms":null,"file":"lean/batch/shard-0016.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_298","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2982","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2993","status":"timeout","ms":null,"file":"lean/batch/shard-0011.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_302","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_319","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_373","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_395","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_457","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_465","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_467","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_50","status":"unknown","ms":null,"file":"lean/batch/shard-0005.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_526","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_540","status":"timeout","ms":null,"file":"lean/batch/shard-0005.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_545","status":"timeout","ms":null,"file":"lean/batch/shard-0008.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_555","status":"timeout","ms":null,"file":"lean/batch/shard-0004.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_577","status":"timeout","ms":null,"file":"lean/batch/shard-0013.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_582","status":"timeout","ms":null,"file":"lean/batch/shard-0013.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_585","status":"timeout","ms":null,"file":"lean/batch/shard-0008.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_613","status":"timeout","ms":null,"file":"lean/batch/shard-0016.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_614","status":"timeout","ms":null,"file":"lean/batch/shard-0002.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_637","status":"timeout","ms":null,"file":"lean/batch/shard-0014.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_664","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_667","status":"timeout","ms":null,"file":"lean/batch/shard-0013.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_672","status":"timeout","ms":null,"file":"lean/batch/shard-0005.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_681","status":"timeout","ms":null,"file":"lean/batch/shard-0013.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_684","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_688","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_706","status":"timeout","ms":null,"file":"lean/batch/shard-0015.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_71","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_720","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_728","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_765","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_785","status":"timeout","ms":null,"file":"lean/batch/shard-0006.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_821","status":"unknown","ms":null,"file":"lean/batch/shard-0013.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_827","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_86","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_96","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_993","status":"unknown","ms":null,"file":"lean/batch/shard-0005.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_145","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_147","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_23","status":"timeout","ms":null,"file":"lean/batch/shard-0003.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_6_10","status":"timeout","ms":null,"file":"lean/batch/shard-0010.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_6_24","status":"timeout","ms":null,"file":"lean/batch/shard-0001.lean","log":"(deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_103","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_134","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_181","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_201","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_216","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_22","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_232","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_257","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_274","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_312","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_381","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_384","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_393","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_41","status":"unknown","ms":null,"file":"lean/batch/shard-0016.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_416","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_447","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_453","status":"timeout","ms":null,"file":"lean/batch/shard-0018.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_467","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_50","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_514","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_559","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_583","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_73","status":"unknown","ms":null,"file":"lean/batch/shard-0014.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_748","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_758","status":"timeout","ms":null,"file":"lean/batch/shard-0008.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_79","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_927","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_22","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_37","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_51","status":"timeout","ms":null,"file":"lean/batch/shard-0001.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_60","status":"timeout","ms":null,"file":"lean/batch/shard-0017.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_75","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_84","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1030","status":"timeout","ms":null,"file":"lean/batch/shard-0012.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1105","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"Function expected at"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1127","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"Function expected at"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_133","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_161","status":"unknown","ms":null,"file":"lean/batch/shard-0005.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_183","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_194","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_213","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_216","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_225","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_295","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_34","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_366","status":"timeout","ms":null,"file":"lean/batch/shard-0015.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_387","status":"timeout","ms":null,"file":"lean/batch/shard-0006.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_393","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_410","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_414","status":"unknown","ms":null,"file":"lean/batch/shard-0002.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_514","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_58","status":"unknown","ms":null,"file":"lean/batch/shard-0004.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_587","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_59","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_590","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_620","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_645","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_671","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_687","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_691","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_71","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_720","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_732","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_736","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_75","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_753","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_775","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_83","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_6_50","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_127","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_16","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_165","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_17","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_2","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1019","status":"timeout","ms":null,"file":"lean/batch/shard-0003.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_103","status":"failed","ms":null,"file":"lean/batch/shard-0018.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_107","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1083","status":"timeout","ms":null,"file":"lean/batch/shard-0008.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1102","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1111","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_12","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1208","status":"timeout","ms":null,"file":"lean/batch/shard-0003.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1244","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1258","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1260","status":"timeout","ms":null,"file":"lean/batch/shard-0008.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1324","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1431","status":"timeout","ms":null,"file":"lean/batch/shard-0001.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1457","status":"timeout","ms":null,"file":"lean/batch/shard-0001.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1480","status":"unknown","ms":null,"file":"lean/batch/shard-0008.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1581","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1591","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1592","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_16","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1600","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1603","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1617","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1645","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1700","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1745","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1766","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1805","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1835","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1852","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1948","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1974","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2021","status":"timeout","ms":null,"file":"lean/batch/shard-0009.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2086","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_212","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2130","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2133","status":"timeout","ms":null,"file":"lean/batch/shard-0009.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2173","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2191","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2196","status":"unknown","ms":null,"file":"lean/batch/shard-0012.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_221","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2211","status":"unknown","ms":null,"file":"lean/batch/shard-0007.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2234","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2277","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_246","status":"unknown","ms":null,"file":"lean/batch/shard-0010.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_275","status":"unknown","ms":null,"file":"lean/batch/shard-0005.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2757","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_303","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_330","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_342","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_417","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_44","status":"failed","ms":null,"file":"lean/batch/shard-0014.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_441","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_458","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_472","status":"unknown","ms":null,"file":"lean/batch/shard-0015.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_548","status":"timeout","ms":null,"file":"lean/batch/shard-0017.lean","log":"(deterministic) timeout at `elaborator`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_549","status":"timeout","ms":null,"file":"lean/batch/shard-0016.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_553","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_556","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_599","status":"unknown","ms":null,"file":"lean/batch/shard-0009.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_615","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_619","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_629","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_630","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_668","status":"failed","ms":null,"file":"lean/batch/shard-0010.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_681","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_687","status":"unknown","ms":null,"file":"lean/batch/shard-0004.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_77","status":"unknown","ms":null,"file":"lean/batch/shard-0010.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_81","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_896","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_938","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_138","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_144","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_149","status":"timeout","ms":null,"file":"lean/batch/shard-0001.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_165","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_26","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_32","status":"timeout","ms":null,"file":"lean/batch/shard-0005.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_150","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_195","status":"timeout","ms":null,"file":"lean/batch/shard-0017.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_199","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_29","status":"unknown","ms":null,"file":"lean/batch/shard-0011.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_357","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_4","status":"unknown","ms":null,"file":"lean/batch/shard-0008.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_412","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_414","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_42","status":"unknown","ms":null,"file":"lean/batch/shard-0014.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_443","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_550","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"Function expected at"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_556","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"Function expected at"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_630","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_68","status":"unknown","ms":null,"file":"lean/batch/shard-0014.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_689","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_779","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_781","status":"unknown","ms":null,"file":"lean/batch/shard-0012.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_784","status":"timeout","ms":null,"file":"lean/batch/shard-0017.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_97","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_12","status":"failed","ms":null,"file":"lean/batch/shard-0001.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_153","status":"timeout","ms":null,"file":"lean/batch/shard-0015.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_204","status":"timeout","ms":null,"file":"lean/batch/shard-0007.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_257","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_31","status":"timeout","ms":null,"file":"lean/batch/shard-0007.lean","log":"(deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_39","status":"unknown","ms":null,"file":"lean/batch/shard-0012.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_120","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_169","status":"failed","ms":null,"file":"lean/batch/shard-0007.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_185","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_193","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_196","status":"failed","ms":null,"file":"lean/batch/shard-0008.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_206","status":"failed","ms":null,"file":"lean/batch/shard-0015.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_221","status":"failed","ms":null,"file":"lean/batch/shard-0003.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_250","status":"failed","ms":null,"file":"lean/batch/shard-0009.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_29","status":"failed","ms":null,"file":"lean/batch/shard-0011.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_310","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_312","status":"unknown","ms":null,"file":"lean/batch/shard-0012.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_344","status":"failed","ms":null,"file":"lean/batch/shard-0004.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_431","status":"failed","ms":null,"file":"lean/batch/shard-0002.lean","log":"unsolved goals"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_86","status":"failed","ms":null,"file":"lean/batch/shard-0005.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_105","status":"failed","ms":null,"file":"lean/batch/shard-0006.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_169","status":"failed","ms":null,"file":"lean/batch/shard-0017.lean","log":"`simp` made no progress"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_189","status":"timeout","ms":null,"file":"lean/batch/shard-0009.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_19","status":"failed","ms":null,"file":"lean/batch/shard-0013.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_26","status":"unknown","ms":null,"file":"lean/batch/shard-0009.lean","log":"нет вывода #print axioms (таймаут или теорема не объявлена)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_43","status":"timeout","ms":null,"file":"lean/batch/shard-0007.lean","log":"(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_66","status":"failed","ms":null,"file":"lean/batch/shard-0016.lean","log":"Application type mismatch: The argument"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_75","status":"failed","ms":null,"file":"lean/batch/shard-0012.lean","log":"failed to prove positivity/nonnegativity/nonzeroness"}

@@ -1,0 +1,788 @@
+# Lean: 2026-11-13, снимок 168dbfac9863a51ad1d0ab57a127410094ec2e74
+
+- вход: `qedra_ref=rubi-pilot`, осколков 6, таймаут на пакет 1200 с
+- прогон: https://github.com/evgwpw/qedra-bench/actions/runs/43519118938
+- всего теорем: 802
+- генератор: `7b26c70b83805082e4fc98acd76faf7aada78d49`, ответов OK 1000, выборка 500 (seed 1), пакетов по 20, тактов на теорему 200000/50000
+| статус | теорем |
+|---|---|
+| passed | 96 |
+| failed | 549 |
+| failed-axioms | 0 |
+| timeout | 113 |
+| vacuous? | 4 |
+| unknown | 40 |
+
+| осколок | всего | passed | failed | failed-axioms | timeout | vacuous? | unknown |
+|---|---|---|---|---|---|---|---|
+| lean-1 | 140 | 0 | 107 | 0 | 21 | 0 | 12 |
+| lean-2 | 140 | 0 | 104 | 0 | 17 | 0 | 19 |
+| lean-3 | 140 | 15 | 93 | 0 | 26 | 0 | 6 |
+| lean-4 | 140 | 36 | 82 | 0 | 19 | 2 | 1 |
+| lean-5 | 140 | 26 | 96 | 0 | 17 | 0 | 1 |
+| lean-6 | 102 | 19 | 67 | 0 | 13 | 2 | 1 |
+## Пилот: по наборам
+
+Всего ответов OK: 1000 (из них не переведено генератором: 198); проценты — от проверенных.
+
+| набор | проверено | passed | failed | failed-axioms | timeout | vacuous? | unknown | не переведено | passed, % |
+|---|---|---|---|---|---|---|---|---|---|
+| rubi | 346 | 0 | 259 | 0 | 52 | 0 | 35 | 154 | 0 |
+| hebisch | 357 | 73 | 230 | 0 | 51 | 3 | 0 | 0 | 20 |
+| independent | 46 | 15 | 27 | 0 | 3 | 1 | 0 | 0 | 33 |
+| uchebnye | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 44 | 0 |
+| blake | 34 | 4 | 24 | 0 | 6 | 0 | 0 | 0 | 12 |
+| mit_bee_official | 11 | 0 | 5 | 0 | 1 | 0 | 5 | 0 | 0 |
+| mit_bee | 8 | 4 | 4 | 0 | 0 | 0 | 0 | 0 | 50 |
+| **всего** | **802** | **96** | **549** | **0** | **113** | **4** | **40** | **198** | **12** |
+
+## Пилот: Rubi по подглавам
+
+Всего ответов OK: 500 (из них не переведено генератором: 154); проценты — от проверенных.
+
+| подглава | проверено | passed | failed | failed-axioms | timeout | vacuous? | unknown | не переведено | passed, % |
+|---|---|---|---|---|---|---|---|---|---|
+| (не переведено) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 154 | 0 |
+| t_1_1_1_3 | 94 | 0 | 67 | 0 | 19 | 0 | 8 | 0 | 0 |
+| t_1_1_3_2 | 70 | 0 | 51 | 0 | 10 | 0 | 9 | 0 | 0 |
+| t_1_1_1_2 | 50 | 0 | 41 | 0 | 4 | 0 | 5 | 0 | 0 |
+| t_1_1_2_4 | 35 | 0 | 29 | 0 | 3 | 0 | 3 | 0 | 0 |
+| t_1_1_2_2 | 27 | 0 | 23 | 0 | 2 | 0 | 2 | 0 | 0 |
+| t_1_1_3_4 | 19 | 0 | 12 | 0 | 2 | 0 | 5 | 0 | 0 |
+| t_1_1_4_2 | 14 | 0 | 13 | 0 | 0 | 0 | 1 | 0 | 0 |
+| t_1_1_4_3 | 8 | 0 | 5 | 0 | 2 | 0 | 1 | 0 | 0 |
+| t_1_1_2_3 | 6 | 0 | 4 | 0 | 2 | 0 | 0 | 0 | 0 |
+| t_1_1_3_3 | 6 | 0 | 4 | 0 | 2 | 0 | 0 | 0 | 0 |
+| t_1_1_3_8 | 6 | 0 | 2 | 0 | 3 | 0 | 1 | 0 | 0 |
+| t_1_1_2_8 | 5 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 |
+| t_1_1_1_4 | 3 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 0 |
+| t_1_1_1_6 | 2 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| t_1_1_2_6 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **всего** | **346** | **0** | **259** | **0** | **52** | **0** | **35** | **154** | **0** |
+
+## Пилот: почему не переведено
+
+| причина | ответов |
+|---|---|
+| символьный показатель степени | 60 |
+| голова EllipticF | 34 |
+| голова hypergeometric-2f1 | 26 |
+| голова %i | 24 |
+| голова appell-f1 | 15 |
+| вещественная константа (не рациональная) | 9 |
+| голова EllipticE | 8 |
+| голова asinh | 7 |
+| голова e1 | 6 |
+| unsupported error | 6 |
+| голова cot | 1 |
+| голова acot | 1 |
+| голова sec | 1 |
+
+## Не passed
+
+- `blake_blake_blake_1032` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_106` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_113` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_1160` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `blake_blake_blake_117` — failed: Application type mismatch: The argument
+- `blake_blake_blake_1450` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `blake_blake_blake_1614` — failed: Application type mismatch: The argument
+- `blake_blake_blake_1654` — failed: Application type mismatch: The argument
+- `blake_blake_blake_180` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_219` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_239` — failed: unsolved goals
+- `blake_blake_blake_2400` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `blake_blake_blake_2448` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `blake_blake_blake_256` — failed: `simp` made no progress
+- `blake_blake_blake_3` — failed: `simp` made no progress
+- `blake_blake_blake_325` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_355` — failed: `simp` made no progress
+- `blake_blake_blake_396` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_413` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_414` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `blake_blake_blake_418` — failed: Application type mismatch: The argument
+- `blake_blake_blake_428` — failed: `simp` made no progress
+- `blake_blake_blake_481` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_67` — failed: Application type mismatch: The argument
+- `blake_blake_blake_812` — failed: Application type mismatch: The argument
+- `blake_blake_blake_841` — failed: Application type mismatch: The argument
+- `blake_blake_blake_892` — failed: Application type mismatch: The argument
+- `blake_blake_blake_90` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `blake_blake_blake_924` — failed: unsolved goals
+- `blake_blake_blake_95` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1001` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_10039` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_10051` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_10128` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_10223` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_10271` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_10279` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_10288` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_10306` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_10334` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_1064` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1079` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1105` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_112` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_1136` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_117` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_123` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_1233` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1259` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_126` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_1450` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_1459` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1520` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1527` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1541` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1580` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1669` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_1670` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_1746` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_1776` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1824` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1830` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_1846` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_1868` — vacuous?: страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype
+- `hebisch_hebisch_hebisch_1892` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_1893` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_1897` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_1909` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1931` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1949` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_1985` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_2009` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_2049` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_2069` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_2081` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_2095` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_2198` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_2203` — vacuous?: страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype
+- `hebisch_hebisch_hebisch_2286` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_2323` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_2331` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_2345` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_2399` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_2497` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_25` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_2592` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_2605` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_2635` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_2637` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_2656` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_2690` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_2724` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_2779` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_2888` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_2942` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_2980` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_3027` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_3056` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_310` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3127` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3167` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_3179` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_3251` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_3271` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_3280` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_333` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_3386` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3401` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_3407` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_345` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_3488` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3621` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3622` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_3626` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_3652` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_3674` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3689` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_37` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3717` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_3749` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_3814` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3835` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_3836` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_3848` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_3849` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_3950` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_3975` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4030` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4048` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4079` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_4170` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4179` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4184` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4226` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4235` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4239` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_4272` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4291` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_4317` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_4337` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_4339` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4379` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4383` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4391` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_4468` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_4478` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4582` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_4587` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4599` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4609` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4687` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4692` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_4709` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_4719` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_477` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_4842` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4879` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_491` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4926` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4949` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4951` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4979` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5005` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5019` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5022` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5096` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_5133` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5169` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5198` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_5203` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5212` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5235` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_524` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5264` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_5354` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_5437` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5453` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_5454` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5479` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5508` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5595` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_564` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_5640` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_5659` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_5708` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5744` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_581` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_584` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_5880` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5898` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_593` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5996` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6017` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6033` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6071` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_6133` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_6151` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6193` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_6249` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6255` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_626` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_6304` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6329` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6338` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_6339` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6357` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6384` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_6401` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6451` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6452` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6454` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_6472` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6503` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6515` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6528` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_6531` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6576` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6592` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6611` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_662` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6644` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6755` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_6794` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_6883` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_69` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6904` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_6958` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_6969` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_7016` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7066` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_7084` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_7116` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_7199` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_7297` — vacuous?: страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype
+- `hebisch_hebisch_hebisch_7333` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_7345` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7347` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7463` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_750` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7528` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7578` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7644` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_7692` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_7737` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7761` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7772` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7859` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_7900` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_7909` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_7972` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7990` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_803` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_8061` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_8062` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_810` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8106` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8170` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_8189` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_8190` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8191` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_8202` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8284` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8413` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8414` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8432` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8474` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_851` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_856` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_8566` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_8588` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_8658` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_868` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8712` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_8740` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8747` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8851` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8853` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8883` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_889` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_8893` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8933` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_8953` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_8955` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9061` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_9150` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_9198` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9205` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_9254` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_9288` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_929` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_9296` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_9352` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9388` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9448` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_949` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9512` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9528` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_9566` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9583` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_9605` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_9629` — failed: 'change' tactic failed, pattern
+- `hebisch_hebisch_hebisch_9636` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_9641` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_9735` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_9738` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_976` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_9789` — failed: unsolved goals
+- `hebisch_hebisch_hebisch_9808` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9854` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_9868` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_9890` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9923` — failed: Application type mismatch: The argument
+- `hebisch_hebisch_hebisch_9937` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9971` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `independent_independent_apostol_problems_79` — failed: unsolved goals
+- `independent_independent_charlwood_problems_22` — failed: 'change' tactic failed, pattern
+- `independent_independent_hearn_problems_178` — failed: `simp` made no progress
+- `independent_independent_hearn_problems_206` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+- `independent_independent_hearn_problems_78` — vacuous?: страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype
+- `independent_independent_moses_problems_106` — failed: `simp` made no progress
+- `independent_independent_moses_problems_2` — failed: `simp` made no progress
+- `independent_independent_moses_problems_96` — failed: unsolved goals
+- `independent_independent_stewart_problems_114` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_stewart_problems_31` — failed: Application type mismatch: The argument
+- `independent_independent_stewart_problems_334` — failed: unsolved goals
+- `independent_independent_stewart_problems_357` — failed: unsolved goals
+- `independent_independent_stewart_problems_63` — failed: `simp` made no progress
+- `independent_independent_stewart_problems_89` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_149` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_155` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_22` — failed: unsolved goals
+- `independent_independent_timofeev_problems_222` — failed: Application type mismatch: The argument
+- `independent_independent_timofeev_problems_242` — failed: Application type mismatch: The argument
+- `independent_independent_timofeev_problems_410` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_470` — failed: unsolved goals
+- `independent_independent_timofeev_problems_471` — failed: unsolved goals
+- `independent_independent_timofeev_problems_479` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `independent_independent_timofeev_problems_485` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_491` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_534` — failed: Function expected at
+- `independent_independent_timofeev_problems_578` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `independent_independent_timofeev_problems_616` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_85` — failed: unsolved goals
+- `independent_independent_timofeev_problems_9` — failed: `simp` made no progress
+- `independent_independent_welz_problems_71` — failed: Application type mismatch: The argument
+- `mit_bee_mit_bee_mit_bee_132` — failed: unsolved goals
+- `mit_bee_mit_bee_mit_bee_287` — failed: `simp` made no progress
+- `mit_bee_mit_bee_mit_bee_303` — failed: unsolved goals
+- `mit_bee_mit_bee_mit_bee_52` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `mit_bee_official_mit_bee_official_mit_bee_official_18` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `mit_bee_official_mit_bee_official_mit_bee_official_186` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `mit_bee_official_mit_bee_official_mit_bee_official_214` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `mit_bee_official_mit_bee_official_mit_bee_official_296` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `mit_bee_official_mit_bee_official_mit_bee_official_339` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `mit_bee_official_mit_bee_official_mit_bee_official_419` — failed: unsolved goals
+- `mit_bee_official_mit_bee_official_mit_bee_official_426` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `mit_bee_official_mit_bee_official_mit_bee_official_452` — failed: 'change' tactic failed, pattern
+- `mit_bee_official_mit_bee_official_mit_bee_official_463` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `mit_bee_official_mit_bee_official_mit_bee_official_468` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `mit_bee_official_mit_bee_official_mit_bee_official_61` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1157` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1161` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1246` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1315` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_133` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1350` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1378` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1405` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1431` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1434` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1455` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_148` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1498` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_150` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1502` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1503` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1519` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_168` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1825` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_195` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_206` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_213` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_218` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_222` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_234` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_252` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_267` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_303` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_378` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_394` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_458` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_478` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_525` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_543` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_551` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_561` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_567` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_588` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_592` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_597` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_62` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_632` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_755` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_798` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_80` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_801` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_847` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_879` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_889` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_892` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1059` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1171` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1187` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_121` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1211` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1216` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1262` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1291` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1296` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1329` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1371` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1508` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1514` — failed: 'change' tactic failed, pattern
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1531` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1541` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1542` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1545` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1579` — failed: maximum number of errors (100; from option `maxErrors`) reached, exiting
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1585` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1599` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_16` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1624` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1635` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1650` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1693` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1768` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1776` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1853` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1865` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1912` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1913` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1922` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1981` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2062` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2125` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2143` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2228` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2240` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2286` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2323` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_234` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2342` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2381` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2484` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2513` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2525` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2529` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2537` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2572` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2580` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2594` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2596` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2598` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_263` — timeout: (deterministic) timeout at `elaborator`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_272` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2977` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_298` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2982` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2993` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_302` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_319` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_373` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_395` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_457` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_465` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_467` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_50` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_526` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_540` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_545` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_555` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_577` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_582` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_585` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_613` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_614` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_637` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_664` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_667` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_672` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_681` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_684` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_688` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_706` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_71` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_720` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_728` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_765` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_785` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_821` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_827` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_86` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_96` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_993` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_145` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_147` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_23` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_6_10` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_6_24` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_103` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_134` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_181` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_201` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_216` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_22` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_232` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_257` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_274` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_312` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_381` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_384` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_393` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_41` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_416` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_447` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_453` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_467` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_50` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_514` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_559` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_583` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_73` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_748` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_758` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_79` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_927` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_22` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_37` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_51` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_60` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_75` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_84` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1030` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1105` — failed: Function expected at
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1127` — failed: Function expected at
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_133` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_161` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_183` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_194` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_213` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_216` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_225` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_295` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_34` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_366` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_387` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_393` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_410` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_414` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_514` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_58` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_587` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_59` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_590` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_620` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_645` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_671` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_687` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_691` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_71` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_720` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_732` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_736` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_75` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_753` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_775` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_83` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_6_50` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_127` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_16` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_165` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_17` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_2` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1019` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_103` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_107` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1083` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1102` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1111` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_12` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1208` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1244` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1258` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1260` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1324` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1431` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1457` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1480` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1581` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1591` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1592` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_16` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1600` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1603` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1617` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1645` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1700` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1745` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1766` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1805` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1835` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1852` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1948` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1974` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2021` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2086` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_212` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2130` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2133` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2173` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2191` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2196` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_221` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2211` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2234` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2277` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_246` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_275` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2757` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_303` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_330` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_342` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_417` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_44` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_441` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_458` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_472` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_548` — timeout: (deterministic) timeout at `elaborator`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_549` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_553` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_556` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_599` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_615` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_619` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_629` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_630` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_668` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_681` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_687` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_77` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_81` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_896` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_938` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_138` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_144` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_149` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_165` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_26` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_32` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_150` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_195` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_199` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_29` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_357` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_4` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_412` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_414` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_42` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_443` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_550` — failed: Function expected at
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_556` — failed: Function expected at
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_630` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_68` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_689` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_779` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_781` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_784` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_97` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_12` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_153` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_204` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_257` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_31` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_39` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_120` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_169` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_185` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_193` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_196` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_206` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_221` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_250` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_29` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_310` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_312` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_344` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_431` — failed: unsolved goals
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_86` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_105` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_169` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_189` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_19` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_26` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_43` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_66` — failed: Application type mismatch: The argument
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_75` — failed: failed to prove positivity/nonnegativity/nonzeroness
