@@ -107,14 +107,18 @@ jobs:
           start=$(( (${{ matrix.shard }} - 1) * per ))
           mine=( "${all[@]:start:per}" )
           echo "осколок ${{ matrix.shard }}: ${#mine[@]} пакетов из $n"
+          if [ "${#mine[@]}" -eq 0 ]; then echo "осколок пуст — это ошибка, а не успех"; exit 1; fi
           if [ "${{ inputs.source }}" = "catalog" ]; then
             # каталог: по теореме на файл, пакет собирается здесь
             node tools/lean/gen-batch.mjs --narrow --out-dir lean/batch "${mine[@]}"
             node tools/lean/check-batch.mjs lean/batch/shard-1.lean
           else
             # пилот: пакеты уже собраны генератором (шапка + #print axioms внутри)
-            node tools/lean/check-batch.mjs "${mine[@]/#/$dir/}"
+            files=(); for id in "${mine[@]}"; do files+=("$dir/$id.lean"); done
+            node tools/lean/check-batch.mjs "${files[@]}"
           fi
+          # пустой файл результатов — признак сбоя конвейера, а не «нечего проверять»
+          test -s research/lean/batch-results.jsonl || { echo "нет результатов проверки"; exit 1; }
 
       - uses: actions/upload-artifact@v4
         if: always()
