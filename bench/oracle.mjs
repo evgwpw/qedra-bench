@@ -193,7 +193,7 @@ async function sampleSet(lisp, f, F, variable, params, values, pts, timeoutMs) {
 
 // → { verdict, detail }
 export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
-  if (/root_of|rootsum|root-sum|integrate/.test(F)) {
+  if (/integrate/.test(F)) {
     return { verdict: 'UNVERIFIED', detail: { reason: 'ответ содержит непроверяемую форму' } };
   }
   const fRes = await lisp.math(fText, timeoutMs);
@@ -203,7 +203,13 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
   const f = fRes.ans.result;
   const params = paramsOf(fText, variable);
   const sets = paramSets(params).map((values) => ({ values, rows: [] }));
-  const exactFn = (x, values) => exactDiff(lisp, F, f, variable, x, values, params, timeoutMs);
+  // Ответ с суммой по корням: точная проверка рационалями (simplify) на root-sum не решается, а производная root-sum
+  // в eval-num иногда вычисляется неточно (0 или отклонение 1e-3 у верного ответа). Независимая сверка — центральная
+  // разность самого F (значения F в x±h), без дифференцирования root-sum.
+  const hasRoots = /root_of|rootsum|root-sum/.test(F);
+  const exactFn = hasRoots
+    ? (x, values) => fdDiff(lisp, F, f, variable, x, values, params, timeoutMs)
+    : (x, values) => exactDiff(lisp, F, f, variable, x, values, params, timeoutMs);
   let verdict = null;
   for (const pass of [0, 1]) {
     const base = [...REAL_POINTS, ...COMPLEX_POINTS];
@@ -257,6 +263,31 @@ async function exactDiff(lisp, F, f, variable, xVal, values, params, timeoutMs) 
   const t = res.ans.result.trim();
   if (t === '0') return 'zero';
   if (/^-?\d+(\/\d+)?$/.test(t)) return 'nonzero';
+  return 'unknown';
+}
+
+// Для ответов с root-sum: (F(x+h) − F(x−h))/(2h) против f(x). 'zero' — совпали до 1e-6, 'nonzero' — расходятся
+// больше чем на 1e-3 (отн. к max(1,|f|)), иначе / комплексные значения / нет значений — 'unknown'.
+async function fdDiff(lisp, F, f, variable, xVal, values, params, timeoutMs) {
+  if (typeof xVal !== 'number') return 'unknown';
+  const h = 1e-4;
+  const rules = (xv) => `(list ${[`(list '${variable} ${xv})`].concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ')})`;
+  const code = `(list (eval-num (subst ${rules(xVal)} '${f})) (eval-num (subst ${rules(xVal + h)} '${F})) `
+    + `(eval-num (subst ${rules(xVal - h)} '${F})))`;
+  const res = await lisp.ask(code, Math.max(timeoutMs, 30000));
+  if (!res.ans || typeof res.ans.result !== 'string') return 'unknown';
+  let rows;
+  try { rows = parseLisp(res.ans.result); } catch { return 'unknown'; }
+  if (!Array.isArray(rows) || rows.length !== 3) return 'unknown';
+  const [fv, a, b] = rows.map(toComplex);
+  if (!fv || !a || !b) return 'unknown';
+  const av = Math.hypot(a[0], a[1]);
+  const bv = Math.hypot(b[0], b[1]);
+  if (!isImagSmall(fv, Math.hypot(fv[0], fv[1])) || !isImagSmall(a, av) || !isImagSmall(b, bv)) return 'unknown';
+  const fd = (a[0] - b[0]) / (2 * h);
+  const err = Math.abs(fd - fv[0]) / Math.max(1, Math.abs(fv[0]));
+  if (err <= 1e-6) return 'zero';
+  if (err >= 1e-3) return 'nonzero';
   return 'unknown';
 }
 
