@@ -66,6 +66,11 @@ const ELEMENTARY_FUNCS = new Set(['sin', 'cos', 'tan', 'cot', 'sec', 'csc', 'asi
 
 function isElementary(text) {
   if (!text) return false;
+  // любая функция вне списка элементарных (Shi, Chi, expint, lowergamma, appellf1, …) — эталон не элементарен;
+  // раньше неизвестные имена считались элементарными, и честное «неэлементарно» попадало в FALSE-NE
+  for (const m of String(text).matchAll(/([A-Za-z_][A-Za-z_0-9]*)\s*\(/g)) {
+    if (!ELEMENTARY_FUNCS.has(m[1])) return false;
+  }
   const ids = String(text).match(/[A-Za-z_][A-Za-z_0-9]*/g) || [];
   for (const id of ids) {
     if (/^[a-z]$/.test(id) && !['e', 'x', 'y', 't'].includes(id)) continue;
