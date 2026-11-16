@@ -1,0 +1,786 @@
+# Lean: 2026-11-16, снимок 8b9e8a4b339c63d3f96e36dd371943516aed88ca
+
+- вход: `qedra_ref=master`, осколков 4, таймаут на пакет 900 с
+- прогон: https://github.com/evgwpw/qedra-bench/actions/runs/43952304255
+- всего теорем: 802
+- генератор: `7b26c70b83805082e4fc98acd76faf7aada78d49`, ответов OK 1000, выборка 500 (seed 1), пакетов по 20, тактов на теорему 200000/50000
+| статус | теорем |
+|---|---|
+| passed | 96 |
+| failed | 549 |
+| failed-axioms | 0 |
+| timeout | 113 |
+| vacuous? | 4 |
+| unknown | 40 |
+
+| осколок | всего | passed | failed | failed-axioms | timeout | vacuous? | unknown |
+|---|---|---|---|---|---|---|---|
+| lean-1 | 220 | 0 | 168 | 0 | 31 | 0 | 21 |
+| lean-2 | 220 | 22 | 147 | 0 | 35 | 0 | 16 |
+| lean-3 | 220 | 46 | 143 | 0 | 28 | 2 | 1 |
+| lean-4 | 142 | 28 | 91 | 0 | 19 | 2 | 2 |
+## Пилот: по наборам
+
+Всего ответов OK: 1000 (из них не переведено генератором: 198); проценты — от проверенных.
+
+| набор | проверено | passed | failed | failed-axioms | timeout | vacuous? | unknown | не переведено | passed, % |
+|---|---|---|---|---|---|---|---|---|---|
+| rubi | 346 | 0 | 259 | 0 | 52 | 0 | 35 | 154 | 0 |
+| hebisch | 357 | 73 | 230 | 0 | 51 | 3 | 0 | 0 | 20 |
+| independent | 46 | 15 | 27 | 0 | 3 | 1 | 0 | 0 | 33 |
+| uchebnye | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 44 | 0 |
+| blake | 34 | 4 | 24 | 0 | 6 | 0 | 0 | 0 | 12 |
+| mit_bee_official | 11 | 0 | 5 | 0 | 1 | 0 | 5 | 0 | 0 |
+| mit_bee | 8 | 4 | 4 | 0 | 0 | 0 | 0 | 0 | 50 |
+| **всего** | **802** | **96** | **549** | **0** | **113** | **4** | **40** | **198** | **12** |
+
+## Пилот: Rubi по подглавам
+
+Всего ответов OK: 500 (из них не переведено генератором: 154); проценты — от проверенных.
+
+| подглава | проверено | passed | failed | failed-axioms | timeout | vacuous? | unknown | не переведено | passed, % |
+|---|---|---|---|---|---|---|---|---|---|
+| (не переведено) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 154 | 0 |
+| t_1_1_1_3 | 94 | 0 | 67 | 0 | 19 | 0 | 8 | 0 | 0 |
+| t_1_1_3_2 | 70 | 0 | 51 | 0 | 10 | 0 | 9 | 0 | 0 |
+| t_1_1_1_2 | 50 | 0 | 41 | 0 | 4 | 0 | 5 | 0 | 0 |
+| t_1_1_2_4 | 35 | 0 | 29 | 0 | 3 | 0 | 3 | 0 | 0 |
+| t_1_1_2_2 | 27 | 0 | 23 | 0 | 2 | 0 | 2 | 0 | 0 |
+| t_1_1_3_4 | 19 | 0 | 12 | 0 | 2 | 0 | 5 | 0 | 0 |
+| t_1_1_4_2 | 14 | 0 | 13 | 0 | 0 | 0 | 1 | 0 | 0 |
+| t_1_1_4_3 | 8 | 0 | 5 | 0 | 2 | 0 | 1 | 0 | 0 |
+| t_1_1_2_3 | 6 | 0 | 4 | 0 | 2 | 0 | 0 | 0 | 0 |
+| t_1_1_3_3 | 6 | 0 | 4 | 0 | 2 | 0 | 0 | 0 | 0 |
+| t_1_1_3_8 | 6 | 0 | 2 | 0 | 3 | 0 | 1 | 0 | 0 |
+| t_1_1_2_8 | 5 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 |
+| t_1_1_1_4 | 3 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 0 |
+| t_1_1_1_6 | 2 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| t_1_1_2_6 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **всего** | **346** | **0** | **259** | **0** | **52** | **0** | **35** | **154** | **0** |
+
+## Пилот: почему не переведено
+
+| причина | ответов |
+|---|---|
+| символьный показатель степени | 60 |
+| голова EllipticF | 34 |
+| голова hypergeometric-2f1 | 26 |
+| голова %i | 24 |
+| голова appell-f1 | 15 |
+| вещественная константа (не рациональная) | 9 |
+| голова EllipticE | 8 |
+| голова asinh | 7 |
+| голова e1 | 6 |
+| unsupported error | 6 |
+| голова cot | 1 |
+| голова acot | 1 |
+| голова sec | 1 |
+
+## Не passed
+
+- `blake_blake_blake_1032` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `blake_blake_blake_106` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_113` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_1160` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `blake_blake_blake_117` — failed: Application type mismatch: The argument | h4 | has type | (1 + x ^ 2 + x ^ 4) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `blake_blake_blake_1450` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `blake_blake_blake_1614` — failed: Application type mismatch: The argument | h16 | has type | (b + a * x ^ 3) ^ (1 / 4) ≠ 0 | but is expected to have type
+- `blake_blake_blake_1654` — failed: Application type mismatch: The argument | h15 | has type | (0 - 1 + x ^ 3) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `blake_blake_blake_180` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_219` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_239` — failed: unsolved goals | x : ℝ | h1 : x ^ 2 + 1 ≠ 0 | h2 : (0 - 1 / 2 - x - 1 / 2 * x ^ 2 + (x + x ^ 2 + x ^ 3) ^ (1 / 2)) / (1 + x ^ 2) ≠ 0 | h3 : 1 + x ^ 2 ≠ 0
+- `blake_blake_blake_2400` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `blake_blake_blake_2448` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `blake_blake_blake_256` — failed: `simp` made no progress
+- `blake_blake_blake_3` — failed: `simp` made no progress
+- `blake_blake_blake_325` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_355` — failed: `simp` made no progress
+- `blake_blake_blake_396` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_413` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_414` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `blake_blake_blake_418` — failed: Application type mismatch: The argument | h6 | has type | (1 + x ^ 4) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `blake_blake_blake_428` — failed: `simp` made no progress
+- `blake_blake_blake_481` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `blake_blake_blake_67` — failed: Application type mismatch: The argument | h4 | has type | (0 - 1 + x ^ 2 + x ^ 4) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `blake_blake_blake_812` — failed: Application type mismatch: The argument | h3 | has type | (0 - 1 + x ^ 4) ^ (1 / 4) ≠ 0 | but is expected to have type
+- `blake_blake_blake_841` — failed: Application type mismatch: The argument | h7 | has type | (b + (b ^ 2 + a * x ^ 2) ^ (1 / 2)) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `blake_blake_blake_892` — failed: Application type mismatch: The argument | h8 | has type | (x + (1 + x ^ 2) ^ (1 / 2)) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `blake_blake_blake_90` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `blake_blake_blake_924` — failed: unsolved goals | x a b : ℝ | h1 : x ≠ 0 | h2 : 0 < a * x ^ 6 + b | h3 : a ≠ 0
+- `blake_blake_blake_95` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1001` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_10039` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_10051` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_10128` — failed: Application type mismatch: The argument | h3 | has type | 2 - x + rexp (x + rexp (1 + 2 * x)) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_10223` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_10271` — failed: unsolved goals | x : ℝ | h1 : | (log 2 ^ 4 - 8 * x * log 2 ^ 3 + 24 * x ^ 2 * log 2 ^ 2 - 32 * x ^ 3 * log 2 + 16 * x ^ 4) * rexp x ^ 2 + | (2 * x * log 2 ^ 2 - 8 * x ^ 2 * log 2 + 8 * x ^ 3) * rexp x +
+- `hebisch_hebisch_hebisch_10279` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - 20) * x - 10 * x * log x - 2 * log 105 * log x) ?m.218 x | is not definitionally equal to target | HasDerivAt ((fun x => 0 - 20) * id - (fun x => 10) * id * log) | (0 * id x + (0 - 20) * 1 - ((0 * id x + 10 * 1) * log x + ((fun x => 10) * id) x * x⁻¹)) x
+- `hebisch_hebisch_hebisch_10288` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_10306` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.comp x ?m.1298 | (HasDerivAt.sub | (HasDerivAt.add
+- `hebisch_hebisch_hebisch_10334` — failed: Application type mismatch: The argument | h2 | has type | 1 / 3 * (12 * x + 2 * x ^ 2) * rexp (2 * rexp x) + 1 / 9 * (36 * x ^ 2 + 12 * x ^ 3 + x ^ 4) + rexp (4 * rexp x) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_1064` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_1079` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1105` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_112` — failed: unsolved goals | x : ℝ | h1 : 2 * x * log x + 25 * x ^ 3 * rexp 3 ^ 2 + 150 * x ^ 5 * rexp 3 + 225 * x ^ 7 + 3 * x ≠ 0 | h2 : x ≠ 0 | h3 : 3 / 2 + 225 / 2 * x ^ 6 + 25 / 2 * x ^ 2 * rexp 6 + 75 * x ^ 4 * rexp 3 + log x ≠ 0
+- `hebisch_hebisch_hebisch_1136` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.comp x (hasDerivAt_log h6) | (HasDerivAt.add (hasDerivAt_const x (0 - 100 / 9)) | (HasDerivAt.comp x (hasDerivAt_log h7)
+- `hebisch_hebisch_hebisch_117` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_123` — failed: Application type mismatch: The argument | h4 | has type | (0 - 5 + log (1 + (0 - 2 + 2 * rexp x) * log (20 - x) - 2 * rexp x + rexp (2 * x) + log (20 - x) ^ 2)) ^ 2 ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_1233` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_1259` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_126` — failed: Application type mismatch: The argument | h7 | has type | 5 + log (2 / ((0 - 4 + x) * log (5 + 5 * x))) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_1450` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `hebisch_hebisch_hebisch_1459` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1520` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_1527` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1541` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1580` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_1669` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => 8 / 5 * x - 1 / 25 * x ^ 2 - 2 / 5 * x * log 2) ?m.282 x | is not definitionally equal to target | HasDerivAt ((fun x => 8 / 5) * id - (fun x => 1 / 25) * id ^ 2) | (0 * id x + 8 / 5 * 1 - (0 * (id ^ 2) x + 1 / 25 * (↑2 * id x ^ (2 - 1) * 1))) x
+- `hebisch_hebisch_hebisch_1670` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_1746` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_1776` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1824` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1830` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_1846` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.sub (hasDerivAt_const x 0) | (HasDerivAt.add (HasDerivAt.sub (HasDerivAt.add (hasDerivAt_const x 5) (hasDerivAt_id x)) (Real.hasDerivAt_exp x)) | (hasDerivAt_const x (2 * log 2))))
+- `hebisch_hebisch_hebisch_1868` — vacuous?: страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype
+- `hebisch_hebisch_hebisch_1892` — failed: unsolved goals | x : ℝ | h1 : (x ^ 4 - 2 * x ^ 3 + x ^ 2) * rexp x + x ^ 5 - 6 * x ^ 4 + 10 * x ^ 3 - 9 * x ^ 2 + 4 * x ≠ 0 | h2 : x ≠ 0 | h3 : (0 - 4 + 5 * x - 5 * x ^ 2 + x ^ 3) / (0 - x + x ^ 2) + rexp x ≠ 0
+- `hebisch_hebisch_hebisch_1893` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_1897` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => 4 * x + 25 * x ^ 2 + x ^ 2 * log x + (0 - 12 - 75 * x - 3 * x * log x) * rexp (0 - x ^ 4)) ?m.641 | x | is not definitionally equal to target | HasDerivAt
+- `hebisch_hebisch_hebisch_1909` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_1931` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_1949` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => 5 * x - x ^ 2 - x ^ 2 / (0 - log x + log (5 + 2 * x))) ?m.440 x | is not definitionally equal to target | HasDerivAt ((fun x => 5) * id - id ^ 2) (0 * id x + 5 * 1 - ↑2 * id x ^ (2 - 1) * 1) x
+- `hebisch_hebisch_hebisch_1985` — failed: unsolved goals | x : ℝ | h1 : x ^ 2 - 4 * x ≠ 0 | h2 : (3 * x - 12) / x ≠ 0 | h3 : x ≠ 0
+- `hebisch_hebisch_hebisch_2009` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_2049` — failed: unsolved goals | x : ℝ | h1 : 6 * rexp (x * rexp 1 + 2 * x) - rexp 2 ≠ 0 | h2 : 2 * rexp 2 + rexp 3 ≠ 0 | h3 : (0 - 1 / 6) * rexp 2 + rexp (2 * x + x * rexp 1) ≠ 0
+- `hebisch_hebisch_hebisch_2069` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.mul (hasDerivAt_const x 2) | (HasDerivAt.comp x ?m.830 | (HasDerivAt.comp x ?m.841
+- `hebisch_hebisch_hebisch_2081` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_2095` — failed: unsolved goals | x : ℝ | h1 : | (rexp 25 ^ 2 + (2 * x + 2) * rexp 25 + x ^ 2 + 2 * x) * log ((10 * rexp 25 + 10 * x + 20) / (rexp 25 + x)) + | 2 * rexp 25 ^ 2 +
+- `hebisch_hebisch_hebisch_2198` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_2203` — vacuous?: страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype
+- `hebisch_hebisch_hebisch_2286` — failed: unsolved goals | x : ℝ | h1 : x ^ 3 * rexp (1 / 4 * (4 * x ^ 3 - 4 * x ^ 2 - x - 20) / x) + x ^ 3 ≠ 0 | h2 : x ≠ 0 | h3 : rexp (1 / 4 * (4 * x ^ 3 - 4 * x ^ 2 - x - 20) / x) + 1 ≠ 0
+- `hebisch_hebisch_hebisch_2323` — failed: unsolved goals | x : ℝ | h1 : log x ≠ 0 | h2 : x ≠ 0 | h3 : 1 / 16 * log x ^ 8 / rexp x ^ 4 / rexp (x ^ 2) ^ 4 ≠ 0
+- `hebisch_hebisch_hebisch_2331` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_2345` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - 9 / 25) * x - 6 / 25 * x ^ 2 - 1 / 25 * x ^ 3) ?m.326 x | is not definitionally equal to target | HasDerivAt ((fun x => 0 - 9 / 25) * id - (fun x => 6 / 25) * id ^ 2) | (0 * id x + (0 - 9 / 25) * 1 - (0 * (id ^ 2) x + 6 / 25 * (↑2 * id x ^ (2 - 1) * 1))) x
+- `hebisch_hebisch_hebisch_2399` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_2497` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - 2) * x - rexp (2 / x - 5 * x * rexp (rexp (x ^ 2))) - log x) ?m.498 x | is not definitionally equal to target | HasDerivAt ((fun x => 0 - 2) * id - rexp ∘ ((fun x => 2) / id - (fun x => 5) * id * rexp ∘ rexp ∘ (id ^ 2))) | (0 * id x + (0 - 2) * 1 -
+- `hebisch_hebisch_hebisch_25` — failed: unsolved goals | x : ℝ | h1 : rexp 2 - rexp 1 - 10 ≠ 0 | h2 : 0 - 10 - rexp 1 + rexp 2 ≠ 0 | h :
+- `hebisch_hebisch_hebisch_2592` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - 1 - 2 * x - log 3) / (x + x ^ 2) + log (log x)) ?m.461 x | is not definitionally equal to target | HasDerivAt (((fun x => 0 - 1) - (fun x => 2) * id) / (id + id ^ 2) + log ∘ log) | (((0 - (0 * id x + 2 * 1)) * (id + id ^ 2) x -
+- `hebisch_hebisch_hebisch_2605` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_2635` — failed: unsolved goals | x : ℝ | h1 : (x - 2) * rexp (rexp 2 ^ 2 - rexp 1) ^ 2 - 1 ≠ 0 | h2 : 0 - 1 + (0 - 2 + x) * rexp (2 * (0 - rexp 1 + rexp 4)) ≠ 0 | h :
+- `hebisch_hebisch_hebisch_2637` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_2656` — failed: Application type mismatch: The argument | h3 | has type | 0 - 3 - 2 * x + rexp (x ^ 2 * rexp (0 - 2)) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_2690` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_2724` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_2779` — failed: Application type mismatch: The argument | h4 | has type | log (0 - 9 + x + 2 * log 5) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_2888` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_2942` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_2980` — failed: Application type mismatch: The argument | HasDerivAt.add (HasDerivAt.div (hasDerivAt_const x (0 - 4)) (hasDerivAt_id x) h2) (hasDerivAt_id x) | has type | HasDerivAt ((fun x => 0 - 4) / id + id) ((0 * id x - (0 - 4) * 1) / id x ^ 2 + 1) x | but is expected to have type
+- `hebisch_hebisch_hebisch_3027` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_3056` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_310` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3127` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3167` — failed: unsolved goals | x : ℝ | h1 : | 25 * x * log x ^ 4 + ((0 - 50) * x ^ 2 * rexp (rexp 3) - 10 * x ^ 2) * log x ^ 2 + 25 * x ^ 3 * rexp (rexp 3) ^ 2 + | 10 * x ^ 3 * rexp (rexp 3) +
+- `hebisch_hebisch_hebisch_3179` — failed: unsolved goals | x : ℝ | h1 : 9 * x ^ 2 * rexp x ^ 4 + (72 * x ^ 3 + 72 * x ^ 2) * rexp x ^ 2 + 144 * x ^ 4 + 288 * x ^ 3 + 144 * x ^ 2 ≠ 0 | h2 : 9 * x * rexp x ^ 2 + 36 * x ^ 2 + 36 * x ≠ 0 | h3 : 36 * x + 36 * x ^ 2 + 9 * x * rexp (2 * x) ≠ 0
+- `hebisch_hebisch_hebisch_3251` — failed: Application type mismatch: The argument | HasDerivAt.add | (HasDerivAt.add (hasDerivAt_const x (1 / 2)) (HasDerivAt.div (hasDerivAt_const x 1) (hasDerivAt_id x) h2)) | (hasDerivAt_id x) | has type
+- `hebisch_hebisch_hebisch_3271` — failed: Application type mismatch: The argument | h5 | has type | 0 - 1 - rexp (4 / x) + log (rexp x + log (5 - x)) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_3280` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_333` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `hebisch_hebisch_hebisch_3386` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3401` — failed: unsolved goals | x : ℝ | h1 : rexp x * x ^ 3 - 2 * x ^ 5 + 9 * x ^ 3 - 6 * x ^ 2 + 8 * x ≠ 0 | h2 : 9 + 8 / x ^ 2 - 6 / x - 2 * x ^ 2 + rexp x ≠ 0 | h3 : x ^ 2 ≠ 0
+- `hebisch_hebisch_hebisch_3407` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `hebisch_hebisch_hebisch_345` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_3488` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3621` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_3622` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_3626` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => x - log x - log (0 - 2 + 2 / x - x + rexp (2 * x))) ?m.297 x | is not definitionally equal to target | HasDerivAt (id - log) (1 - x⁻¹) x
+- `hebisch_hebisch_hebisch_3652` — failed: Application type mismatch: The argument | h3 | has type | 0 - x + rexp (rexp (4 / x)) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_3674` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3689` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_37` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3717` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_3749` — failed: unsolved goals | x : ℝ | h1 : rexp (x + 9) ≠ 0 | h2 : 5 * x ^ 2 - 10 * x + 5 ≠ 0 | h3 : x - 1 ≠ 0
+- `hebisch_hebisch_hebisch_3814` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_3835` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_3836` — failed: unsolved goals | x : ℝ | h1 : (rexp (x * rexp 1 - 2 * x - 2) - x) * log (log 3) ^ 2 + x ≠ 0 | h2 : log 3 ≠ 0 | h3 : 3 ≠ 0
+- `hebisch_hebisch_hebisch_3848` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_3849` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_3950` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_3975` — failed: unsolved goals | x : ℝ | h1 : rexp x * x ^ 3 + x ^ 4 ≠ 0 | h2 : 2 * rexp x + 2 * x ≠ 0 | h3 : x ≠ 0
+- `hebisch_hebisch_hebisch_4030` — failed: unsolved goals | x : ℝ | h1 : 3 * rexp (x ^ 2 + x) - 3 * x ≠ 0 | h2 : (0 - x) * rexp (x ^ 2 + x) + x ^ 2 ≠ 0 | h3 : 0 - x ≠ 0
+- `hebisch_hebisch_hebisch_4048` — failed: unsolved goals | x : ℝ | h1 : 3 * x ^ 2 * rexp 3 - 8 ≠ 0 | h2 : 0 - 8 + 3 * x ^ 2 * rexp 3 ≠ 0 | h :
+- `hebisch_hebisch_hebisch_4079` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_4170` — failed: unsolved goals | x : ℝ | h1 : rexp x ^ 3 - x ≠ 0 | h2 : 5 ≠ 0 | h3 : 0 - x + rexp (3 * x) ≠ 0
+- `hebisch_hebisch_hebisch_4179` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4184` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4226` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4235` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4239` — failed: Application type mismatch: The argument | h4 | has type | log (0 - 7 + 2 * x) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_4272` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4291` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => x - (0 - 2 - rexp 5) / x - 3 * log x) ?m.197 x | is not definitionally equal to target | HasDerivAt (id - (fun x => 0 - 2 - rexp 5) / id) (1 - (0 * id x - (0 - 2 - rexp 5) * 1) / id x ^ 2) x
+- `hebisch_hebisch_hebisch_4317` — failed: Application type mismatch: The argument | hasDerivAt_log h7 | has type | HasDerivAt log ((5 - 2 * x ^ 3 - 4 * x ^ 2 * log (log 3)) / (x ^ 2 + 2 * x * log (log 3)) + log x)⁻¹ | ((5 - 2 * x ^ 3 - 4 * x ^ 2 * log (log 3)) / (x ^ 2 + 2 * x * log (log 3)) + log x)
+- `hebisch_hebisch_hebisch_4337` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => 8 * x - 8 * log x - 4 * log (0 - 2 / 3 + 1 / 3 * (0 - 5 - x) * rexp x + rexp (2 * x))) ?m.517 x | is not definitionally equal to target | HasDerivAt ((fun x => 8) * id - (fun x => 8) * log) (0 * id x + 8 * 1 - (0 * log x + 8 * x⁻¹)) x
+- `hebisch_hebisch_hebisch_4339` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_4379` — failed: unsolved goals | x : ℝ | h1 : rexp (x ^ 3 * log ((x * log 5 + 45) / x) ^ 2 - 2 * x ^ 4 * log ((x * log 5 + 45) / x) + x ^ 5) ≠ 0 | h2 : (x * log 5 + 45) / x ≠ 0 | h3 : x ≠ 0
+- `hebisch_hebisch_hebisch_4383` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4391` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_4468` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_4478` — failed: unsolved goals | x : ℝ | h1 : rexp (x * rexp (rexp x) - x) - 1 ≠ 0 | h2 : 0 - 1 + rexp (0 - x + x * rexp (rexp x)) ≠ 0 | h :
+- `hebisch_hebisch_hebisch_4582` — failed: Application type mismatch: The argument | h4 | has type | ((0 - 4) * log 2 - 2 * log 3) * log (4 + rexp x) + 4 * log 2 * log 3 + 4 * log 2 ^ 2 + log 3 ^ 2 + | log (4 + rexp x) ^ 2 ≠
+- `hebisch_hebisch_hebisch_4587` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4599` — failed: unsolved goals | x : ℝ | h1 : rexp (1 / 5 * (5 * x * rexp (x - rexp x) + x ^ 2) / rexp x ^ 2) ≠ 0 | h2 : rexp x ^ 2 ≠ 0 | h3 : x ^ 2 ≠ 0
+- `hebisch_hebisch_hebisch_4609` — failed: unsolved goals | x : ℝ | h1 : log (3 / 4) + 2 * x + rexp 4 ≠ 0 | h2 : 3 / 4 ≠ 0 | h3 : 2 * x + rexp 4 + log (3 / 4) ≠ 0
+- `hebisch_hebisch_hebisch_4687` — failed: unsolved goals | x : ℝ | h1 : (12 * x + 16) * rexp x - 3 * x ^ 2 - 4 * x ≠ 0 | h2 : ((0 - 4) * rexp x + x) / (12 * x + 16) ≠ 0 | h3 : 12 * x + 16 ≠ 0
+- `hebisch_hebisch_hebisch_4692` — failed: Application type mismatch: The argument | h2 | has type | log (x * rexp ((0 - (15 - 5 * x)) / (0 - 7 + x + x ^ 3))) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_4709` — failed: unsolved goals | x : ℝ | h1 : x * rexp 11 * rexp x + (0 - x - 7) * rexp 11 - x ^ 4 ≠ 0 | h2 : x ≠ 0 | h3 : 0 - 1 - 7 / x - x ^ 3 * rexp (0 - 11) + rexp x ≠ 0
+- `hebisch_hebisch_hebisch_4719` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_477` — failed: Application type mismatch: The argument | h5 | has type | rexp (2 + x + 25 * x ^ 2 + 50 * x ^ 3 + 25 * x ^ 4) + log (log (3 * x)) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_4842` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4879` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_491` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4926` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_4949` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_4951` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_4979` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5005` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5019` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_5022` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5096` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_5133` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5169` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5198` — failed: 'change' tactic failed, pattern | HasDerivAt | (fun x => | 1 / 8 * | (3 / 2 * x ^ 2 + (24 + 12 * x * rexp (1 / 3)) / x ^ 2 +
+- `hebisch_hebisch_hebisch_5203` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5212` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5235` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_524` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5264` — failed: unsolved goals | x : ℝ | h1 : x * rexp x ^ 2 + (2 * x * log 2 + 12 * x) * rexp x + x * log 2 ^ 2 + 12 * x * log 2 + 36 * x ≠ 0 | h2 : 2 ≠ 0 | h3 : x ≠ 0
+- `hebisch_hebisch_hebisch_5354` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.mul (HasDerivAt.add (hasDerivAt_const x 4) (HasDerivAt.mul (hasDerivAt_const x 8) (hasDerivAt_id x))) | (HasDerivAt.comp x ?m.647 | (HasDerivAt.div (HasDerivAt.mul (hasDerivAt_const x (0 - 5)) (hasDerivAt_id x))
+- `hebisch_hebisch_hebisch_5437` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5453` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_5454` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5479` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5508` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5595` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_564` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => 0 - x - 216 * rexp 8 / x ^ 2 - 72 * rexp 8 / x - 6 * rexp (8 + x)) ?m.351 x | is not definitionally equal to target | HasDerivAt ((fun x => 0) - id - (fun x => 216 * rexp 8) / id ^ 2) | (0 - 1 - (0 * (id ^ 2) x - 216 * rexp 8 * (↑2 * id x ^ (2 - 1) * 1)) / (id ^ 2) x ^ 2) x
+- `hebisch_hebisch_hebisch_5640` — failed: unsolved goals | x : ℝ | h1 : x ≠ 0 | h2 : x / rexp (5 / 3 * log (2 * x) + 5 / 3) ≠ 0 | h3 : rexp (5 / 3 * log (2 * x) + 5 / 3) ≠ 0
+- `hebisch_hebisch_hebisch_5659` — failed: unsolved goals | x : ℝ | h1 : x ^ 3 ≠ 0 | h2 : 1 / 40 * (8 * log 3 * log 5 + 200 * log 3 + 1) / log 3 ≠ 0 | h3 : log 3 ≠ 0
+- `hebisch_hebisch_hebisch_5708` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5744` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.add (HasDerivAt.add (hasDerivAt_const x (0 - 1)) (HasDerivAt.pow (hasDerivAt_id x) 2)) | (HasDerivAt.pow (hasDerivAt_log h2) 2)) | (hasDerivAt_id x) h2
+- `hebisch_hebisch_hebisch_581` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_584` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_5880` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_5898` — failed: unsolved goals | x : ℝ | h1 : rexp (rexp x - x) ^ 2 ≠ 0 | h2 : log 2 ≠ 0 | h3 : 2 ≠ 0
+- `hebisch_hebisch_hebisch_593` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_5996` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6017` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6033` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6071` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - 3) * x + (6 - 10 * x - 2 * x * log 2) / x ^ 2 + 2 * log (1 + x) / x) ?m.614 x | is not definitionally equal to target | HasDerivAt | ((fun x => 0 - 3) * id + ((fun x => 6) - (fun x => 10) * id) / id ^ 2 + (fun x => 2) * log ∘ HAdd.hAdd 1 / id)
+- `hebisch_hebisch_hebisch_6133` — failed: unsolved goals | x : ℝ | h1 : | (x ^ 2 * rexp 9 * rexp ((2 - x) / rexp 9) - 5 * x * rexp 9) * log x * | log ((x * rexp ((2 - x) / rexp 9) - 5) / rexp ((2 - x) / rexp 9)) +
+- `hebisch_hebisch_hebisch_6151` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6193` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.comp x ?m.470 | (HasDerivAt.sub (hasDerivAt_const x 2) (HasDerivAt.mul (hasDerivAt_const x 4) (hasDerivAt_id x)))) | (hasDerivAt_id x) h2
+- `hebisch_hebisch_hebisch_6249` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6255` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_626` — failed: unsolved goals | x : ℝ | h1 : (x ^ 2 - x) * rexp 3 + 3 * x ^ 3 - 2 * x ^ 2 - x ≠ 0 | h2 : 0 - 1 + x ≠ 0 | h3 : x + 3 * x ^ 2 + x * rexp 3 ≠ 0
+- `hebisch_hebisch_hebisch_6304` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6329` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_6338` — failed: Application type mismatch: The argument | h4 | has type | log (2 + x ^ 4) ^ 2 ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_6339` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6357` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6384` — failed: unsolved goals | x : ℝ | h1 : rexp (x - rexp x) - x ^ 4 + 2 * x ^ 3 - x ≠ 0 | h2 : 0 - x + 2 * x ^ 3 - x ^ 4 + rexp (x - rexp x) ≠ 0 | h :
+- `hebisch_hebisch_hebisch_6401` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6451` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6452` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6454` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_6472` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6503` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6515` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6528` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => x - x * log 2 - x * log 2 / log x) ?m.177 x | is not definitionally equal to target | HasDerivAt (id - id * fun x => log 2) (1 - (1 * log 2 + id x * 0)) x
+- `hebisch_hebisch_hebisch_6531` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6576` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_6592` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6611` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_662` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6644` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_6755` — failed: unsolved goals | x : ℝ | h1 : 4 * x ^ 5 - 3 * x ^ 4 + 32 * x ^ 3 - 20 * x ^ 2 ≠ 0 | h2 : 1 / 4 * (4 * x ^ 3 - 3 * x ^ 2 + 32 * x - 20) / x ≠ 0 | h3 : x ≠ 0
+- `hebisch_hebisch_hebisch_6794` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => 1 / 9 * (45 / x ^ 2 - 49 / x - 4 * x) * rexp (0 - 1)) ?m.379 x | is not definitionally equal to target | HasDerivAt ((fun x => 1 / 9) * ((fun x => 45) / id ^ 2 - (fun x => 49) / id) * fun x => rexp (0 - 1)) | ((0 * ((fun x => 45) / id ^ 2 - (fun x => 49) / id) x +
+- `hebisch_hebisch_hebisch_6883` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_69` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_6904` — failed: unsolved goals | x : ℝ | h1 : x * rexp 3 ^ 2 - 8 * x * rexp 3 + 16 * x ≠ 0 | h2 : x ≠ 0 | h3 : 0 - 16 + 8 * rexp 3 - rexp 6 ≠ 0
+- `hebisch_hebisch_hebisch_6958` — failed: unsolved goals | x : ℝ | h1 : (x ^ 2 + x) * log x + 20 * x * rexp ((0 - 2 / 5) * x + 1) - x ^ 2 - x ≠ 0 | h2 : x ≠ 0 | h3 : 1 / 4 * log x * (x + 1) + 5 * rexp ((0 - 2 / 5) * x + 1) - 1 / 4 * x - 1 / 4 ≠ 0
+- `hebisch_hebisch_hebisch_6969` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 3 | has type | HasDerivAt (id ^ 3) (↑3 * id x ^ (3 - 1) * 1) x | but is expected to have type
+- `hebisch_hebisch_hebisch_7016` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7066` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_7084` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_7116` — failed: unsolved goals | x : ℝ | h1 : 2 * rexp 2 + x - 5 ≠ 0 | h2 : rexp 2 + 1 / 2 * x - 5 / 2 ≠ 0 | h3 : 2 ≠ 0
+- `hebisch_hebisch_hebisch_7199` — failed: unsolved goals | x : ℝ | h1 : x * rexp 5 + x ^ 2 ≠ 0 | h2 : x ≠ 0 | h3 : x + rexp 5 ≠ 0
+- `hebisch_hebisch_hebisch_7297` — vacuous?: страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype
+- `hebisch_hebisch_hebisch_7333` — failed: unsolved goals | x : ℝ | h1 : rexp (rexp (2 * x ^ 2) - x + 1) - rexp (log 5 ^ 2 + 6 * log 5 + 9) ≠ 0 | h2 : 5 ≠ 0 | h3 : rexp (1 - x + rexp (2 * x ^ 2)) - rexp (9 + 6 * log 5 + log 5 ^ 2) ≠ 0
+- `hebisch_hebisch_hebisch_7345` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7347` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7463` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_750` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7528` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7578` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7644` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_7692` — failed: Application type mismatch: The argument | h3 | has type | 36 - 11 * x + x ^ 2 + (12 - 2 * x) * log (4 + 3 * x) + log (4 + 3 * x) ^ 2 ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_7737` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7761` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_7772` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7859` — failed: unsolved goals | x : ℝ | h1 : 5 * rexp (6 * x) - 4 ≠ 0 | h2 : 5 * rexp 3 ^ 2 / (5 * rexp (6 * x) - 4) ≠ 0 | h3 : 5 ≠ 0
+- `hebisch_hebisch_hebisch_7900` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_7909` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_7972` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_7990` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_803` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_8061` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_8062` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_810` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8106` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8170` — failed: unsolved goals | x : ℝ | h1 : rexp 2 ^ 2 ≠ 0 | h2 : 5 ≠ 0 | h :
+- `hebisch_hebisch_hebisch_8189` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_8190` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8191` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_8202` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8284` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8413` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8414` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8432` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8474` — failed: unsolved goals | x : ℝ | h1 : rexp (2 * x / (rexp 2 ^ 4 + 1)) ≠ 0 | h2 : rexp 2 ^ 4 + 1 ≠ 0 | h3 : 1 + rexp 8 ≠ 0
+- `hebisch_hebisch_hebisch_851` — failed: unsolved goals | x : ℝ | h1 : | 32 * log x ^ 5 - 80 * rexp (5 / 4) * log x ^ 4 + 80 * rexp (5 / 4) ^ 2 * log x ^ 3 - | 40 * rexp (5 / 4) ^ 3 * log x ^ 2 +
+- `hebisch_hebisch_hebisch_856` — failed: unsolved goals | x : ℝ | h1 : rexp x ≠ 0 | h2 : 0 - rexp (4 * rexp 3 + x + 12) ≠ 0 | h3 : 5 ≠ 0
+- `hebisch_hebisch_hebisch_8566` — failed: 'change' tactic failed, pattern | HasDerivAt | (fun x => | ((0 - 4 / 25) * x * rexp (25 / 2 + x) - 1 / 25 * x ^ 2 * rexp (25 / 2) - 4 / 25 * rexp (25 / 2 + 2 * x)) * | rexp (1 / 18 * ((0 - 30) * x + x ^ 2)) /
+- `hebisch_hebisch_hebisch_8588` — failed: Application type mismatch: The argument | h4 | has type | 0 - 1 + rexp (25 / (x ^ 2 + 2 * log 2)) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_8658` — failed: Application type mismatch: The argument | h3 | has type | log (4 + log (25 + 10 * x - 5 / 4 * rexp x)) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_868` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8712` — failed: Application type mismatch: The argument | Real.hasDerivAt_exp (1 / 5 - x - log 2) | has type | HasDerivAt rexp (rexp (1 / 5 - x - log 2)) (1 / 5 - x - log 2) | but is expected to have type
+- `hebisch_hebisch_hebisch_8740` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8747` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8851` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_8853` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8883` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_889` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `hebisch_hebisch_hebisch_8893` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_8933` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - 16) * x - 3 * x * rexp (0 - 1) - 12 * rexp (0 - 1) / (0 - 2 + x)) ?m.390 x | is not definitionally equal to target | HasDerivAt ((fun x => 0 - 16) * id - (fun x => 3) * id * fun x => rexp (0 - 1)) | (0 * id x + (0 - 16) * 1 - ((0 * id x + 3 * 1) * rexp (0 - 1) + ((fun x => 3) * id) x * 0)) x
+- `hebisch_hebisch_hebisch_8953` — failed: unsolved goals | x : ℝ | h1 : (2 * x - 6) * rexp (1 / 2 * x ^ 3 + 1 / 2 * x) + 2 * log x ≠ 0 | h2 : x ≠ 0 | h3 : x / ((x - 3) * rexp (1 / 2 * x ^ 3 + 1 / 2 * x) + log x) ≠ 0
+- `hebisch_hebisch_hebisch_8955` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_9061` — failed: unsolved goals | x : ℝ | h1 : rexp x - log 3 - x ≠ 0 | h2 : 3 ≠ 0 | h3 : log (rexp x - log 3 - x) ≠ 0
+- `hebisch_hebisch_hebisch_9150` — failed: Application type mismatch: The argument | h2 | has type | (0 - 15 - 10 * x - x ^ 2) / (1 + x) + rexp x ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_9198` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9205` — failed: Application type mismatch: The argument | h2 | has type | x * rexp 3 + rexp (x ^ 4) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_9254` — failed: Application type mismatch: The argument | Real.hasDerivAt_exp (4 - rexp (1 + 2 * log 5 * log x - 3 * log 5) - 3 * log 2) | has type | HasDerivAt rexp (rexp (4 - rexp (1 + 2 * log 5 * log x - 3 * log 5) - 3 * log 2)) | (4 - rexp (1 + 2 * log 5 * log x - 3 * log 5) - 3 * log 2)
+- `hebisch_hebisch_hebisch_9288` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_929` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_9296` — failed: unsolved goals | x : ℝ | h1 : | (27 * x ^ 2 - 2 * x) * log (((0 - 27) * x + 2) / x) * log (log (((0 - 27) * x + 2) / x)) + | ((0 - 108) * x ^ 2 + 8 * x) * log (((0 - 27) * x + 2) / x) ≠
+- `hebisch_hebisch_hebisch_9352` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_9388` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9448` — failed: Application type mismatch: The argument | Real.hasDerivAt_exp (3 - x - rexp (3 - x - rexp (x ^ 4 + x ^ 2 * log (4 + x) ^ 2 - 2 * x ^ 3 * log (4 + x)))) | has type | HasDerivAt rexp (rexp (3 - x - rexp (3 - x - rexp (x ^ 4 + x ^ 2 * log (4 + x) ^ 2 - 2 * x ^ 3 * log (4 + x))))) | (3 - x - rexp (3 - x - rexp (x ^ 4 + x ^ 2 * log (4 + x) ^ 2 - 2 * x ^ 3 * log (4 + x))))
+- `hebisch_hebisch_hebisch_949` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9512` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_9528` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.sub (HasDerivAt.add (hasDerivAt_const x 15) (HasDerivAt.mul (hasDerivAt_const x 3) (hasDerivAt_id x))) | (HasDerivAt.mul (hasDerivAt_const x 3) | (HasDerivAt.comp x ?m.761
+- `hebisch_hebisch_hebisch_9566` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9583` — failed: unsolved goals | x : ℝ | h1 : rexp x ^ 2 + 10 * rexp x + 25 ≠ 0 | h2 : x ≠ 0 | h3 : rexp x + 5 ≠ 0
+- `hebisch_hebisch_hebisch_9605` — failed: Application type mismatch: The argument | h3 | has type | rexp (2 * x) - log (0 - 2 / 5 + 2 * x - x ^ 2) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_9629` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - 3) * x - 5 * x ^ 2 - 2 * x ^ 3 - x ^ 4) ?m.323 x | is not definitionally equal to target | HasDerivAt ((fun x => 0 - 3) * id - (fun x => 5) * id ^ 2) | (0 * id x + (0 - 3) * 1 - (0 * (id ^ 2) x + 5 * (↑2 * id x ^ (2 - 1) * 1))) x
+- `hebisch_hebisch_hebisch_9636` — failed: unsolved goals | x : ℝ | h1 : 12 * log (2 * log 2) + (x ^ 4 + 4 * x ^ 3) * rexp 2 ^ 2 - 4 * x ≠ 0 | h2 : 2 * log 2 ≠ 0 | h3 : 2 ≠ 0
+- `hebisch_hebisch_hebisch_9641` — failed: unsolved goals | x : ℝ | h1 : (50 * x ^ 4 - 40 * x ^ 2 + 8) * rexp 1 - 200 * x ^ 4 + 160 * x ^ 2 - 32 ≠ 0 | h2 : 2 ≠ 0 | h3 : 0 - 4 + rexp 1 ≠ 0
+- `hebisch_hebisch_hebisch_9735` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `hebisch_hebisch_hebisch_9738` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_976` — failed: Application type mismatch: The argument | h2 | has type | 0 - 3 + 3 * x + x ^ 3 + rexp (x + 17 * x ^ 2) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_9789` — failed: unsolved goals | x : ℝ | h1 : | log x ^ 5 + (15 * rexp x - 1295) * log x ^ 4 + (90 * rexp x ^ 2 - 15540 * rexp x + 670810) * log x ^ 3 + | (270 * rexp x ^ 3 - 69930 * rexp x ^ 2 + 6037290 * rexp x - 173739790) * log x ^ 2 +
+- `hebisch_hebisch_hebisch_9808` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `hebisch_hebisch_hebisch_9854` — failed: Application type mismatch: The argument | HasDerivAt.div | (HasDerivAt.sub (HasDerivAt.add (hasDerivAt_const x (0 - 5)) (HasDerivAt.pow (hasDerivAt_id x) 2)) | (HasDerivAt.comp x (hasDerivAt_log h2) (HasDerivAt.mul (hasDerivAt_const x 2) (hasDerivAt_id x)))) | (hasDerivAt_id x) h5
+- `hebisch_hebisch_hebisch_9868` — failed: `simp` made no progress
+- `hebisch_hebisch_hebisch_9890` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_9923` — failed: Application type mismatch: The argument | h5 | has type | 3 * rexp ((0 - 8) / (0 - 3 + 3 * log x)) * log x - 3 * rexp ((0 - 8) / (0 - 3 + 3 * log x)) ≠ 0 | but is expected to have type
+- `hebisch_hebisch_hebisch_9937` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `hebisch_hebisch_hebisch_9971` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `independent_independent_apostol_problems_79` — failed: unsolved goals | x a b : ℝ | h1 : 1 + b ^ 2 / a ^ 2 ≠ 0 | h2 : a ^ 2 ≠ 0 | h3 : a ≠ 0
+- `independent_independent_charlwood_problems_22` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - (1 - x ^ 2) ^ (1 / 2)) / x - (1 - x ^ 2) ^ (1 / 2) * log x / x - arcsin x) ?m.561 x | is not definitionally equal to target | HasDerivAt | (((fun x => 0) - (fun x => x ^ (1 / 2)) ∘ ((fun x => 1) - id ^ 2)) / id -
+- `independent_independent_hearn_problems_178` — failed: `simp` made no progress
+- `independent_independent_hearn_problems_206` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+- `independent_independent_hearn_problems_78` — vacuous?: страж пустых теорем: Tactic `constructor` failed: target is not an inductive datatype
+- `independent_independent_moses_problems_106` — failed: `simp` made no progress
+- `independent_independent_moses_problems_2` — failed: `simp` made no progress
+- `independent_independent_moses_problems_96` — failed: unsolved goals | x : ℝ | h2 : 0 < 6 | h : | HasDerivAt (fun x => 6 ^ (1 / 2) * arctan (6 ^ (1 / 2) * rexp x * (1 / 2)) * (1 / 3))
+- `independent_independent_stewart_problems_114` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_stewart_problems_31` — failed: Application type mismatch: The argument | hasDerivAt_sin (3 * t) | has type | HasDerivAt sin (cos (3 * t)) (3 * t) | but is expected to have type
+- `independent_independent_stewart_problems_334` — failed: unsolved goals | x : ℝ | h1 : 1 - cos x ^ 2 ≠ 0 | h2 : sin x ≠ 0 | h :
+- `independent_independent_stewart_problems_357` — failed: unsolved goals | x : ℝ | h1 : 2 * rexp x + 1 ≠ 0 | h2 : 2 + rexp (0 - x) ≠ 0 | h :
+- `independent_independent_stewart_problems_63` — failed: `simp` made no progress
+- `independent_independent_stewart_problems_89` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_149` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_155` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_22` — failed: unsolved goals | x : ℝ | h1 : x ^ (3 / 2) ≠ 0 | h2 : 0 < x | h3 : x ≠ 0
+- `independent_independent_timofeev_problems_222` — failed: Application type mismatch: The argument | h7 | has type | (2 + x ^ 2) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `independent_independent_timofeev_problems_242` — failed: Application type mismatch: The argument | h2 | has type | (0 - x ^ 2 + 2 * r * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `independent_independent_timofeev_problems_410` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_470` — failed: unsolved goals | x : ℝ | h1 : rexp x + 1 ≠ 0 | h2 : 1 + rexp x ≠ 0 | h :
+- `independent_independent_timofeev_problems_471` — failed: unsolved goals | x : ℝ | h1 : 3 * rexp (4 * x) - 2 * rexp (2 * x) + 1 ≠ 0 | h2 : 0 < 2 | h3 : 1 - 2 * rexp (2 * x) + 3 * rexp (4 * x) ≠ 0
+- `independent_independent_timofeev_problems_479` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `independent_independent_timofeev_problems_485` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `independent_independent_timofeev_problems_491` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_534` — failed: Function expected at | coth | but this term has type | ?m.1
+- `independent_independent_timofeev_problems_578` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `independent_independent_timofeev_problems_616` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `independent_independent_timofeev_problems_85` — failed: unsolved goals | x : ℝ | h2 : 0 < 3 | h3 : 1 - x + x ^ 2 ≠ 0 | hq_h1_h3 : 1 - x * 2 + x ^ 2 * 3 - x ^ 3 * 2 + x ^ 4 ≠ 0
+- `independent_independent_timofeev_problems_9` — failed: `simp` made no progress
+- `independent_independent_welz_problems_71` — failed: Application type mismatch: The argument | h8 | has type | (1 + d * x ^ 3) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `mit_bee_mit_bee_mit_bee_132` — failed: unsolved goals | x : ℝ | h1 : 1 - rexp x ≠ 0 | h2 : 0 - 1 + rexp x ≠ 0 | h :
+- `mit_bee_mit_bee_mit_bee_287` — failed: `simp` made no progress
+- `mit_bee_mit_bee_mit_bee_303` — failed: unsolved goals | x : ℝ | h1 : (1 + 1 / (x - 1) + 1 / (0 - 3 + x) ^ 3 + 1 / (x - 5) ^ 5) ^ 2 ≠ 0 | h2 : x - 1 ≠ 0 | h3 : (0 - 3 + x) ^ 3 ≠ 0
+- `mit_bee_mit_bee_mit_bee_52` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `mit_bee_official_mit_bee_official_mit_bee_official_18` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `mit_bee_official_mit_bee_official_mit_bee_official_186` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `mit_bee_official_mit_bee_official_mit_bee_official_214` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `mit_bee_official_mit_bee_official_mit_bee_official_296` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `mit_bee_official_mit_bee_official_mit_bee_official_339` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `mit_bee_official_mit_bee_official_mit_bee_official_419` — failed: unsolved goals | x : ℝ | h1 : rexp x + 1 ≠ 0 | h2 : 1 + rexp x ≠ 0 | h :
+- `mit_bee_official_mit_bee_official_mit_bee_official_426` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `mit_bee_official_mit_bee_official_mit_bee_official_452` — failed: 'change' tactic failed, pattern | HasDerivAt (fun x => (0 - 2) / x - 2 * log x / x - log x ^ 2 / x) ?m.206 x | is not definitionally equal to target | HasDerivAt ((fun x => 0 - 2) / id - (fun x => 2) * log / id) | ((0 * id x - (0 - 2) * 1) / id x ^ 2 - ((0 * log x + 2 * x⁻¹) * id x - ((fun x => 2) * log) x * 1) / id x ^ 2) x
+- `mit_bee_official_mit_bee_official_mit_bee_official_463` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `mit_bee_official_mit_bee_official_mit_bee_official_468` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `mit_bee_official_mit_bee_official_mit_bee_official_61` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1157` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1161` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1246` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1315` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_133` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1350` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1378` — failed: unsolved goals | x a b c d : ℝ | h1 : a + b * x ≠ 0 | h2 : 0 < c + d * x | h3 : b ^ (3 / 2) ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1405` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1431` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1434` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1455` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_148` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1498` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_150` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1502` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1503` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1519` — failed: Application type mismatch: The argument | h1 | has type | (a + b * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_168` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1825` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_195` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_206` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_213` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_218` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_222` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_234` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_252` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_267` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_303` — failed: unsolved goals | x a b : ℝ | h1 : x ^ 2 ≠ 0 | h2 : 0 < a + b * x | h3 : 0 < a
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_378` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_394` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_458` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_478` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_525` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_543` — failed: Application type mismatch: The argument | h10 | has type | (a + b * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_551` — failed: Application type mismatch: The argument | h7 | has type | (a - b * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_561` — failed: Application type mismatch: The argument | hasDerivAt_arcsin (ne_of_gt h9.left) (ne_of_lt h9.right) | has type | HasDerivAt arcsin (1 / √(1 - (1 / 2 * 2 ^ (1 / 2) * b ^ (1 / 2) * x ^ (1 / 2)) ^ 2)) | (1 / 2 * 2 ^ (1 / 2) * b ^ (1 / 2) * x ^ (1 / 2))
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_567` — failed: Application type mismatch: The argument | h1 | has type | (a + b * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_588` — failed: Application type mismatch: The argument | h1 | has type | (a - b * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_592` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_597` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_62` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_632` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_755` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_798` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_80` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_801` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_847` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_879` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_889` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_892` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1059` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1171` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1187` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_121` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1211` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1216` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1262` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1291` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1296` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1329` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1371` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1508` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1514` — failed: 'change' tactic failed, pattern | HasDerivAt | (fun x => | d * log (c + d * x) / (a ^ 2 * d ^ 2 - b ^ 2 * c ^ 2) - log (a + b * x) / ((0 - 2) * a * b * c + 2 * a ^ 2 * d) - | log (a - b * x) / (2 * a * b * c + 2 * a ^ 2 * d))
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1531` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1541` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1542` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1545` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1579` — failed: maximum number of errors (100; from option `maxErrors`) reached, exiting
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1585` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1599` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_16` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1624` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1635` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1650` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1693` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1768` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1776` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1853` — failed: unsolved goals | x : ℝ | h1 : 3 * x + 2 ≠ 0 | h2 : 0 < 1 - 2 * x | h3 : 0 < 6
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1865` — failed: unsolved goals | x : ℝ | h1 : 3 * x + 2 ≠ 0 | h2 : 0 < 1 - 2 * x | h3 : 0 < 6
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1912` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1913` — failed: unsolved goals | x : ℝ | h1 : 3 * x + 2 ≠ 0 | h2 : 0 < 1 - 2 * x | h3 : 0 < 6
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1922` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_1981` — failed: unsolved goals | x : ℝ | h : | HasDerivAt | (fun x =>
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2062` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2125` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2143` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2228` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2240` — failed: Application type mismatch: The argument | hasDerivAt_arcsin (ne_of_gt h6.left) (ne_of_lt h6.right) | has type | HasDerivAt arcsin (1 / √(1 - (1 / 11 * 2 ^ (1 / 2) * 11 ^ (1 / 2) * (3 + 5 * x) ^ (1 / 2)) ^ 2)) | (1 / 11 * 2 ^ (1 / 2) * 11 ^ (1 / 2) * (3 + 5 * x) ^ (1 / 2))
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2286` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2323` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_234` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2342` — failed: Application type mismatch: The argument | hasDerivAt_arcsin (ne_of_gt h7.left) (ne_of_lt h7.right) | has type | HasDerivAt arcsin (1 / √(1 - (1 / 11 * 2 ^ (1 / 2) * 11 ^ (1 / 2) * (3 + 5 * x) ^ (1 / 2)) ^ 2)) | (1 / 11 * 2 ^ (1 / 2) * 11 ^ (1 / 2) * (3 + 5 * x) ^ (1 / 2))
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2381` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2484` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2513` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2525` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2529` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2537` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2572` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2580` — failed: Application type mismatch: The argument | h7 | has type | (1 - 2 * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2594` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2596` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2598` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_263` — timeout: (deterministic) timeout at `elaborator`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_272` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2977` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_298` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2982` — failed: Application type mismatch: The argument | h16 | has type | (c + d * x) ^ (1 / 3) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2993` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_302` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_319` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_373` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_395` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_457` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_465` — failed: Application type mismatch: The argument | h9 | has type | (a + b * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_467` — failed: Application type mismatch: The argument | h10 | has type | (a + b * x) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_50` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_526` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_540` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_545` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_555` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_577` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_582` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_585` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_613` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_614` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_637` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_664` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_667` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_672` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_681` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_684` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_688` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_706` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_71` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_720` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_728` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_765` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_785` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_821` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_827` — failed: Application type mismatch: The argument | hasDerivAt_arctan ((0 - 1 + x) ^ (1 / 2) * (1 + x) ^ (1 / 2)) | has type | HasDerivAt arctan (1 / (1 + ((0 - 1 + x) ^ (1 / 2) * (1 + x) ^ (1 / 2)) ^ 2)) | ((0 - 1 + x) ^ (1 / 2) * (1 + x) ^ (1 / 2))
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_86` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_96` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_993` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_145` — failed: unsolved goals | x a b c d : ℝ | h1 : x ≠ 0 | h2 : ((0 - d) * x + 1) ^ (1 / 2) ≠ 0 | h3 : (d * x + 1) ^ (1 / 2) ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_147` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_23` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_6_10` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_6_24` — timeout: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_103` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_134` — failed: unsolved goals | x a b : ℝ | h1 : a + b * x ^ 2 ≠ 0 | h2 : a ^ (1 / 2) ≠ 0 | h3 : b ^ (1 / 2) ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_181` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_201` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_216` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_22` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_232` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_257` — failed: unsolved goals | x c d : ℝ | h1 : 0 - c - d + x ^ 2 * (c - d) ≠ 0 | h2 : (c - d) ^ (1 / 2) ≠ 0 | h3 : 0 - c - d ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_274` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_312` — failed: unsolved goals | x : ℝ | h1 : x ^ 2 + 1 ≠ 0 | h2 : 0 < x | h3 : 0 < 2
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_381` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_384` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_393` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_41` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_416` — failed: unsolved goals | x a b : ℝ | h1 : x ^ 3 ≠ 0 | h2 : 0 < a + b * x ^ 2 | h3 : 0 < a
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_447` — failed: unsolved goals | x : ℝ | h1 : x ^ 3 ≠ 0 | h2 : 0 < 4 * x ^ 2 + 9 | h3 : x ^ 2 ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_453` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_467` — failed: unsolved goals | x : ℝ | h1 : x ≠ 0 | h : | HasDerivAt (fun x => (-9 + x ^ 2 * 4) ^ (1 / 2) - arctan ((-9 + x ^ 2 * 4) ^ (1 / 2) * (1 / 3)) * 3)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_50` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_514` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_559` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_583` — failed: Application type mismatch: The argument | h1 | has type | (a - b * x ^ 2) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_73` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_748` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_758` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_79` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_927` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_22` — failed: unsolved goals | x a b c d : ℝ | h1 : a + b * x ^ 2 ≠ 0 | h2 : a ^ (1 / 2) ≠ 0 | h3 : b ^ (3 / 2) ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_37` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_51` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_60` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_75` — failed: Application type mismatch: The argument | h1 | has type | (a + b * x ^ 2) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_84` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1030` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1105` — failed: Function expected at | e1 | but this term has type | ℝ
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_1127` — failed: Function expected at | e1 | but this term has type | ℝ
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_133` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_161` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_183` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_194` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_213` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_216` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_225` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_295` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_34` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_366` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_387` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_393` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_410` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_414` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_514` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_58` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_587` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_59` — failed: unsolved goals | x A B a b : ℝ | h1 : a + b * x ^ 2 ≠ 0 | h2 : 3 ≠ 0 | h3 : b ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_590` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_620` — failed: Application type mismatch: The argument | h12 | has type | (c + d * x ^ 2) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_645` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_671` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_687` — failed: unsolved goals | x a b c d : ℝ | h1 : a + b * x ^ 2 ≠ 0 | h2 : 0 < c + d * x ^ 2 | h3 : 3 ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_691` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_71` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_720` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_732` — failed: Application type mismatch: The argument | h12 | has type | (c + d * x ^ 2) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_736` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_75` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_753` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_775` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_83` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_6_50` — failed: unsolved goals | x A B a b c d : ℝ | h1 : x ≠ 0 | h2 : 0 < c + d * x ^ 2 | h3 : 0 < c
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_127` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_16` — failed: Application type mismatch: The argument | h9 | has type | (a + b * x ^ 2) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_165` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_17` — failed: Application type mismatch: The argument | h7 | has type | (a + b * x ^ 2) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_8_2` — failed: Application type mismatch: The argument | h9 | has type | (a + b * x ^ 2) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1019` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_103` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_107` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1083` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1102` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1111` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_12` — failed: unsolved goals | x b : ℝ | h : | HasDerivAt (fun x => b * x ^ 4 * (b * x ^ 2) ^ (1 / 2) * (1 / 5)) | (b * (x ^ 2 * b) ^ (-1 / 2) * id x * (((fun x => b) * fun x => 1 / 5) * id ^ 4) x +
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1208` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1244` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 5 | has type | HasDerivAt (id ^ 5) (↑5 * id x ^ (5 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1258` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 5 | has type | HasDerivAt (id ^ 5) (↑5 * id x ^ (5 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1260` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1324` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 6 | has type | HasDerivAt (id ^ 6) (↑6 * id x ^ (6 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1431` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1457` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1480` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1581` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1591` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1592` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_16` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1600` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1603` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1617` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1645` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1700` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1745` — failed: unsolved goals | x a b : ℝ | h1 : x ^ (1 / 2) ≠ 0 | h3 : 0 < x | h5 : x ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1766` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1805` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1835` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1852` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1948` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1974` — failed: unsolved goals | x a b : ℝ | h1 : x ^ 3 ≠ 0 | h2 : 0 < a + b / x ^ 3 | h3 : a ^ (1 / 2) ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2021` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2086` — failed: unsolved goals | x a b : ℝ | h1 : 0 < x | h : | HasDerivAt (fun x => a * b * x ^ (7 / 2) * (4 / 7) + a ^ 2 * x ^ 3 * (1 / 3) + b ^ 2 * x ^ 4 * (1 / 4))
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_212` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2130` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2133` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2173` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2191` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2196` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_221` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2211` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2234` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2277` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_246` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_275` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2757` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_303` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_330` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_342` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_417` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_44` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_441` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_458` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_472` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_548` — timeout: (deterministic) timeout at `elaborator`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_549` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_553` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_556` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_599` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_615` — failed: unsolved goals | x a c : ℝ | h1 : a + c * x ^ 4 ≠ 0 | h2 : c ^ 2 ≠ 0 | h3 : c ^ (5 / 2) ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_619` — failed: unsolved goals | x a c : ℝ | h1 : a + c * x ^ 4 ≠ 0 | h2 : 2 ≠ 0 | h3 : a ^ (1 / 2) ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_629` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_630` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_668` — failed: unsolved goals | x : ℝ | h1 : 3 * x ^ 4 + 2 ≠ 0 | h2 : 0 < 6 | h3 : 0 < 216
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_681` — failed: unsolved goals | x a b : ℝ | h1 : 2 * a + 2 * b + x ^ 4 ≠ 0 | h2 : 2 ≠ 0 | h3 : 2 * a + 2 * b ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_687` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_77` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_81` — failed: unsolved goals | x b : ℝ | h2 : x ^ 3 ≠ 0 | h : | HasDerivAt (fun x => -(x * (b * x⁻¹ ^ 3) ^ (1 / 2) * 2))
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_896` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_938` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_138` — failed: unsolved goals | x a b c d : ℝ | h1 : x ≠ 0 | h2 : 0 < a + b / x | h3 : a ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_144` — failed: unsolved goals | x a b c d : ℝ | h1 : (a + b / x) ^ (1 / 2) ≠ 0 | h2 : 0 < a + b / x | h3 : x ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_149` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_165` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_26` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_32` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_150` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_195` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_199` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_29` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_357` — failed: unsolved goals | x a b c d : ℝ | h1 : a + b * x ^ 3 ≠ 0 | h2 : 0 < c + d * x ^ 3 | h3 : b ^ 2 ≠ 0
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_4` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_412` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_414` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_42` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_443` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_550` — failed: Function expected at | e1 | but this term has type | ℝ
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_556` — failed: Function expected at | e1 | but this term has type | ℝ
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_630` — failed: unsolved goals | x a b c d : ℝ | h1 : a + b * x ^ 4 ≠ 0 | h2 : (c + d * x ^ 4) ^ (1 / 2) ≠ 0 | h3 : 0 < c + d * x ^ 4
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_68` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_689` — failed: failed to prove positivity/nonnegativity/nonzeroness | Try this: | [apply] ring_nf
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_779` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_781` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_784` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_97` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_12` — failed: unsolved goals | x : ℝ | h2 : 0 < 3 | h : | HasDerivAt (fun x => 3 ^ (1 / 2) * arctan (3 ^ (1 / 2) * (-1 / 3) + 3 ^ (1 / 2) * x * (2 / 3)) * (2 / 3))
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_153` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_204` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_257` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 3 | has type | HasDerivAt (id ^ 3) (↑3 * id x ^ (3 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_31` — timeout: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_39` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_120` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_169` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_185` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_193` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_196` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_206` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_221` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_250` — failed: Application type mismatch: The argument | h10 | has type | (a * x ^ 2 + b * x ^ 3) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_29` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_310` — failed: Application type mismatch: The argument | h1 | has type | (a * x ^ 3 + b * x ^ 4) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_312` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_344` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_431` — failed: unsolved goals | x : ℝ | h1 : x ^ (3 / 2) + x ^ (1 / 2) ≠ 0 | h2 : 0 < x | h : HasDerivAt (fun x => arctan (x ^ (1 / 2)) * 2) ((1 + (x ^ (1 / 2)) ^ 2)⁻¹ * x ^ (-1 / 2)) x
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_86` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_105` — failed: Application type mismatch: The argument | h12 | has type | (b * x ^ 2 + c * x ^ 4) ^ (1 / 2) ≠ 0 | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_169` — failed: `simp` made no progress
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_189` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (50000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_19` — failed: failed to prove positivity/nonnegativity/nonzeroness
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_26` — unknown: нет вывода #print axioms (таймаут или теорема не объявлена)
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_43` — timeout: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_66` — failed: Application type mismatch: The argument | HasDerivAt.pow (hasDerivAt_id x) 2 | has type | HasDerivAt (id ^ 2) (↑2 * id x ^ (2 - 1) * 1) x | but is expected to have type
+- `rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_75` — failed: failed to prove positivity/nonnegativity/nonzeroness
