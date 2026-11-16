@@ -93,18 +93,29 @@ for (const f of files) {
 
   const errors = new Map(); // id -> первая ошибка теоремы
   const vacuous = new Map(); // id -> первая ошибка стража (гипотезы несовместны либо точка не найдена)
-  for (const l of out.split(/\r?\n/)) {
+  const outLines = out.split(/\r?\n/);
+  for (let i = 0; i < outLines.length; i++) {
+    const l = outLines[i];
     const m = /:(\d+):\d+: error: (.*)$/.exec(l);
     if (!m) continue;
+    // Lean печатает подробности ошибки следующими строками без префикса «файл:строка» —
+    // без них в отчёте LEAN.CLASS видно только «Application type mismatch: The argument».
+    let msg = m[2];
+    for (let k = 1; k <= 4 && i + k < outLines.length; k++) {
+      const nx = outLines[i + k];
+      if (!nx.trim() || /:(\d+):\d+: (error|warning): /.test(nx)) break;
+      msg += ' | ' + nx.trim();
+    }
+    msg = msg.slice(0, 400);
     const line = Number(m[1]);
     const vOwner = vacuousOwner(line);
     if (vOwner) {
-      if (!vacuous.has(vOwner)) vacuous.set(vOwner, m[2].slice(0, 300));
+      if (!vacuous.has(vOwner)) vacuous.set(vOwner, msg);
       continue;
     }
     let owner = null;
     for (const s of starts) if (s.line <= line) owner = s.id;
-    if (owner && !errors.has(owner)) errors.set(owner, m[2].slice(0, 300));
+    if (owner && !errors.has(owner)) errors.set(owner, msg);
   }
   const axioms = new Map(); // id -> [аксиомы]
   for (const l of out.split(/\r?\n/)) {
