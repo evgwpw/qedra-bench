@@ -1,0 +1,334 @@
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_190","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_3_general_t_1_2_3_2_581","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_4_397","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_5_147","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_0_52","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_796","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_1_2_475","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_2_6","reason":"голова csc"}
+{"id":"rubi_rubi_t_8_special_functions_t_8_8_145","reason":"голова polylog"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_3069","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1234","reason":"голова hypergeometric-2f1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_874","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_1445","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_4_251","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_7_7","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_12_290","reason":"голова e1"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_7_90","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_0_33","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_275","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_3_19","reason":"голова Si"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_5_inverse_hyperbolic_secant_t_7_5_2_83","reason":"голова asech"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_934","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2490","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_1069","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_11","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_3_general_t_1_2_3_2_653","reason":"голова appell-f1"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_0_247","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_10_51","reason":"голова fresnel_s"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_1_128","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_1201","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_1502","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_4_2_385","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_1_4_277","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_1_56","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_3_10","reason":"голова gamma"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_7_miscellaneous_t_6_7_1_460","reason":"голова csch"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_7_miscellaneous_t_6_7_1_639","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_4_inverse_hyperbolic_cotangent_t_7_4_2_481","reason":"голова acoth"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2756","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_648","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_6_39","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2619","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_1707","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_2_321","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_0_44","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_0_334","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_12_128","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_1_408","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_6_inverse_cosecant_t_5_6_1_14","reason":"голова acsc"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_5_hyperbolic_secant_t_6_5_3_197","reason":"голова sech"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_5_hyperbolic_secant_t_6_5_7_9","reason":"голова sech"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_7_miscellaneous_t_6_7_1_153","reason":"голова csch"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_7_miscellaneous_t_6_7_1_614","reason":"голова sech"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_308","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_338","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2931","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_1874","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_1569","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_12_143","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_1_2_21","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_3_tangent_t_4_3_7_189","reason":"голова cot"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_7_281","reason":"голова cot"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_3_inverse_tangent_t_5_3_6_369","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_4_inverse_hyperbolic_cotangent_t_7_4_1_26","reason":"голова acoth"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_2871","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_291","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_1601","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_440","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_1_125","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_14","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_3_238","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_3_general_t_1_2_3_2_627","reason":"голова e1"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_2_154","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_4_4","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_3_366","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_5_56","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_816","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_791","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_4_2_223","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_5_103","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_1_hyperbolic_sine_t_6_1_7_6","reason":"голова csch"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_1_hyperbolic_sine_t_6_1_7_266","reason":"голова %i"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_5_hyperbolic_secant_t_6_5_7_50","reason":"голова sech"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_6_inverse_hyperbolic_cosecant_t_7_6_2_38","reason":"голова acsch"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_4_331","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_951","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_364","reason":"голова appell-f1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_460","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_730","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_5_22","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_2_2_80","reason":"голова e1"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_2_1_357","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_3_1_375","reason":"голова sec"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_3_inverse_tangent_t_5_3_2_165","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_860","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_462","reason":"голова %i"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_479","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_120","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_2438","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_569","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_1410","reason":"голова asinh"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_2024","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_427","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_2_exponentials_t_2_3_722","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_0_275","reason":"голова hypergeometric-2f1"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_744","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_2_3_137","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_7_42","reason":"голова sec"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_3_inverse_tangent_t_5_3_4_1163","reason":"голова %i"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2816","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_3_204","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_688","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_1702","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_3_general_t_1_2_3_4_125","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_2_exponentials_t_2_1_66","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_2_61","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_1_2_283","reason":"голова e1"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_2_3_183","reason":"голова sec"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_3_inverse_hyperbolic_tangent_t_7_3_5_40","reason":"голова polylog"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_4_466","reason":"голова appell-f1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_580","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_1034","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_2624","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_3_general_t_1_2_3_2_506","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_0_37","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_1_3_3","reason":"голова cot"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_4_1_4","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_1_2_245","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_2_1_191","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_1072","reason":"голова sec"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_3_inverse_tangent_t_5_3_6_94","reason":"голова %i"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_3_inverse_tangent_t_5_3_6_106","reason":"голова %i"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_4_hyperbolic_cotangent_t_6_4_1_17","reason":"голова coth"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_7_miscellaneous_t_6_7_1_1031","reason":"голова sech"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_3_inverse_hyperbolic_tangent_t_7_3_4_66","reason":"голова polylog"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_3_inverse_hyperbolic_tangent_t_7_3_5_18","reason":"голова polylog"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_360","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_438","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_427","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_2_357","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_2_1099","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_4_65","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_1425","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_1_2_59","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_1_2_491","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_7_133","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_5_199","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_3_hyperbolic_tangent_t_6_3_2_31","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1853","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_510","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_770","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_2691","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_214","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_1408","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_2320","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_2042","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_144","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_4_280","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_3_general_t_1_2_3_2_355","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_2_91","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_3_49","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_0_165","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_12_249","reason":"голова %i"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_3_tangent_t_4_3_0_374","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_0_3","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_0_278","reason":"голова sec"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_5_inverse_secant_t_5_5_1_21","reason":"голова asec"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_6_hyperbolic_cosecant_t_6_6_3_164","reason":"голова csch"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_6_14","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_726","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_562","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_2_146","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_4_328","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_624","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_3_tangent_t_4_3_4_2_6","reason":"голова cot"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_1_2_712","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_771","reason":"голова sec"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_3_inverse_tangent_t_5_3_6_309","reason":"голова %i"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_1014","reason":"голова hypergeometric-2f1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_800","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_415","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_491","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_455","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_2_970","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_3_283","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_2_quartic_t_1_2_2_4_327","reason":"голова e1"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_10_63","reason":"голова fresnel_s"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_4_1_48","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_3_tangent_t_4_3_2_1_24","reason":"голова %i"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_307","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_376","reason":"голова sec"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_3_inverse_tangent_t_5_3_6_179","reason":"голова %i"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_5_hyperbolic_secant_t_6_5_7_63","reason":"голова sech"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_7_miscellaneous_t_6_7_1_720","reason":"голова %i"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_4_44","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_253","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_22","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_3_233","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_490","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_1521","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_2_69","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_5_114","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_1_72","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_0_239","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_3_1_229","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_588","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_7_175","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_2_172","reason":"голова %i"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_5_inverse_secant_t_5_5_1_82","reason":"голова asec"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_1_hyperbolic_sine_t_6_1_7_328","reason":"голова %i"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_4_inverse_hyperbolic_cotangent_t_7_4_2_186","reason":"голова acoth"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_1583","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_564","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_3_191","reason":"голова Ei"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_1_2_297","reason":"голова e1"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_2_2_1086","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_3_1_25","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_4_2_87","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_1_3_79","reason":"голова csc"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_921","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_2_210","reason":"голова sec"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_5_inverse_secant_t_5_5_1_49","reason":"голова asec"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_1_hyperbolic_sine_t_6_1_7_389","reason":"голова %i"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_2_hyperbolic_cosine_t_6_2_7_4","reason":"голова csch"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_3_inverse_hyperbolic_tangent_t_7_3_2_149","reason":"голова polylog"}
+{"id":"rubi_rubi_t_8_special_functions_t_8_9_235","reason":"голова lambert_w"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_2_31","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_827","reason":"голова hypergeometric-2f1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_3_163","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_104","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_1_137","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_408","reason":"голова EllipticE"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_1880","reason":"голова e1"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_3_1_345","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_7_262","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_4_1_188","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_313","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_7_324","reason":"голова sec"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_2_inverse_cosine_t_5_2_5_69","reason":"голова %i"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_4_inverse_hyperbolic_cotangent_t_7_4_2_90","reason":"голова acoth"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_8_57","reason":"голова root-sum"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_827","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_3_miscellaneous_t_1_3_2_352","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_5_230","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_3_175","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_4_2_646","reason":"голова sec"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_2_hyperbolic_cosine_t_6_2_5_37","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_3_hyperbolic_tangent_t_6_3_7_44","reason":"голова csch"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_3_inverse_hyperbolic_tangent_t_7_3_4_37","reason":"голова polylog"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_349","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_411","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_666","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_2484","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_469","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_4_718","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_2_exponentials_t_2_1_44","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_2_exponentials_t_2_3_402","reason":"голова e1"}
+{"id":"rubi_rubi_t_3_logarithms_t_3_1_4_326","reason":"голова polylog"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_5_47","reason":"голова %i"}
+{"id":"rubi_rubi_t_5_inverse_trig_functions_t_5_3_inverse_tangent_t_5_3_4_749","reason":"голова fresnel_s"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_1_hyperbolic_sine_t_6_1_4_19","reason":"голова erf"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_3_inverse_hyperbolic_tangent_t_7_3_6_1125","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_7_inverse_hyperbolic_functions_t_7_4_inverse_hyperbolic_cotangent_t_7_4_1_97","reason":"голова acoth"}
+{"id":"rubi_rubi_t_8_special_functions_t_8_8_93","reason":"голова polylog"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_1_linear_t_1_1_1_3_923","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_2_quadratic_t_1_1_2_2_901","reason":"голова hypergeometric-2f1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_194","reason":"символьный показатель степени"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_3_general_t_1_1_3_2_899","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_1_binomial_products_t_1_1_4_improper_t_1_1_4_2_141","reason":"голова EllipticF"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_2_2339","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_1588","reason":"голова e1"}
+{"id":"rubi_rubi_t_1_algebraic_functions_t_1_2_trinomial_products_t_1_2_1_quadratic_t_1_2_1_3_1724","reason":"вещественная константа (не рациональная)"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_1_sine_t_4_1_7_308","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_2_cosine_t_4_2_3_1_241","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_0_30","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_1_2_498","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_5_secant_t_4_5_7_165","reason":"голова sec"}
+{"id":"rubi_rubi_t_4_trig_functions_t_4_7_miscellaneous_t_4_7_1_97","reason":"голова csc"}
+{"id":"rubi_rubi_t_6_hyperbolic_functions_t_6_1_hyperbolic_sine_t_6_1_1_130","reason":"голова %i"}
+{"id":"independent_independent_welz_problems_72","reason":"голова appell-f1"}
+{"id":"blake_blake_blake_1864","reason":"голова root-sum"}
+{"id":"hebisch_hebisch_hebisch_2363","reason":"символьный показатель степени"}
+{"id":"hebisch_hebisch_hebisch_454","reason":"голова polylog"}
+{"id":"blake_blake_blake_261","reason":"голова hypergeometric-2f1"}
+{"id":"independent_independent_timofeev_problems_450","reason":"символьный показатель степени"}
+{"id":"blake_blake_blake_2033","reason":"голова root-sum"}
+{"id":"hebisch_hebisch_hebisch_3888","reason":"символьный показатель степени"}
+{"id":"hebisch_hebisch_hebisch_6814","reason":"символьный показатель степени"}
+{"id":"independent_independent_welz_problems_65","reason":"голова appell-f1"}
+{"id":"blake_blake_blake_1271","reason":"голова appell-f1"}
+{"id":"blake_blake_blake_2137","reason":"голова root-sum"}
+{"id":"blake_blake_blake_2498","reason":"голова root-sum"}
+{"id":"hebisch_hebisch_hebisch_5793","reason":"символьный показатель степени"}
+{"id":"independent_independent_bondarenko_problems_21","reason":"символьный показатель степени"}
+{"id":"hebisch_hebisch_hebisch_4537===ID","reason":"unsupported error"}
+{"id":"independent_independent_stewart_problems_350","reason":"голова sech"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_125","reason":"символьный показатель степени"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_231","reason":"голова sec"}
+{"id":"blake_blake_blake_2532","reason":"голова EllipticF"}
+{"id":"blake_blake_blake_2662","reason":"голова root-sum"}
+{"id":"blake_blake_blake_2824","reason":"голова root-sum"}
+{"id":"hebisch_hebisch_hebisch_7904","reason":"голова %i"}
+{"id":"blake_blake_blake_2844","reason":"голова appell-f1"}
+{"id":"hebisch_hebisch_hebisch_4739","reason":"голова %i"}
+{"id":"hebisch_hebisch_hebisch_6786","reason":"символьный показатель степени"}
+{"id":"blake_blake_blake_1808","reason":"голова root-sum"}
+{"id":"hebisch_hebisch_hebisch_9900","reason":"символьный показатель степени"}
+{"id":"independent_independent_welz_problems_73","reason":"голова appell-f1"}
+{"id":"blake_blake_blake_2051","reason":"голова root-sum"}
+{"id":"independent_independent_timofeev_problems_488","reason":"символьный показатель степени"}
+{"id":"mit_bee_official_mit_bee_official_mit_bee_official_43","reason":"символьный показатель степени"}
+{"id":"hebisch_hebisch_hebisch_6039===ID","reason":"unsupported error"}
+{"id":"independent_independent_charlwood_problems_30","reason":"голова asec"}
+{"id":"independent_independent_hearn_problems_208","reason":"вещественная константа (не рациональная)"}
+{"id":"independent_independent_hearn_problems_44","reason":"голова root-sum"}
+{"id":"independent_independent_welz_problems_20","reason":"символьный показатель степени"}
+{"id":"hebisch_hebisch_hebisch_3277","reason":"голова %i"}
+{"id":"hebisch_hebisch_hebisch_7880","reason":"символьный показатель степени"}
+{"id":"hebisch_hebisch_hebisch_8966","reason":"символьный показатель степени"}
+{"id":"independent_independent_hearn_problems_89","reason":"символьный показатель степени"}
+{"id":"independent_independent_moses_problems_31","reason":"символьный показатель степени"}
+{"id":"independent_independent_stewart_problems_98","reason":"голова cot"}
+{"id":"independent_independent_moses_problems_69","reason":"голова %i"}
+{"id":"independent_independent_apostol_problems_61","reason":"символьный показатель степени"}
+{"id":"independent_independent_apostol_problems_83","reason":"голова acsc"}
+{"id":"blake_blake_blake_2157","reason":"голова root-sum"}
+{"id":"blake_blake_blake_2966","reason":"голова root-sum"}
+{"id":"blake_blake_blake_2240","reason":"голова root-sum"}
+{"id":"blake_blake_blake_3056","reason":"голова hypergeometric-2f1"}
+{"id":"mit_bee_mit_bee_mit_bee_30","reason":"голова sec"}
+{"id":"blake_blake_blake_1811","reason":"голова root-sum"}
+{"id":"hebisch_hebisch_hebisch_3870","reason":"символьный показатель степени"}
+{"id":"hebisch_hebisch_hebisch_8369","reason":"символьный показатель степени"}
+{"id":"hebisch_hebisch_hebisch_3198","reason":"голова %i"}
