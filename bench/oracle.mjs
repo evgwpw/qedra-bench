@@ -8,7 +8,12 @@ const REAL_POINTS = [-3.7, -2.3, -1.23, -0.77, -0.41, -0.13, 0.07, 0.41, 0.77, 1
 const COMPLEX_POINTS = [[0.6, 0.8], [-1.2, 0.4]];
 // Узкая область определения (√(1−2x)·√(5x+3) — интервал (−0,6; 0,5)): если основных точек вычислилось меньше 7,
 // второй проход — сетка на [−4; 4] шагом 0,1 со сдвигом 0,0137 (не попадает в целые и половины).
-const EXTRA_POINTS = Array.from({ length: 81 }, (_, i) => Math.round((-4 + 0.1 * i + 0.0137) * 1e4) / 1e4);
+// Дальше сетки — несколько точек с большим |x|: log(x − 5), √(x − ln 3) и т. п. вещественны только при больших x
+// (значения, где double переполняется, пропускаются как и прочие невычислимые).
+// exp(exp(c − x)) с c ≈ 55 и т. п. не переполняются только при x ≳ 50; exp(x⁸·e³²) — только при |x| ≲ 0,05.
+const FAR_POINTS = [4.37, 5.13, 6.21, 7.77, 9.3, 12.9, 17.3, 24.1, -4.9, -6.1, -8.3, -12.7,
+  35.3, 44.9, 47.7, 52.6, 58.1, 66.9, 75.1, 83.3, 98.4, 121.3, 150.7, 210.3, 0.0031, 0.0113, 0.0297, 0.0471, -0.0031, -0.0113, -0.0297, -0.0471];
+const EXTRA_POINTS = Array.from({ length: 81 }, (_, i) => Math.round((-4 + 0.1 * i + 0.0137) * 1e4) / 1e4).concat(FAR_POINTS);
 
 const FUNCS = new Set(['sin', 'cos', 'tan', 'cot', 'sec', 'csc', 'asin', 'acos', 'atan', 'acot', 'asec', 'acsc',
   'sinh', 'cosh', 'tanh', 'coth', 'sech', 'csch', 'asinh', 'acosh', 'atanh', 'acoth', 'asech', 'acsch',
@@ -63,6 +68,14 @@ function altSet(params) {
   return obj;
 }
 
+// Производная ответа системой. Производная polylog содержит нераскрытые узлы (diff u x) — вычисление давало nil и
+// ответ с polylog оставался UNVERIFIED; узлы раскрываются тем же diff (аргументы узла: выражение, затем переменная).
+function derivCode(variable, F) {
+  const fx = `(letrec ((fx (lambda (e) (cond ((not (pair? e)) e) ((and (equal? (car e) 'diff) (= (length e) 3)) `
+    + `(fx (diff (caddr e) (cadr e)))) (else (map fx e)))))) (fx (diff '${variable} '${F})))`;
+  return /polylog/.test(F) ? fx : `(diff '${variable} '${F})`;
+}
+
 function valueText(v) {
   if (Array.isArray(v)) return `(+ ${v[0]} (* ${v[1]} %i))`;
   return String(v);
@@ -87,13 +100,28 @@ function valueText(v) {
 //    она расходится и в чистых наборах.
 // «сильное» совпадение должно быть различающим: при |f| ≤ 1e4 допуск TOL·max(1,|f|) ≤ 1e-4, и возмущение
 // порядка 1e-3 (в ответе или в его производной) уже видно.
-const STRONG_MAX = 1e4;
-// и снизу: при |f| < 1e-2 возмущение ×1,001 (невязка < 1e-5) почти не отличается от допуска TOL·1 — такое
-// совпадение ничего не доказывает.
+// Допуск TOL·max(1,|f|) — относительный при |f| ≥ 1, поэтому большие значения не мешают различать возмущение 1e-3:
+// верхней границы «сильного» совпадения нет, кроме границы double (BIG; пилот hebisch: exp(2·e³)-множители ~1e17…1e180).
+const STRONG_MAX = 1e100;
+const BIG = 1e100;
+// Снизу: при |f| < 1e-2 возмущение ×1,001 (невязка < 1e-5) почти не отличается от допуска TOL·1, поэтому там
+// совпадение «сильное» только по относительной невязке |dF − f| ≤ TOL·|f| (и |f| ≥ 1e-200, чтобы не считать нули).
 const STRONG_MIN = 1e-2;
+const TINY_MIN = 1e-200;
+// Маскировка: при |f| ~ 1e40 (exp(e⁶/4 + …)) слагаемое порядка 1 (потерянное «+x», знак у «x») лежит ниже относительной
+// точности double и не видно ни в одной точке. Поэтому хотя бы LOW_NEEDED сильных совпадений должны быть при |f| ≤ LOW_MAX
+// (там возмущение 1e-3 видно); если таких нет, ответ принимает только точная проверка (exactPoints), иначе UNVERIFIED.
+const LOW_MAX = 1e4;
+const LOW_NEEDED = 3;
+function isStrong(av, absErr) {
+  if (av > STRONG_MAX) return false;
+  if (av >= STRONG_MIN) return true;
+  return av >= TINY_MIN && absErr <= TOL * av;
+}
 // порог «достаточно точных совпадений»: по данным пилота верные ответы с ветвями имеют ≥ 21, подделки — 0
 const STRONG_SURE = 20;
 const NOISE_MAX = 1e-5;
+const SOFT_NOISE = 1e-4;
 const NOISE_EXACT = 3;
 const EXACT_BUDGET = 40;
 
@@ -106,7 +134,7 @@ async function judge(sets, exactFn) {
   let unresolved = null;
   const tally = [];
   for (const set of sets) {
-    const t = { values: set.values, match: 0, strong: 0, tolerated: 0, tc: 0, ti: 0, tb: 0, hard: 0, realMatch: 0 };
+    const t = { values: set.values, noise: 0, low: 0, match: 0, strong: 0, tolerated: 0, tc: 0, ti: 0, tb: 0, hard: 0, realMatch: 0 };
     tally.push(t);
     for (const row of set.rows) {
       const fv = toComplex(row[1]);
@@ -114,31 +142,41 @@ async function judge(sets, exactFn) {
       if (!fv || !dv) continue;
       const av = Math.hypot(fv[0], fv[1]);
       const ad = Math.hypot(dv[0], dv[1]);
-      if (!Number.isFinite(av) || !Number.isFinite(ad) || av > 1e7 || ad > 1e7) continue;
+      if (!Number.isFinite(av) || !Number.isFinite(ad) || av > BIG || ad > BIG) continue;
       const Fv = row.length > 3 ? toComplex(row[3]) : null;
       const isC = Array.isArray(row[0]);
       const fReal = isImagSmall(fv, av);
       const err = Math.hypot(dv[0] - fv[0], dv[1] - fv[1]) / Math.max(1, av);
+      const absErr = err * Math.max(1, av);
+      // «сильным» может быть и совпадение комплексных f, dF (подынтегральное комплексно на всей оси, напр. log(log(x/eˣ))):
+      // равенство двух комплексных чисел до 1e-8 различает подделку не слабее вещественного.
       if (err <= TOL) {
         t.match += 1;
-        if (!isC) { t.realMatch += 1; if (fReal && av >= STRONG_MIN && av <= STRONG_MAX) t.strong += 1; }
+        if (!isC) { t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; if (av <= LOW_MAX) t.low += 1; } }
         continue;
       }
       if (isC) { t.tolerated += 1; t.tc += 1; continue; }
       if (!fReal) { t.tolerated += 1; t.ti += 1; continue; }
-      if (isImagSmall(dv, ad) && Fv && !isImagSmall(Fv, Math.hypot(Fv[0], Fv[1]))) { t.tolerated += 1; t.tb += 1; continue; }
+      // другая ветвь: f вещественно, а F комплексно (log/корень отрицательного, log(x)+log(1+x) при x<0 и т. п.);
+      // dF при этом комплексно или вещественно — не важно: решает число сильных совпадений там, где всё вещественно
+      if (Fv && !isImagSmall(Fv, Math.hypot(Fv[0], Fv[1]))) { t.tolerated += 1; t.tb += 1; continue; }
       // жёсткое расхождение: вещественные f, dF, F
-      if (err <= NOISE_MAX && noiseConfirmed >= NOISE_EXACT) { t.match += 1; t.realMatch += 1; if (av >= STRONG_MIN && av <= STRONG_MAX) t.strong += 1; continue; }
+      if (err <= NOISE_MAX && noiseConfirmed >= NOISE_EXACT) { t.match += 1; t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; if (av <= LOW_MAX) t.low += 1; } continue; }
       let ex = 'unknown';
       if (exactCalls < EXACT_BUDGET) {
         exactCalls += 1;
         ex = await exactFn(row[0], set.values);
       }
-      if (ex === 'zero') { if (err <= NOISE_MAX) noiseConfirmed += 1; t.match += 1; t.realMatch += 1; if (av >= STRONG_MIN && av <= STRONG_MAX) t.strong += 1; continue; }
+      if (ex === 'zero') { if (err <= NOISE_MAX) noiseConfirmed += 1; t.match += 1; t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; if (av <= LOW_MAX) t.low += 1; } continue; }
       if (ex === 'nonzero') {
         wrong = { x: row[0], f: row[1], dF: row[2], err, params: set.values };
         return { wrong, tally };
       }
+      // Малое расхождение (< 1e-4, тысячной доли подделки), которое ни точная проверка, ни центральная разность не
+      // подтвердили и не опровергли: шум double у полюса/при сокращении больших слагаемых. Такая точка ничего не
+      // доказывает и не отвергает; ответ принимается только при ≥ 7 сильных совпадениях в остальных точках, а подделка
+      // сильных совпадений (≤ 1e-8) не даёт.
+      if (err <= SOFT_NOISE) { t.noise += 1; continue; }
       t.hard += 1;
       if (!unresolved) unresolved = { x: row[0], f: row[1], dF: row[2], err, params: set.values };
     }
@@ -160,7 +198,15 @@ function decide(j) {
   const tolerated = clean.reduce((s, t) => s + t.tolerated, 0);
   const kinds = { tc: clean.reduce((s, t) => s + t.tc, 0), ti: clean.reduce((s, t) => s + t.ti, 0), tb: clean.reduce((s, t) => s + t.tb, 0) };
   if (clean.length === 0) return { ok: false, reason: 'расхождение в double, точная проверка неубедительна', ...j.unresolved };
-  if (tolerated === 0 && failedSets.length === 0 && match >= 7) return { ok: true, points: match };
+  const noise = clean.reduce((s, t) => s + t.noise, 0);
+  const low = clean.reduce((s, t) => s + t.low, 0);
+  if (low < LOW_NEEDED) return { ok: false, reason: 'меньше 7 различающих точек: сильных совпадений при |f| ≤ 1e4 — ' + low + ' (из ' + strong + ')', points: match, strong, low, noise };
+  // Шумовых точек должно быть мало (≤ ¼ сильных): настоящая малая ошибка (убывающая с |x|, вроде O(e⁻¹⁰)·log) даёт
+  // много неподтверждённых точек вблизи и сильные совпадения лишь вдали.
+  if (noise > 0 && (strong < 7 || noise * 4 > strong)) return { ok: false, reason: 'расхождение в double, точная проверка неубедительна: шумовых точек ' + noise + ', сильных совпадений ' + strong, points: match, strong, noise, ...j.unresolved };
+  // ≥ 3 сильных совпадения обязательны и здесь: если |f| < 1e-2 во всех точках (exp(−20)·…), допуск TOL·max(1,|f|) абсолютный,
+  // и «совпадают» любые ответы, включая подделку ×1,001; сильное совпадение при малом |f| — относительное (1e-8).
+  if (tolerated === 0 && failedSets.length === 0 && match >= 7 && strong >= 3) return { ok: true, points: match, strong, noise };
   if (tolerated === 0 && match < 7) return { ok: false, reason: 'меньше 7 вычислимых точек', points: match, strong, tolerated };
   // Точки «другой ветви» (F комплексно, dF вещественно) не должны преобладать: ветвь — часть вещественной оси,
   // а подделка в области, где F комплексно везде, расходилась бы почти во всех точках.
@@ -181,7 +227,7 @@ async function sampleSet(lisp, f, F, variable, params, values, pts, timeoutMs) {
   // eval-num не считает polylog и lambert_w (их значения — в модуле polylog, polylog-evalf: вещественные аргументы);
   // для остальных выражений вычисление прежнее
   const ev = /polylog|lambert_w/.test(f + F) ? 'num*' : 'eval-num';
-  const code = `(let ((D (diff '${variable} '${F})) (num* (lambda (e) (or (polylog-evalf e) (eval-num e))))) `
+  const code = `(let ((D ${derivCode(variable, F)}) (num* (lambda (e) (or (polylog-evalf e) (eval-num e))))) `
     + `(map (lambda (p) (list p (${ev} (subst (list ${ruleLits}) '${f})) `
     + `(${ev} (subst (list ${ruleLits}) D)) (${ev} (subst (list ${ruleLits}) '${F})))) '(${pointLits})))`;
   const res = await lisp.ask(code, Math.max(timeoutMs, 15000));
@@ -209,7 +255,13 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
   const hasRoots = /root_of|rootsum|root-sum/.test(F);
   const exactFn = hasRoots
     ? (x, values) => fdDiff(lisp, F, f, variable, x, values, params, timeoutMs)
-    : (x, values) => exactDiff(lisp, F, f, variable, x, values, params, timeoutMs);
+    : async (x, values) => {
+      // Шум вычитания в double у верного ответа (производная — сумма больших слагаемых) не должен делать задачу
+      // непроверяемой: независимая сверка — центральная разность самого F (она не использует diff); «zero» — F′ = f
+      // до 1e-6, подделка с возмущением 1e-3 дала бы «nonzero»/«unknown». Опровергает (WRONG) только точная проверка.
+      if (await fdDiff(lisp, F, f, variable, x, values, params, timeoutMs, 0, FD_MAX) === 'zero') return 'zero';
+      return exactDiff(lisp, F, f, variable, x, values, params, timeoutMs);
+    };
   let verdict = null;
   for (const pass of [0, 1]) {
     const base = [...REAL_POINTS, ...COMPLEX_POINTS];
@@ -226,12 +278,58 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
     }
     const d = decide(j);
     if (d.ok) {
-      verdict = { verdict: 'OK', detail: { points: d.points, strong: d.strong, tolerated: d.tolerated, kinds: d.kinds, failed_sets: d.failed_sets } };
+      verdict = { verdict: 'OK', detail: { points: d.points, strong: d.strong, tolerated: d.tolerated, kinds: d.kinds, failed_sets: d.failed_sets, noise: d.noise } };
       break;
     }
     verdict = { verdict: 'UNVERIFIED', detail: d };
   }
+  // Значения двойной точности переполняются во всех точках (exp(exp(16)), exp(x⁸·e³²), exp((2e²⁵/x)²) …): число
+  // доказывается точно — D − f тождественно 0 при подстановке рациональной точки (simplify, а при остатке — expand).
+  // Нужно ≥ 5 различных точек с точным нулём; любой точный ненуль — WRONG. Подделка в такой точке не обнуляется.
+  if (verdict && verdict.verdict === 'UNVERIFIED' && /^меньше 7/.test(verdict.detail.reason || '')) {
+    const ex = await exactPoints(lisp, F, f, variable, params, exactFn0(lisp, F, f, variable, params, timeoutMs));
+    if (ex.wrong) return { verdict: 'WRONG', detail: { x: ex.wrong, exact: true, points: 0 } };
+    if (ex.zeros >= EXACT_POINTS_NEEDED) return { verdict: 'OK', detail: { how: 'exact', exact_zeros: ex.zeros, points: verdict.detail.points } };
+    verdict.detail.exact_zeros = ex.zeros;
+  }
+  // Остались неразрешённые «жёсткие» точки (шум double у полюса, сокращение больших слагаемых, D вычисляется как 0 при
+  // переполнении промежуточных величин). Независимая сверка без diff: центральная разность самого F в 12 точках;
+  // принимается при ≥ 8 «zero» (F′ = f до 1e-6) и ни одном «nonzero». Подделка с возмущением 1e-3 даёт «nonzero».
+  if (verdict && verdict.verdict === 'UNVERIFIED' && /^расхождение/.test(verdict.detail.reason || '')) {
+    const values = paramSets(params)[0];
+    let zeros = 0;
+    let nonzero = 0;
+    for (const x of FD_X) {
+      const r = await fdDiff(lisp, F, f, variable, x, values, params, timeoutMs, STRONG_MIN, FD_MAX);
+      if (r === 'zero') zeros += 1; else if (r === 'nonzero') nonzero += 1;
+    }
+    if (nonzero === 0 && zeros >= 8) return { verdict: 'OK', detail: { how: 'fd', fd_zeros: zeros, points: verdict.detail.points } };
+    verdict.detail.fd_zeros = zeros;
+    verdict.detail.fd_nonzero = nonzero;
+  }
   return verdict;
+}
+
+const FD_MAX = 100;
+const FD_X = [0.31, 0.77, 1.23, 1.7, 1.91, 2.9, 0.41, 2.67, 3.7, 5.5, 9.1, 0.07];
+
+const EXACT_POINTS_NEEDED = 5;
+const EXACT_X = [0.77, 1.23, 1.91, 0.41, 2.67, 3.7, 0.07, 1.57];
+function exactFn0(lisp, F, f, variable, params, timeoutMs) {
+  const values = paramSets(params)[0];
+  return (x) => exactDiff(lisp, F, f, variable, x, values, params, timeoutMs);
+}
+async function exactPoints(lisp, F, f, variable, params, fn) {
+  if (/root_of|rootsum|root-sum/.test(F)) return { zeros: 0 };
+  let zeros = 0;
+  let unknownRun = 0;
+  for (const x of EXACT_X) {
+    const r = await fn(x);
+    if (r === 'zero') { zeros += 1; unknownRun = 0; } else if (r === 'nonzero') return { zeros, wrong: x };
+    else { unknownRun += 1; if (unknownRun >= 3 && zeros === 0) break; }
+    if (zeros >= EXACT_POINTS_NEEDED) break;
+  }
+  return { zeros };
 }
 
 // десятичное число (-2.3, 0.7) → точная дробь «-23/10»; экспонента или нечисло — null
@@ -256,8 +354,8 @@ async function exactDiff(lisp, F, f, variable, xVal, values, params, timeoutMs) 
     if (!pr) return 'unknown';
     rules.push(`(list '${p} ${pr})`);
   }
-  const code = `(let* ((D (diff '${variable} '${F})) (r (list ${rules.join(' ')}))) `
-    + `(simplify (- (subst r D) (subst r '${f}))))`;
+  const code = `(let* ((D ${derivCode(variable, F)}) (r (list ${rules.join(' ')}))) `
+    + `(let ((s (simplify (- (subst r D) (subst r '${f}))))) (if (pair? s) (simplify (expand s)) s)))`;
   const res = await lisp.ask(code, Math.max(timeoutMs, 30000));
   if (!res.ans || typeof res.ans.result !== 'string') return 'unknown';
   const t = res.ans.result.trim();
@@ -268,12 +366,13 @@ async function exactDiff(lisp, F, f, variable, xVal, values, params, timeoutMs) 
 
 // Для ответов с root-sum: (F(x+h) − F(x−h))/(2h) против f(x). 'zero' — совпали до 1e-6, 'nonzero' — расходятся
 // больше чем на 1e-3 (отн. к max(1,|f|)), иначе / комплексные значения / нет значений — 'unknown'.
-async function fdDiff(lisp, F, f, variable, xVal, values, params, timeoutMs) {
+async function fdDiff(lisp, F, f, variable, xVal, values, params, timeoutMs, minAbsF = 0, maxAbsF = Infinity) {
   if (typeof xVal !== 'number') return 'unknown';
   const h = 1e-4;
   const rules = (xv) => `(list ${[`(list '${variable} ${xv})`].concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ')})`;
-  const code = `(list (eval-num (subst ${rules(xVal)} '${f})) (eval-num (subst ${rules(xVal + h)} '${F})) `
-    + `(eval-num (subst ${rules(xVal - h)} '${F})))`;
+  const code = `(let ((num* (lambda (e) (or (polylog-evalf e) (eval-num e))))) `
+    + `(list (num* (subst ${rules(xVal)} '${f})) (num* (subst ${rules(xVal + h)} '${F})) `
+    + `(num* (subst ${rules(xVal - h)} '${F}))))`;
   const res = await lisp.ask(code, Math.max(timeoutMs, 30000));
   if (!res.ans || typeof res.ans.result !== 'string') return 'unknown';
   let rows;
@@ -284,12 +383,18 @@ async function fdDiff(lisp, F, f, variable, xVal, values, params, timeoutMs) {
   const av = Math.hypot(a[0], a[1]);
   const bv = Math.hypot(b[0], b[1]);
   if (!isImagSmall(fv, Math.hypot(fv[0], fv[1])) || !isImagSmall(a, av) || !isImagSmall(b, bv)) return 'unknown';
+  // при малом |f| допуск max(1,|f|) абсолютный и ничего не различает: такая точка «unknown»
+  if (Math.abs(fv[0]) < minAbsF) return 'unknown';
+  // при большом |f| допуск 1e-6·|f| шире возмущения 1e-3 (абсолютного): центральная разность там ничего не доказывает
+  if (Math.abs(fv[0]) > maxAbsF) return 'unknown';
   const fd = (a[0] - b[0]) / (2 * h);
   const err = Math.abs(fd - fv[0]) / Math.max(1, Math.abs(fv[0]));
   if (err <= 1e-6) return 'zero';
   if (err >= 1e-3) return 'nonzero';
   return 'unknown';
 }
+
+export { judge, decide, sampleSet, paramSets, altSet, exactDiff, fdDiff, toComplex, REAL_POINTS, COMPLEX_POINTS, EXTRA_POINTS };
 
 function toComplex(v) {
   if (typeof v === 'number') return [v, 0];
