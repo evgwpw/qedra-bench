@@ -169,7 +169,8 @@ async function judge(sets, exactFn) {
       // и даёт F′ = −f. Точка не отвергает сразу; итог — после цикла (полуось должна быть одна, на другой — ≥ 7 сильных).
       if (isImagSmall(dv, ad) && av >= STRONG_MIN && av <= STRONG_MAX
         && Math.hypot(dv[0] + fv[0], dv[1] + fv[1]) <= TOL * Math.max(1, av)) {
-        t.tolerated += 1; t.tb += 1; t.tm += 1;
+        // точка не подтверждает ответ: считается расхождением (hard) — набор с ней не «чистый», OK не выйдет
+        t.hard += 1; t.tm += 1;
         mirror.push({ x: row[0], f: row[1], dF: row[2], err, params: set.values });
         continue;
       }
@@ -204,7 +205,10 @@ async function judge(sets, exactFn) {
     const mside = 'neg';
     const other = 'pos';
     if (bad || strongSide[other] < 7 || strongSide[mside] > 0) {
-      return { wrong: mirror[0], tally };
+      // не «потерян |x|»: зеркальность от знака параметров (asin(x/a) при a < 0 и т. п.) — как прежде: не доказано,
+      // ответ не подтверждён (UNVERIFIED), а не WRONG (пилот 82d21b4: 124 таких ответа стали ложными WRONG)
+      if (!unresolved) unresolved = mirror[0];
+      return { wrong, unresolved, tally };
     }
     // ответ верен лишь при x > 0 (потерян |x|) — по правилу INT.BR это ложный ответ: WRONG, пометка — для диагностики
     halfline = { valid: 'x>0', mirrored: mirror.length, strong_on_valid_side: strongSide[other] };
