@@ -133,8 +133,12 @@ async function judge(sets, exactFn) {
   let wrong = null;
   let unresolved = null;
   const tally = [];
+  // Зеркальные точки (см. ниже) и стороны оси, на которых были сильные совпадения.
+  const strongSide = { neg: 0, pos: 0 };
+  const side = (x) => { if (typeof x === 'number') strongSide[x < 0 ? 'neg' : 'pos'] += 1; };
+  const mirror = [];
   for (const set of sets) {
-    const t = { values: set.values, noise: 0, low: 0, match: 0, strong: 0, tolerated: 0, tc: 0, ti: 0, tb: 0, hard: 0, realMatch: 0 };
+    const t = { values: set.values, noise: 0, low: 0, match: 0, strong: 0, tolerated: 0, tc: 0, ti: 0, tb: 0, tm: 0, hard: 0, realMatch: 0 };
     tally.push(t);
     for (const row of set.rows) {
       const fv = toComplex(row[1]);
@@ -152,7 +156,7 @@ async function judge(sets, exactFn) {
       // равенство двух комплексных чисел до 1e-8 различает подделку не слабее вещественного.
       if (err <= TOL) {
         t.match += 1;
-        if (!isC) { t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; if (av <= LOW_MAX) t.low += 1; } }
+        if (!isC) { t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; side(row[0]); if (av <= LOW_MAX) t.low += 1; } }
         continue;
       }
       if (isC) { t.tolerated += 1; t.tc += 1; continue; }
@@ -160,14 +164,23 @@ async function judge(sets, exactFn) {
       // другая ветвь: f вещественно, а F комплексно (log/корень отрицательного, log(x)+log(1+x) при x<0 и т. п.);
       // dF при этом комплексно или вещественно — не важно: решает число сильных совпадений там, где всё вещественно
       if (Fv && !isImagSmall(Fv, Math.hypot(Fv[0], Fv[1]))) { t.tolerated += 1; t.tb += 1; continue; }
+      // зеркальная точка: все вещественные, dF = −f до TOL (знак производной обратный). Так выглядит ответ, записанный
+      // через (a + b/x)^(1/4) вместо (a·x⁴ + b·x³)^(1/4) = |x|·(a + b/x)^(1/4): он верен при x > 0, а при x < 0 теряет |x|
+      // и даёт F′ = −f. Точка не отвергает сразу; итог — после цикла (полуось должна быть одна, на другой — ≥ 7 сильных).
+      if (isImagSmall(dv, ad) && av >= STRONG_MIN && av <= STRONG_MAX
+        && Math.hypot(dv[0] + fv[0], dv[1] + fv[1]) <= TOL * Math.max(1, av)) {
+        t.tolerated += 1; t.tb += 1; t.tm += 1;
+        mirror.push({ x: row[0], f: row[1], dF: row[2], err, params: set.values });
+        continue;
+      }
       // жёсткое расхождение: вещественные f, dF, F
-      if (err <= NOISE_MAX && noiseConfirmed >= NOISE_EXACT) { t.match += 1; t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; if (av <= LOW_MAX) t.low += 1; } continue; }
+      if (err <= NOISE_MAX && noiseConfirmed >= NOISE_EXACT) { t.match += 1; t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; side(row[0]); if (av <= LOW_MAX) t.low += 1; } continue; }
       let ex = 'unknown';
       if (exactCalls < EXACT_BUDGET) {
         exactCalls += 1;
         ex = await exactFn(row[0], set.values);
       }
-      if (ex === 'zero') { if (err <= NOISE_MAX) noiseConfirmed += 1; t.match += 1; t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; if (av <= LOW_MAX) t.low += 1; } continue; }
+      if (ex === 'zero') { if (err <= NOISE_MAX) noiseConfirmed += 1; t.match += 1; t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; side(row[0]); if (av <= LOW_MAX) t.low += 1; } continue; }
       if (ex === 'nonzero') {
         wrong = { x: row[0], f: row[1], dF: row[2], err, params: set.values };
         return { wrong, tally };
@@ -180,6 +193,22 @@ async function judge(sets, exactFn) {
       t.hard += 1;
       if (!unresolved) unresolved = { x: row[0], f: row[1], dF: row[2], err, params: set.values };
     }
+  }
+  // Итог по зеркальным точкам: любая зеркальная точка — WRONG (ответ верен не везде, где f вещественна). Если они все при
+  // x < 0, а при x > 0 есть ≥ 7 сильных совпадений и ни одного зеркального, в detail добавляется halfline (диагностика).
+  let halfline = null;
+  if (mirror.length > 0) {
+    const sides = new Set(mirror.map((m) => (typeof m.x === 'number' && m.x < 0 ? 'neg' : 'pos')));
+    // допускается только «верно при x > 0» (потерян |x|); обратное (верно при x < 0, например −F) — не засчитывается
+    const bad = sides.size !== 1 || !sides.has('neg');
+    const mside = 'neg';
+    const other = 'pos';
+    if (bad || strongSide[other] < 7 || strongSide[mside] > 0) {
+      return { wrong: mirror[0], tally };
+    }
+    // ответ верен лишь при x > 0 (потерян |x|) — по правилу INT.BR это ложный ответ: WRONG, пометка — для диагностики
+    halfline = { valid: 'x>0', mirrored: mirror.length, strong_on_valid_side: strongSide[other] };
+    return { wrong: { ...mirror[0], halfline }, tally };
   }
   return { wrong, unresolved, tally };
 }
@@ -220,10 +249,22 @@ function decide(j) {
   return { ok: false, reason: 'правило ветвей: точек другой ветви (' + kinds.tb + ') больше точных совпадений (' + strong + '), а их меньше ' + STRONG_SURE, points: match, strong, tolerated, kinds };
 }
 
+// Ответ с суммой по корням (root-sum): eval-num находит корни многочлена Q(t) в double и уточняет их многоразрядным
+// Ньютоном только при точных коэффициентах. При параметрах-дробях (подстановка до eval-num) коэффициенты точные;
+// при параметрах double (a ≈ b: коэффициенты старшего порядка ∝ (a − b)) корни теряют разряды, и верный ответ даёт
+// F′ ≠ f на 1e-3…1 (rubi t_6_1_7/243: невязка 0,0024 при a = 0,906, b = 0,866; при дробях — 1e-13). Поэтому для таких
+// ответов параметры и точки подставляются десятичными дробями (литерал «n/10^k»), если число записывается десятичной дробью.
+const ROOTS_RE = /root_of|rootsum|root-sum/;
+function numLit(v, exact) {
+  if (exact && typeof v === 'number') return decimalToFraction(v) || String(v);
+  return String(v);
+}
+
 async function sampleSet(lisp, f, F, variable, params, values, pts, timeoutMs) {
-  const pointLits = pts.map(valueText).join(' ');
+  const exact = ROOTS_RE.test(F);
+  const pointLits = pts.map((p) => (Array.isArray(p) ? valueText(p) : numLit(p, exact))).join(' ');
   const ruleLits = [`(list '${variable} p)`]
-    .concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ');
+    .concat(params.map((p) => `(list '${p} ${numLit(values[p], exact)})`)).join(' ');
   // eval-num не считает polylog и lambert_w (их значения — в модуле polylog, polylog-evalf: вещественные аргументы);
   // для остальных выражений вычисление прежнее
   const ev = /polylog|lambert_w/.test(f + F) ? 'num*' : 'eval-num';
@@ -369,10 +410,24 @@ async function exactDiff(lisp, F, f, variable, xVal, values, params, timeoutMs) 
 async function fdDiff(lisp, F, f, variable, xVal, values, params, timeoutMs, minAbsF = 0, maxAbsF = Infinity) {
   if (typeof xVal !== 'number') return 'unknown';
   const h = 1e-4;
-  const rules = (xv) => `(list ${[`(list '${variable} ${xv})`].concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ')})`;
+  const exact = ROOTS_RE.test(F);
+  const rules = (xv) => `(list ${[`(list '${variable} ${xv})`].concat(params.map((p) => `(list '${p} ${numLit(values[p], exact)})`)).join(' ')})`;
+  // x ± h дробями (десятичная запись x не длиннее 4 знаков → шаг 1e-4 попадает в ту же сетку); иначе числом double
+  const xr = exact ? decimalToFraction(xVal) : null;
+  let xPlus = xVal + h;
+  let xMinus = xVal - h;
+  if (xr) {
+    const [nStr, dStr] = xr.split('/');
+    const k = dStr.length - 1;
+    const sc = 10n ** BigInt(Math.max(k, 4));
+    const X = BigInt(nStr) * (sc / 10n ** BigInt(k));
+    const H = sc / 10n ** 4n;
+    xPlus = `${X + H}/${sc}`;
+    xMinus = `${X - H}/${sc}`;
+  }
   const code = `(let ((num* (lambda (e) (or (polylog-evalf e) (eval-num e))))) `
-    + `(list (num* (subst ${rules(xVal)} '${f})) (num* (subst ${rules(xVal + h)} '${F})) `
-    + `(num* (subst ${rules(xVal - h)} '${F}))))`;
+    + `(list (num* (subst ${rules(numLit(xVal, exact))} '${f})) (num* (subst ${rules(xPlus)} '${F})) `
+    + `(num* (subst ${rules(xMinus)} '${F}))))`;
   const res = await lisp.ask(code, Math.max(timeoutMs, 30000));
   if (!res.ans || typeof res.ans.result !== 'string') return 'unknown';
   let rows;
