@@ -78,5 +78,19 @@ if (rubi) {
 }
 const totals = VERDICTS.map((v) => [v, recs.filter((r) => r.verdict === v).length]).filter(([, n]) => n);
 lines.push('', 'Итого: ' + totals.map(([v, n]) => `${v}=${n}`).join(', ') + ` (всего ${recs.length}).`, '');
+// перезапуски процессов Lisp (поле restart записи: причины через запятую) и прогревы (поле warmup_ms)
+const byReason = new Map();
+let restarts = 0;
+for (const r of recs) {
+  if (!r.restart) continue;
+  for (const reason of String(r.restart).split(',')) {
+    restarts += 1;
+    byReason.set(reason, (byReason.get(reason) || 0) + 1);
+  }
+}
+const warm = recs.filter((r) => typeof r.warmup_ms === 'number');
+const warmAvg = warm.length ? Math.round(warm.reduce((a, r) => a + r.warmup_ms, 0) / warm.length) : 0;
+const reasons = [...byReason.entries()].sort().map(([k, n]) => `${k} ${n}`).join(', ');
+lines.push(`Перезапуски: ${restarts}${reasons ? ' (' + reasons + ')' : ''}, прогревов ${warm.length}, среднее время прогрева ${warmAvg} мс.`, '');
 fs.writeFileSync(path.join(out, 'SUMMARY.md'), lines.join('\n') + '\n');
 console.log('готово:', recs.length, 'записей →', out);

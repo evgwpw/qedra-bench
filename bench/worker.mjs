@@ -29,7 +29,8 @@ async function run(task, timeoutSec) {
     ? `integrate(${text}, ${task.variable}, ${task.lower}, ${task.upper})`
     : `${FN}(${text}, ${task.variable})`;
   const r = await lisp.math(code, timeoutMs);
-  if (r.timeout) return { ...base, status: 'timeout', verdict: 'TIMEOUT', ms: timeoutMs, pretty: null };
+  // ms — бюджет (как раньше, его читают другие скрипты), ms_real — фактическое время до ответа/страховки
+  if (r.timeout) return { ...base, status: 'timeout', verdict: 'TIMEOUT', ms: timeoutMs, ms_real: r.ms, pretty: null };
   if (r.failed || !r.ans) return { ...base, status: 'error', verdict: 'ERROR', detail: r.why || 'нет ответа', ms: r.ms || 0, pretty: null };
   const ans = r.ans;
   const pretty = ans.pretty || '';
@@ -124,5 +125,7 @@ parentPort.on('message', async ({ task, timeoutSec }) => {
       status: 'error', verdict: 'ERROR', detail: String(err && err.message || err), ms: 0,
     };
   }
+  // перезапуски и прогрев, случившиеся до/во время этой задачи (включая проверки оракула)
+  rec = { ...rec, ...lisp.takeMeta() };
   parentPort.postMessage(rec);
 });
