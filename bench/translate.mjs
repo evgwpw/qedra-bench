@@ -13,14 +13,36 @@ const KEEP = new Set([
   'gamma', 'abs', 'BesselJ', 'BesselY', 'BesselI', 'BesselK',
   'AiryAi', 'AiryBi', 'AiryAiPrime', 'AiryBiPrime',
   'LegendreP', 'LegendreQ', 'EllipticF', 'EllipticE', 'EllipticK', 'EllipticPi',
-  'piecewise', 'polylog',
+  'piecewise', 'polylog', 'binomial',
 ]);
 const ATOMS = { pi: 'pi', oo: 'inf', E: 'e', I: '%i' };
 const UNSUPPORTED = new Set([
-  'RootSum', 'Lambda', 'Sum', 'Derivative', 'Integral', 'Limit', 'Product',
+  'RootSum', 'Lambda', 'Sum', 'Integral', 'Limit', 'Product',
   'zoo', 'nan', 'GoldenRatio', 'EulerGamma', 'Catalan',
 ]);
 const IDENT = /[A-Za-z_][A-Za-z_0-9]*/y;
+
+// Вызовы, переводимые построением текста из уже переведённых аргументов (parts) и исходных (raw); null — отказ.
+const SPECIAL = {
+  // Rational(p, q) → p/q
+  Rational: (p) => (p.length === 2 ? `((${p[0]})/(${p[1]}))` : null),
+  // cbrt(x) в SymPy — главная ветвь x^(1/3)
+  cbrt: (p) => (p.length === 1 ? `((${p[0]})^(1/3))` : null),
+  // real_root(x, n) — вещественный корень: для нечётного целого n sign(x)·|x|^(1/n); иначе отказ
+  real_root: (p, raw) => {
+    if (p.length !== 2 || !/^\s*[1-9]\d*\s*$/.test(raw[1])) return null;
+    const n = Number(raw[1]);
+    if (n % 2 === 0) return null;
+    return n === 1 ? `(${p[0]})` : `(sign(${p[0]})*abs(${p[0]})^(1/${n}))`;
+  },
+  // Derivative(f, x) → diff(f, x); Derivative(f, (x, n)) → diff(f, x, n)
+  Derivative: (p, raw) => {
+    if (p.length !== 2) return null;
+    const m = /^\s*\(\s*([A-Za-z_]\w*)\s*,\s*(\d+)\s*\)\s*$/.exec(raw[1]);
+    if (m) return `diff(${p[0]}, ${m[1]}, ${m[2]})`;
+    return /^\s*[A-Za-z_]\w*\s*$/.test(raw[1]) ? `diff(${p[0]}, ${p[1]})` : null;
+  },
+};
 
 // Разбор вызова f(a, b, ...) с позиции открывающей скобки: → { args, end } | null (end — после закрывающей).
 function callArgs(s, open) {
@@ -76,6 +98,22 @@ function translateWith(s, aliasIn) {
       }
       // polygamma(n, x) → psi(x, n): порядок аргументов обратный
       out += name === 'zeta' ? `zeta(${parts[0]})` : `psi(${parts[1]}, ${parts[0]})`;
+      i = call.end;
+      continue;
+    }
+    if (nxt === '(' && SPECIAL[name]) {
+      const call = callArgs(s, j);
+      if (!call) return { text: null, why: `функция ${name}`, renames: {} };
+      const parts = [];
+      for (const a of call.args) {
+        const r = translateWith(a, alias);
+        if (r.text === null) return r;
+        Object.assign(renames, r.renames);
+        parts.push(r.text.trim());
+      }
+      const built = SPECIAL[name](parts, call.args);
+      if (built === null) return { text: null, why: `функция ${name}`, renames: {} };
+      out += built;
       i = call.end;
       continue;
     }
