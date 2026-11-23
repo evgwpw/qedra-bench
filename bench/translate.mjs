@@ -88,8 +88,8 @@ function translateWith(s, aliasIn) {
     if (nxt === '(' && (name === 'polygamma' || name === 'zeta')) {
       const call = callArgs(s, j);
       if (!call) return { text: null, why: `функция ${name}`, renames: {} };
-      // zeta(s, a) (Гурвица) в системе нет: ни значения, ни производной; zeta(s) — как есть
-      if (name === 'zeta' && call.args.length !== 1) return { text: null, why: 'функция zeta(s, a)', renames: {} };
+      // zeta(s) и zeta(s, a) (Гурвица) — как есть (в системе: производная, eval-num, связь с psi)
+      if (name === 'zeta' && call.args.length !== 1 && call.args.length !== 2) return { text: null, why: 'функция zeta', renames: {} };
       if (name === 'polygamma' && call.args.length !== 2) return { text: null, why: 'функция polygamma', renames: {} };
       const parts = [];
       for (const a of call.args) {
@@ -99,7 +99,7 @@ function translateWith(s, aliasIn) {
         parts.push(r.text);
       }
       // polygamma(n, x) → psi(x, n): порядок аргументов обратный
-      out += name === 'zeta' ? `zeta(${parts[0]})` : `psi(${parts[1]}, ${parts[0]})`;
+      out += name === 'zeta' ? `zeta(${parts.map((p) => p.trim()).join(', ')})` : `psi(${parts[1]}, ${parts[0]})`;
       i = call.end;
       continue;
     }
