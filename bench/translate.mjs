@@ -13,7 +13,7 @@ const KEEP = new Set([
   'gamma', 'abs', 'BesselJ', 'BesselY', 'BesselI', 'BesselK',
   'AiryAi', 'AiryBi', 'AiryAiPrime', 'AiryBiPrime',
   'LegendreP', 'LegendreQ', 'EllipticF', 'EllipticE', 'EllipticK', 'EllipticPi',
-  'piecewise', 'polylog', 'binomial',
+  'piecewise', 'polylog', 'binomial', 'floor', 'ceiling',
 ]);
 const ATOMS = { pi: 'pi', oo: 'inf', E: 'e', I: '%i' };
 const UNSUPPORTED = new Set([
@@ -24,6 +24,8 @@ const IDENT = /[A-Za-z_][A-Za-z_0-9]*/y;
 
 // Вызовы, переводимые построением текста из уже переведённых аргументов (parts) и исходных (raw); null — отказ.
 const SPECIAL = {
+  // log(a, b) с вложенными скобками (простой случай разобран регулярным выражением выше): log(a)/log(b)
+  log: (p) => (p.length === 1 ? `log(${p[0]})` : p.length === 2 ? `(log(${p[0]})/log(${p[1]}))` : null),
   // Rational(p, q) → p/q
   Rational: (p) => (p.length === 2 ? `((${p[0]})/(${p[1]}))` : null),
   // cbrt(x) в SymPy — главная ветвь x^(1/3)

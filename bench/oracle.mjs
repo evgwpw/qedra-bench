@@ -547,6 +547,11 @@ export async function checkDefinite(lisp, F, corpusValue, fText, variable, lower
   if (!q) return { verdict: 'UNVERIFIED', detail: { reason: 'квадратура не число' } };
   const err = Math.hypot(ours[0] - q[0], ours[1] - q[1]) / Math.max(1, Math.hypot(q[0], q[1]));
   if (err <= 1e-7) return { verdict: 'OK', detail: { how: 'квадратура', value: corpusValue } };
+  // Симпсон по 200 интервалам на разрывной подынтегральной (floor/ceiling) ничего не доказывает: значение корпуса не
+  // вычислилось (вроде factorial(2021)) — не ложный ответ, а непроверенный
+  if (/\b(floor|ceiling)\b/.test(fText)) {
+    return { verdict: 'UNVERIFIED', detail: { reason: 'квадратура разрывной подынтегральной ненадёжна', quad: q, ours, value: corpusValue } };
+  }
   return { verdict: 'WRONG', detail: { how: 'квадратура', quad: q, ours, value: corpusValue, err } };
 }
 
