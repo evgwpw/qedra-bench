@@ -26,7 +26,6 @@ const batchSize = +arg('--batch', '20');
 const sample = +arg('--sample', '0');
 const seed = +arg('--seed', '1');
 const heartbeats = +arg('--heartbeats', '200000');
-const bigHeartbeats = +arg('--heartbeats-big', '50000');
 const chunk = +arg('--chunk', '2000');
 const lisp = process.env.LISP_EXE || join(root, 'src', 'Lisp.Host', 'bin', 'Debug', 'net10.0', 'Lisp.exe');
 const tmpDir = join(root, '.pilot');
@@ -239,8 +238,8 @@ for (const id of ids) {
   const th = src.slice(at).trimEnd();
   if (header === null) header = src.slice(0, at);
   // Предел тактов на теорему: без него один огромный ответ (Rubi с rubi-rt даёт десятки КБ)
-  // вешает весь пакет, и статусы теряются все сразу. Большие тела получают меньший предел.
-  const hb = th.length > 40000 ? bigHeartbeats : heartbeats;
+  // вешает весь пакет, и статусы теряются все сразу. Лимит один для всех теорем.
+  const hb = heartbeats;
   body.push(`set_option maxHeartbeats ${hb} in\n` + th);
   axioms.push(`#print axioms qedra_int_${id}`);
   const r = meta.get(id);
@@ -280,7 +279,7 @@ if (packPath) {
     {
       kind: 'meta',
       generator: (head.stdout || '').trim(),
-      sample, seed, batch: batchSize, heartbeats, bigHeartbeats,
+      sample, seed, batch: batchSize, heartbeats,
       answers: records.length, generated: ok, notGenerated: failed,
       sources: perSource,
       created: new Date().toISOString(),
