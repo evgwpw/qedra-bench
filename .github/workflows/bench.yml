@@ -35,6 +35,10 @@ name: bench
         description: "1 — для отказных (UNKNOWN/TIMEOUT) задач fn=integrate_rubi вторая попытка с журналом Rubi (задача 25 с, движок 20 с), артефакт trace-<осколок>.tsv.gz; вердикт не меняется"
         default: "0"
         required: false
+      ids_file:
+        description: "Файл id задач в этом репозитории (например bench/ids/unsolved-t_4_trig_functions.txt); пусто — все"
+        default: ""
+        required: false
       shards:
         description: Matrix size
         default: "20"
@@ -116,6 +120,7 @@ jobs:
             --rubi-sample "${{ inputs.rubi_sample }}" \
             --rubi-file-prefix "${{ inputs.rubi_ids_prefix }}" \
             --fn "${{ inputs.fn }}" \
+            ${{ inputs.ids_file && format('--ids-file "{0}"', inputs.ids_file) || '' }} \
             --out "results-${{ matrix.shard }}" \
             ${{ (inputs.rubi_trace == '1' || inputs.rubi_trace == 'true') && format('--trace "trace-{0}.tsv"', matrix.shard) || '' }} \
             --workers "$(nproc)"
