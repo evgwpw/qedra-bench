@@ -117,9 +117,13 @@ jobs:
             rm -rf qedra-lean/SpivakCalculus
             cp -r lean/ne/SpivakCalculus qedra-lean/SpivakCalculus
             mkdir -p qedra-lean/.lake/build/lib/lean/SpivakCalculus
-            for m in Liouville RatFuncDeriv ExpSq ExpMinusSq ExpRat ExpRatInv ExpNegQuartic ExpQuadParam; do
-              ( cd qedra-lean && lake env lean -o ".lake/build/lib/lean/SpivakCalculus/$m.olean" "SpivakCalculus/$m.lean" )
-            done
+            # Сбой сборки модулей не срывает замер: отрицательные теоремы просто останутся unknown,
+            # а весь осколок с ними (до 20 теорем) не потеряется.
+            if ! ( cd qedra-lean && for m in Liouville RatFuncDeriv ExpSq ExpMinusSq ExpRat ExpRatInv ExpNegQuartic ExpQuadParam; do
+                     lake env lean -o ".lake/build/lib/lean/SpivakCalculus/$m.olean" "SpivakCalculus/$m.lean" || exit 1
+                   done ); then
+              echo "предупреждение: модули SpivakCalculus не собрались — отрицательные теоремы останутся unknown"
+            fi
           fi
           if [ "${{ inputs.source }}" = "catalog" ]; then
             # каталог: по теореме на файл, пакет собирается здесь
