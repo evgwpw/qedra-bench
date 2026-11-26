@@ -118,13 +118,15 @@ for (const f of files) {
     if (owner && !errors.has(owner)) errors.set(owner, msg);
   }
   const axioms = new Map(); // id -> [аксиомы]
+  // Имя может быть с пространством имён: отрицательные сертификаты пилота объявлены внутри
+  // `namespace Spivak.…Gauss`, и Lean печатает `'Spivak.…Gauss.qedra_int_<id>_ne' depends on axioms`.
   for (const l of out.split(/\r?\n/)) {
-    const dep = /'qedra_int_(\S+)' depends on axioms: \[(.*)\]/.exec(l);
+    const dep = /'(\S*?qedra_int_\S+)' depends on axioms: \[(.*)\]/.exec(l);
     if (dep) {
-      axioms.set(dep[1], dep[2].split(',').map((s) => s.trim()).filter(Boolean));
+      axioms.set(dep[1].split('.').pop(), dep[2].split(',').map((s) => s.trim()).filter(Boolean));
       continue;
     }
-    const none = /'qedra_int_(\S+)' does not depend on any axioms/.exec(l);
+    const none = /'(?:\S*\.)?(qedra_int_\S+)' does not depend on any axioms/.exec(l);
     if (none) axioms.set(none[1], []);
   }
 
