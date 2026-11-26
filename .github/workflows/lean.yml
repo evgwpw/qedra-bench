@@ -108,6 +108,19 @@ jobs:
           mine=( "${all[@]:start:per}" )
           echo "осколок ${{ matrix.shard }}: ${#mine[@]} пакетов из $n"
           if [ "${#mine[@]}" -eq 0 ]; then echo "осколок пуст — это ошибка, а не успех"; exit 1; fi
+          # Отрицательные сертификаты (ne-*.lean) импортируют SpivakCalculus.* — модулей нет ни в
+          # mathlib, ни в этом репозитории, поэтому осколок, которому достался ne-файл, сначала
+          # собирает их olean-ы в проект (lake env lean не берёт файлы вне корня проекта).
+          has_ne=0
+          for id in "${mine[@]}"; do case "$id" in ne-*) has_ne=1 ;; esac; done
+          if [ "$has_ne" = "1" ]; then
+            rm -rf qedra-lean/SpivakCalculus
+            cp -r lean/ne/SpivakCalculus qedra-lean/SpivakCalculus
+            mkdir -p qedra-lean/.lake/build/lib/lean/SpivakCalculus
+            for m in Liouville RatFuncDeriv ExpSq ExpMinusSq ExpRat ExpRatInv ExpNegQuartic ExpQuadParam; do
+              ( cd qedra-lean && lake env lean -o ".lake/build/lib/lean/SpivakCalculus/$m.olean" "SpivakCalculus/$m.lean" )
+            done
+          fi
           if [ "${{ inputs.source }}" = "catalog" ]; then
             # каталог: по теореме на файл, пакет собирается здесь
             node tools/lean/gen-batch.mjs --narrow --out-dir lean/batch "${mine[@]}"

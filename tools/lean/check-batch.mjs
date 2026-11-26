@@ -120,13 +120,23 @@ for (const f of files) {
   const axioms = new Map(); // id -> [аксиомы]
   // Имя может быть с пространством имён: отрицательные сертификаты пилота объявлены внутри
   // `namespace Spivak.…Gauss`, и Lean печатает `'Spivak.…Gauss.qedra_int_<id>_ne' depends on axioms`.
-  for (const l of out.split(/\r?\n/)) {
-    const dep = /'(\S*?qedra_int_\S+)' depends on axioms: \[(.*)\]/.exec(l);
+  // Захватываем ровно хвост после `qedra_int_`: id теоремы в разборе файла идёт без этого префикса.
+  // Lean переносит длинный список аксиом по 80 колонкам — дочитываем строки до закрывающей `]`.
+  for (let i = 0; i < outLines.length; i++) {
+    const l = outLines[i];
+    const dep = /'[^']*qedra_int_(\S+)' depends on axioms: \[(.*)$/.exec(l);
     if (dep) {
-      axioms.set(dep[1].split('.').pop(), dep[2].split(',').map((s) => s.trim()).filter(Boolean));
+      let body = dep[2];
+      let j = i;
+      while (!body.trimEnd().endsWith(']') && j + 1 < outLines.length) {
+        j += 1;
+        body += ` ${outLines[j].trim()}`;
+      }
+      axioms.set(dep[1], body.replace(/\]\s*$/, '').split(',').map((s) => s.trim()).filter(Boolean));
+      i = j;
       continue;
     }
-    const none = /'(?:\S*\.)?(qedra_int_\S+)' does not depend on any axioms/.exec(l);
+    const none = /'[^']*qedra_int_(\S+)' does not depend on any axioms/.exec(l);
     if (none) axioms.set(none[1], []);
   }
 
