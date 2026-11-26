@@ -124,6 +124,8 @@ const NOISE_MAX = 1e-5;
 const SOFT_NOISE = 1e-4;
 const NOISE_EXACT = 3;
 const EXACT_BUDGET = 40;
+const FDWRONG_NEEDED = 3;
+const FDWRONG_MAX_STRONG = 3;
 
 function isImagSmall(c, av) { return Math.abs(c[1]) <= 1e-12 * Math.max(1, av); }
 
@@ -137,6 +139,7 @@ async function judge(sets, exactFn) {
   const strongSide = { neg: 0, pos: 0 };
   const side = (x) => { if (typeof x === 'number') strongSide[x < 0 ? 'neg' : 'pos'] += 1; };
   const mirror = [];
+  const fdWrong = [];
   for (const set of sets) {
     const t = { values: set.values, noise: 0, low: 0, match: 0, strong: 0, tolerated: 0, tc: 0, ti: 0, tb: 0, tm: 0, hard: 0, realMatch: 0 };
     tally.push(t);
@@ -179,7 +182,16 @@ async function judge(sets, exactFn) {
       let ex = 'unknown';
       if (exactCalls < EXACT_BUDGET) {
         exactCalls += 1;
-        ex = await exactFn(row[0], set.values);
+        ex = await exactFn(row[0], set.values, dv);
+      }
+      // ORACLE.WRONG: центральная разность самого F подтвердила dF (производную системой) и разошлась с f ≥ 1e-3 —
+      // расхождение настоящее, но точная проверка рационалями не решилась (F^(b/(c+dx)³) и т. п.). Точка копится;
+      // итог — после цикла (нужно ≥ FDWRONG_NEEDED таких точек и почти нет сильных совпадений).
+      if (ex === 'fdwrong') {
+        fdWrong.push({ x: row[0], f: row[1], dF: row[2], err, params: set.values });
+        t.hard += 1;
+        if (!unresolved) unresolved = fdWrong[0];
+        continue;
       }
       if (ex === 'zero') { if (err <= NOISE_MAX) noiseConfirmed += 1; t.match += 1; t.realMatch += 1; if (isStrong(av, absErr)) { t.strong += 1; side(row[0]); if (av <= LOW_MAX) t.low += 1; } continue; }
       if (ex === 'nonzero') {
@@ -194,6 +206,13 @@ async function judge(sets, exactFn) {
       t.hard += 1;
       if (!unresolved) unresolved = { x: row[0], f: row[1], dF: row[2], err, params: set.values };
     }
+  }
+  // Явное расхождение: ≥ FDWRONG_NEEDED точек, где две независимые производные F (diff и центральная разность)
+  // совпадают между собой и расходятся с f, и (почти) нет сильных совпадений вообще: верный ответ в другой ветви/области
+  // знаков параметров совпадает с f хотя бы в части точек (≥ FDWRONG_MAX_STRONG), подделка — ни в одной.
+  if (fdWrong.length >= FDWRONG_NEEDED && tally.reduce((s, t) => s + t.strong, 0) < FDWRONG_MAX_STRONG
+    && tally.reduce((s, t) => s + t.tb + t.tm, 0) === 0) {
+    return { wrong: { ...fdWrong[0], fd_confirmed: fdWrong.length }, tally };
   }
   // Итог по зеркальным точкам: любая зеркальная точка — WRONG (ответ верен не везде, где f вещественна). Если они все при
   // x < 0, а при x > 0 есть ≥ 7 сильных совпадений и ни одного зеркального, в detail добавляется halfline (диагностика).
@@ -300,12 +319,14 @@ export async function checkIndefinite(lisp, fText, F, variable, timeoutMs) {
   const hasRoots = /root_of|rootsum|root-sum/.test(F);
   const exactFn = hasRoots
     ? (x, values) => fdDiff(lisp, F, f, variable, x, values, params, timeoutMs)
-    : async (x, values) => {
+    : async (x, values, dv) => {
       // Шум вычитания в double у верного ответа (производная — сумма больших слагаемых) не должен делать задачу
       // непроверяемой: независимая сверка — центральная разность самого F (она не использует diff); «zero» — F′ = f
       // до 1e-6, подделка с возмущением 1e-3 дала бы «nonzero»/«unknown». Опровергает (WRONG) только точная проверка.
       if (await fdDiff(lisp, F, f, variable, x, values, params, timeoutMs, 0, FD_MAX) === 'zero') return 'zero';
-      return exactDiff(lisp, F, f, variable, x, values, params, timeoutMs);
+      const ex = await exactDiff(lisp, F, f, variable, x, values, params, timeoutMs);
+      if (ex !== 'unknown' || !dv) return ex;
+      return (await fdConfirmsDiff(lisp, F, f, variable, x, values, params, timeoutMs, dv)) ? 'fdwrong' : ex;
     };
   let verdict = null;
   for (const pass of [0, 1]) {
@@ -451,6 +472,29 @@ async function fdDiff(lisp, F, f, variable, xVal, values, params, timeoutMs, min
   if (err <= 1e-6) return 'zero';
   if (err >= 1e-3) return 'nonzero';
   return 'unknown';
+}
+
+// true — в точке x (все значения вещественны, |f| ≤ FD_MAX): центральная разность F совпала с dF (производной системой)
+// до 1e-5 и разошлась с f на ≥ 1e-3 (отн. к max(1,|f|)). Две независимые производные против f.
+async function fdConfirmsDiff(lisp, F, f, variable, xVal, values, params, timeoutMs, dv) {
+  if (typeof xVal !== 'number' || !dv || Math.abs(dv[1]) > 1e-12 * Math.max(1, Math.abs(dv[0]))) return false;
+  const h = 1e-4;
+  const rules = (xv) => `(list ${[`(list '${variable} ${xv})`].concat(params.map((p) => `(list '${p} ${values[p]})`)).join(' ')})`;
+  const code = `(let ((num* (lambda (e) (or (polylog-evalf e) (eval-num e))))) `
+    + `(list (num* (subst ${rules(xVal)} '${f})) (num* (subst ${rules(xVal + h)} '${F})) `
+    + `(num* (subst ${rules(xVal - h)} '${F}))))`;
+  const res = await lisp.ask(code, Math.max(timeoutMs, 30000));
+  if (!res.ans || typeof res.ans.result !== 'string') return false;
+  let rows;
+  try { rows = parseLisp(res.ans.result); } catch { return false; }
+  if (!Array.isArray(rows) || rows.length !== 3) return false;
+  const [fv, a, b] = rows.map(toComplex);
+  if (!fv || !a || !b) return false;
+  if (!isImagSmall(fv, Math.hypot(fv[0], fv[1])) || !isImagSmall(a, Math.hypot(a[0], a[1])) || !isImagSmall(b, Math.hypot(b[0], b[1]))) return false;
+  if (Math.abs(fv[0]) > FD_MAX) return false;
+  const sc = Math.max(1, Math.abs(fv[0]));
+  const fd = (a[0] - b[0]) / (2 * h);
+  return Math.abs(fd - dv[0]) / sc <= 1e-5 && Math.abs(fd - fv[0]) / sc >= 1e-3;
 }
 
 export { judge, decide, sampleSet, paramSets, altSet, exactDiff, fdDiff, toComplex, REAL_POINTS, COMPLEX_POINTS, EXTRA_POINTS };
